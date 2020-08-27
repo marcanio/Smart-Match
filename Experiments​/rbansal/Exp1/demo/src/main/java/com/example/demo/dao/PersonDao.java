@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import com.example.demo.model.Person;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -13,5 +14,7 @@ public interface PersonDao {
         UUID id = UUID.randomUUID();
         return insertPerson(id, person);
     }
+
+    List<Person> selectallpeople();
 
 }
