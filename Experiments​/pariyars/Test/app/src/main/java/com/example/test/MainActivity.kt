@@ -23,10 +23,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        al.add("php");
-        al.add("c");
-        al.add("python");
-        al.add("java");
+        al.add("Suraj");
+        al.add("Rishab");
+        al.add("Jayant");
+        al.add("Eric");
 
         //choose your favorite adapter
         arrayAdapter = ArrayAdapter(this, R.layout.item, R.id.helloText, al );
