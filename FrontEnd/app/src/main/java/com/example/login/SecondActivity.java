@@ -50,12 +50,12 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private void getQuestionList() {
     questionList = new ArrayList<>();
     //todo - Input actual questions when it starts working
-    questionList.add(new Question("This is question one","A1","B","C","D","E",3));
-        questionList.add(new Question("This is question 1","A2","B","C","D","E",3));
-        questionList.add(new Question("This is question 2","A3","B","C","D","E",3));
-        questionList.add(new Question("This is question 3","A4","B","C","D","E",3));
-        questionList.add(new Question("This is question 4","A5","B","C","D","E",3));
-        questionList.add(new Question("This is question 5","A6","B","C","D","E",3));
+        questionList.add(new Question("This is question 1","A1","B","C","D","E",3));
+        questionList.add(new Question("This is question 2","A2","B","C","D","E",3));
+        questionList.add(new Question("This is question 3","A3","B","C","D","E",3));
+        questionList.add(new Question("This is question 4","A4","B","C","D","E",3));
+        questionList.add(new Question("This is question 5","A5","B","C","D","E",3));
+        questionList.add(new Question("This is question 6","A6","B","C","D","E",3));
 
         setQuestion();
     }
@@ -107,7 +107,18 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
     private void changeQuestion() {
         if(questNum < questionList.size() -1){
-            playAnim(option1,0);
+
+            questNum++;
+
+            playAnim(question,0,0);
+            playAnim(option1,0,1);
+            playAnim(option2,0,2);
+            playAnim(option3,0,3);
+            playAnim(option4,0,4);
+            playAnim(option5,0,5);
+
+            qCount.setText(String.valueOf(questNum+1)+ "/"+ String.valueOf(questionList.size()));
+
         }else{
             //Display score- Last question
             Intent intent = new Intent(SecondActivity.this, ProfileActivity.class);
@@ -116,7 +127,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void playAnim(View view,final int value) {
+    private void playAnim(final View view, final int value, final int viewNum) {
         view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500).setStartDelay(100).setInterpolator(new DecelerateInterpolator()).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
@@ -125,7 +136,29 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                
+                if(value == 0){
+                    switch(viewNum){
+                        case 0:
+                            ((TextView)view).setText(questionList.get(questNum).getQuestion());
+                            break;
+                        case 1:
+                            ((Button)view).setText(questionList.get(questNum).getOptionA());
+                            break;
+                        case 2:
+                            ((Button)view).setText(questionList.get(questNum).getOptionB());
+                            break;
+                        case 3:
+                            ((Button)view).setText(questionList.get(questNum).getOptionC());
+                            break;
+                        case 4:
+                            ((Button)view).setText(questionList.get(questNum).getOptionD());
+                            break;
+                        case 5:
+                            ((Button)view).setText(questionList.get(questNum).getOptionE());
+                            break;
+                    }
+                    playAnim(view, 1,viewNum);
+                }
             }
 
             @Override

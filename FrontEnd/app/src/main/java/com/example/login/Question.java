@@ -13,10 +13,10 @@ public class Question {
     public Question(String question, String optionA,String optionB,String optionC,String optionD,String optionE,int correct){
         this.question = question;
         this.optionA = optionA;
-        this.optionA = optionB;
-        this.optionA = optionC;
-        this.optionA = optionD;
-        this.optionA = optionE;
+        this.optionB = optionB;
+        this.optionC = optionC;
+        this.optionD = optionD;
+        this.optionE = optionE;
         this.correct = correct;
     }
 
