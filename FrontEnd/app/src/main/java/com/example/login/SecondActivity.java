@@ -12,6 +12,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private TextView question, qCount;
     private Button option1,option2,option3,option4,option5;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +33,12 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         option3.setOnClickListener(this);
         option4.setOnClickListener(this);
         option5.setOnClickListener(this);
+
+        getQuestionList();
+    }
+
+    private void getQuestionList() {
+
     }
 
     @Override
