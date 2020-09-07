@@ -50,12 +50,17 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private void getQuestionList() {
     questionList = new ArrayList<>();
     //todo - Input actual questions when it starts working
-        questionList.add(new Question("This is question 1","A1","B","C","D","E",3));
-        questionList.add(new Question("This is question 2","A2","B","C","D","E",3));
-        questionList.add(new Question("This is question 3","A3","B","C","D","E",3));
-        questionList.add(new Question("This is question 4","A4","B","C","D","E",3));
-        questionList.add(new Question("This is question 5","A5","B","C","D","E",3));
-        questionList.add(new Question("This is question 6","A6","B","C","D","E",3));
+        questionList.add(new Question("I am full of energy","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
+        questionList.add(new Question("I can get blue/depressed","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
+        questionList.add(new Question("I am quiet","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
+        questionList.add(new Question("I am compassionate and have a soft heart","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
+        questionList.add(new Question("I can be rude to others","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
+        questionList.add(new Question("I am fascinated by art and literature","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
+        questionList.add(new Question("I have few artistic interests","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
+        questionList.add(new Question("I prefer to have others take charge","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
+        questionList.add(new Question("I am dominate and act as a leader","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
+        questionList.add(new Question("I am reliable and can always be counted on","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
+        questionList.add(new Question("I am original and come up with new ideas","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
 
         setQuestion();
     }
