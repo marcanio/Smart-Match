@@ -1,4 +1,4 @@
 package com.smartMatch.user;
 
-public class UserRepository {
+public interface UserRepository {
 }

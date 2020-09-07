@@ -8,7 +8,7 @@ package com.smartMatch.user;
 //import javax.persistence.Entity;
 //import javax.persistence.Id;
 //import javax.persistence.Table;
-
+//
 //@Entity
 //@Table(name = "users")
 public class User {
@@ -48,4 +48,22 @@ public class User {
 //    @Column(name = "age")
 //    @NotFound(action = NotFoundAction.IGNORE)
 //    private Integer age;
+
+    public User(String first_name, String last_name, String phone_number, String gender, String major,
+                String user_password, String classification, String net_id, Integer age, Integer code, Integer entered_code,
+                boolean verified) {
+//        super();
+//        this.firstName = first_name;
+//        this.lastName = last_name;
+//        this.phoneNumber = phone_number;
+//        this.gender = gender;
+//        this.major = major;
+//        this.userPassword = user_password;
+//        this.classification = classification;
+//        this.netID = net_id;
+//        this.age = age;
+//        this.code = code;
+//        this.enteredCode = entered_code;
+//        this.verified = verified;
+    }
 }
