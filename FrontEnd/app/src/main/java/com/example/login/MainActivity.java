@@ -2,6 +2,7 @@ package com.example.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    @SuppressLint("SetTextI18n")
     private void validate(String userName, String userPassword){
         //ToDO- Attach this to a database to check if the user is in the system
 

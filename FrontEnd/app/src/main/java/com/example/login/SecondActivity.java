@@ -49,7 +49,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
     private void getQuestionList() {
     questionList = new ArrayList<>();
-    //todo - Input actual questions when it starts working
+    //todo - Place these questions in the database
         questionList.add(new Question("I am full of energy","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
         questionList.add(new Question("I can get blue/depressed","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
         questionList.add(new Question("I am quiet","Disagree strongly","Disagree a little","Neutral","Agree a little","Agree strongly",3));
@@ -65,6 +65,9 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         setQuestion();
     }
 
+    /**
+     * Sets the initial question and options
+     */
     private void setQuestion() {
         question.setText(questionList.get(0).getQuestion());
         option1.setText(questionList.get(0).getOptionA());
@@ -78,6 +81,11 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         questNum = 0;
     }
 
+
+    /**
+     * Saves the data from each question to show results at the end
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         int selectedOption =0;
@@ -105,11 +113,19 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    /**
+     * Saves the users data
+     * @param selectedOption - The answer to the question
+     */
     private void scoreAnswer(int selectedOption) {
         //todo - Look at answer and score accordingly
         changeQuestion();
     }
 
+    /**
+     * Plays an animation when the button is clicked
+     * If there is no more questions moves to the next page
+     */
     private void changeQuestion() {
         if(questNum < questionList.size() -1){
 
@@ -127,11 +143,18 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         }else{
             //Display score- Last question
             Intent intent = new Intent(SecondActivity.this, ProfileActivity.class);
+
             startActivity(intent);
             SecondActivity.this.finish();
         }
     }
 
+    /**
+     * Actual animation of the buttons and questions transitions
+     * @param view - Activity page
+     * @param value - If the animations should play or not
+     * @param viewNum - The question number 
+     */
     private void playAnim(final View view, final int value, final int viewNum) {
         view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500).setStartDelay(100).setInterpolator(new DecelerateInterpolator()).setListener(new Animator.AnimatorListener() {
             @Override
