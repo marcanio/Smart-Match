@@ -119,7 +119,10 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
      * @param selectedOption - The answer to the question
      */
     private void scoreAnswer(int selectedOption) {
+
         quizResults+=selectedOption;
+        //Added so that I would be able to parse the string
+        quizResults+="/";
         changeQuestion();
     }
 

@@ -52,7 +52,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Question 1: I am full of energy"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Q1A"
@@ -60,7 +61,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:paddingBottom="10dp"/>
 
                 <TextView
                     android:id="@+id/Q2"
@@ -68,7 +70,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Question 2: I can be blue/depressed"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Q2A"
@@ -76,7 +79,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:paddingBottom="10dp"/>
 
                 <TextView
                     android:id="@+id/Q3"
@@ -84,7 +88,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Question 3: I am quiet"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Q3A"
@@ -92,7 +97,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:paddingBottom="10dp"/>
 
                 <TextView
                     android:id="@+id/Q4"
@@ -100,7 +106,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Question 4: I am compassionate and have a soft heart"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Q4A"
@@ -108,7 +115,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingBottom="10dp"/>
 
                 <TextView
                     android:id="@+id/Q5"
@@ -116,7 +125,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Question 5: I can be rude to others"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Q5A"
@@ -124,7 +134,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:paddingBottom="10dp"/>
 
                 <TextView
                     android:id="@+id/Q6"
@@ -132,7 +143,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Question 6: I am fascinated by art and literature"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Q6A"
@@ -140,7 +152,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:paddingBottom="10dp"/>
 
                 <TextView
                     android:id="@+id/Q7"
@@ -148,7 +161,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Question 7: I have few artistic interests"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Q7A"
@@ -156,7 +170,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:paddingBottom="10dp"/>
 
                 <TextView
                     android:id="@+id/Q8"
@@ -164,7 +179,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Question 8: I prefer to have others take charge"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Q8A"
@@ -172,7 +188,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:paddingBottom="10dp"/>
 
                 <TextView
                     android:id="@+id/Q9"
@@ -180,7 +197,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Question 9: I am dominate and act as a leader"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Q9A"
@@ -188,7 +206,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:paddingBottom="10dp"/>
 
                 <TextView
                     android:id="@+id/Q10"
@@ -196,7 +215,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Question 10: I am reliable and can always be counted on"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Q10A"
@@ -204,7 +224,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:paddingBottom="10dp"/>
 
                 <TextView
                     android:id="@+id/Q11"
@@ -212,7 +233,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Question 11: I am original and come up with new ideas"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/Q11A"
@@ -220,7 +242,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:paddingBottom="10dp"/>
 
                 <Button
                     android:id="@+id/button2"
