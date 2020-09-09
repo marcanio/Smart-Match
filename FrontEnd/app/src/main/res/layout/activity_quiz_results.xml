@@ -57,12 +57,11 @@
 
                 <TextView
                     android:id="@+id/Q1A"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingBottom="10dp"/>
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/Q2"
@@ -75,12 +74,11 @@
 
                 <TextView
                     android:id="@+id/Q2A"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingBottom="10dp"/>
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/Q3"
@@ -93,12 +91,11 @@
 
                 <TextView
                     android:id="@+id/Q3A"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingBottom="10dp"/>
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/Q4"
@@ -111,13 +108,12 @@
 
                 <TextView
                     android:id="@+id/Q4A"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:paddingBottom="10dp"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/Q5"
@@ -130,12 +126,11 @@
 
                 <TextView
                     android:id="@+id/Q5A"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingBottom="10dp"/>
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/Q6"
@@ -148,12 +143,11 @@
 
                 <TextView
                     android:id="@+id/Q6A"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingBottom="10dp"/>
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/Q7"
@@ -166,12 +160,11 @@
 
                 <TextView
                     android:id="@+id/Q7A"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingBottom="10dp"/>
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/Q8"
@@ -184,12 +177,11 @@
 
                 <TextView
                     android:id="@+id/Q8A"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingBottom="10dp"/>
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/Q9"
@@ -202,12 +194,11 @@
 
                 <TextView
                     android:id="@+id/Q9A"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingBottom="10dp"/>
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/Q10"
@@ -220,12 +211,11 @@
 
                 <TextView
                     android:id="@+id/Q10A"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingBottom="10dp"/>
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/Q11"
@@ -238,15 +228,14 @@
 
                 <TextView
                     android:id="@+id/Q11A"
-                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="18sp"
-                    android:paddingBottom="10dp"/>
+                    android:gravity="center"
+                    android:paddingBottom="10dp"
+                    android:textSize="18sp" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/btnProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Go to profile" />

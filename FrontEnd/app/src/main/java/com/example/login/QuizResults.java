@@ -1,15 +1,18 @@
 package com.example.login;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class QuizResults extends AppCompatActivity {
+public class QuizResults<button> extends AppCompatActivity {
 
     private TextView Q1A, Q2A, Q3A, Q4A, Q5A,Q6A,Q7A,Q8A,Q9A,Q10A,Q11A;
-
+    private Button btnProfile;
 
 
     @Override
@@ -28,6 +31,17 @@ public class QuizResults extends AppCompatActivity {
         Q9A = findViewById(R.id.Q9A);
         Q10A = findViewById(R.id.Q10A);
         Q11A = findViewById(R.id.Q11A);
+
+        //Button to change pages
+        btnProfile = (Button)findViewById(R.id.btnProfile);
+        btnProfile.setOnClickListener(new View.OnClickListener(){
+            @Override
+
+            public void onClick(View view){
+                Intent intent = new Intent(QuizResults.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Get data from last page
         Bundle bundle = getIntent().getExtras();
