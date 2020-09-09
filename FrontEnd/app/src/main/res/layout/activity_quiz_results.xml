@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizResults">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/results"
+            android:layout_width="411dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Quiz Results"
+            android:textColor="@android:color/background_light"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="64dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/Q1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Question 1: I am full of energy"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q1A"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Question 2: I can be blue/depressed"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q2A"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Question 3: I am quiet"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q3A"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Question 4: I am compassionate and have a soft heart"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q4A"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Question 5: I can be rude to others"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q5A"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Question 6: I am fascinated by art and literature"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q6A"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Question 7: I have few artistic interests"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q7A"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Question 8: I prefer to have others take charge"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q8A"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Question 9: I am dominate and act as a leader"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q9A"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Question 10: I am reliable and can always be counted on"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q10A"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Question 11: I am original and come up with new ideas"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/Q11A"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Go to profile" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

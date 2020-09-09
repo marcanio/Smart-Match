@@ -20,6 +20,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     private Button option1,option2,option3,option4,option5;
     private List<Question> questionList;
     int questNum;
+    String quizResults = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +119,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
      * @param selectedOption - The answer to the question
      */
     private void scoreAnswer(int selectedOption) {
-        //todo - Look at answer and score accordingly
+        quizResults+=selectedOption;
         changeQuestion();
     }
 
@@ -142,8 +143,8 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
         }else{
             //Display score- Last question
-            Intent intent = new Intent(SecondActivity.this, ProfileActivity.class);
-
+            Intent intent = new Intent(SecondActivity.this, QuizResults.class);
+            intent.putExtra("quizResults",quizResults);
             startActivity(intent);
             SecondActivity.this.finish();
         }
@@ -153,7 +154,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
      * Actual animation of the buttons and questions transitions
      * @param view - Activity page
      * @param value - If the animations should play or not
-     * @param viewNum - The question number 
+     * @param viewNum - The question number
      */
     private void playAnim(final View view, final int value, final int viewNum) {
         view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500).setStartDelay(100).setInterpolator(new DecelerateInterpolator()).setListener(new Animator.AnimatorListener() {
