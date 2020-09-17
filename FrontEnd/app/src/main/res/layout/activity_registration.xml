@@ -13,14 +13,7 @@
         android:orientation="horizontal"
         android:background="@android:color/holo_red_dark"
         >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Smart Match"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:padding="10dp"
-            ></TextView>
+
     </RelativeLayout>
 
     <LinearLayout
@@ -46,7 +39,7 @@
                 android:layout_marginBottom="10dp"
                 android:textSize="30dp"
                 android:inputType="text"
-                android:background="#808080"/>
+                />
             <EditText
                 android:id="@+id/last_name"
                 android:layout_width="165dp"
@@ -57,7 +50,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="#808080"
+
                 android:layout_alignParentRight="true" />
         </RelativeLayout>
         <EditText
@@ -65,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:background="#808080"
+
             android:hint="Email address"
             android:textSize="30dp"
             android:layout_marginTop="10dp"
@@ -79,7 +72,7 @@
             android:inputType="textPassword"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:background="#808080"/>
+            />
         <EditText
             android:id="@+id/birthday"
             android:layout_width="match_parent"
@@ -89,7 +82,7 @@
             android:textSize="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:background="#808080"/>
+            />
         <EditText
             android:id="@+id/gender"
             android:layout_width="match_parent"
@@ -99,7 +92,7 @@
             android:inputType="text"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:background="#808080"/>
+            />
         <EditText
             android:id="@+id/mobile"
             android:layout_width="match_parent"
@@ -109,7 +102,7 @@
             android:textSize="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:background="#808080"/>
+            />
 
         <Button
             android:id="@+id/submitButton"
