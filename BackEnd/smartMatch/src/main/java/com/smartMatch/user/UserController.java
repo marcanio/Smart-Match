@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 public class UserController {
     static {
-        System.out.println("\nCyFire: Ready to save new user...\n");
+        System.out.println("\nReady to save new user...\n");
     }
 
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -53,8 +53,9 @@ public class UserController {
      * @param net_id - The NetID of the user we are looking for.
      * @return - The user corresponding to the NetID, assuming that it exists.
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/users/{net_id}")
-    public User findUserByNetID(@PathVariable("net_id") String net_id) {
+    //@RequestMapping(method = RequestMethod.GET, path = "/users/{net_id}")
+    @GetMapping("/users/{net_id}")
+    public User findUserByNetID(@PathVariable(value = "net_id") String net_id) {
         logger.info("Entered into Controller Layer");
         List<User> allUsers = usersRepository.findAll();
         User user = new User();
@@ -78,7 +79,7 @@ public class UserController {
      * @param net_id - The NetID of the user who we're checking the code from.
      * @return userCode - The code of the user.
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/users/{code}")
+    @RequestMapping(method = RequestMethod.GET, path = "/users_code/{code}")
     public Integer getCodeByNetID(@PathVariable("net_id") String net_id) {
         logger.info("Entered into Controller Layer");
         User user = findUserByNetID(net_id);
