@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Password = (EditText) findViewById(R.id.LoginPassword);
         Info = (TextView) findViewById(R.id.tvInfo);
         Login = (Button)findViewById(R.id.btnLogin);
+        Button register = (Button) findViewById(R.id.btnReg);
 
         Info.setText("Number of attempts remaining: 5");
 
@@ -40,7 +41,14 @@ public class MainActivity extends AppCompatActivity {
                 validate(Name.getText().toString(), Password.getText().toString());
             }
         });
+        register.setOnClickListener(new View.OnClickListener(){
+            @Override
 
+            public void onClick(View view){
+                Intent intent = new Intent(MainActivity.this, Registration.class);
+                startActivity(intent);
+            }
+        });
     }
     @SuppressLint("SetTextI18n")
     private void validate(String userName, String userPassword){
@@ -50,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         if((userName.equals("Admin")) && (userPassword.equals("password"))){
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
             startActivity(intent);
+
 
         }else{
             counter--;
