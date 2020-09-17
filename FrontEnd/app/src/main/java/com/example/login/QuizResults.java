@@ -38,8 +38,8 @@ public class QuizResults<button> extends AppCompatActivity {
             @Override
 
             public void onClick(View view){
-                Intent intent = new Intent(QuizResults.this, ProfileActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(QuizResults.this, ProfileActivity.class);
+                //startActivity(intent);
             }
         });
 
