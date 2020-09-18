@@ -1,10 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Profile">
 
-  </android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/holo_red_dark"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Smart Match"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:textStyle="bold"
+            ></TextView>
+>
+
+    </RelativeLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:textColor="#800000"
+            android:paddingTop="15dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="15dp"
+            android:text="Kerin Smith"
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:paddingTop="15dp"
+                android:textColor="#800000"
+                android:paddingRight="15dp"
+                android:text=","
+                />
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dp"
+                android:textColor="#800000"
+                android:paddingTop="15dp"
+                android:textStyle="bold"
+                android:paddingRight="15dp"
+                android:text="21"
+                />
+        </TableRow>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="2dp"
+            android:background="#808080"
+            />
+        <TextView
+            android:id="@+id/User_bio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#000"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:layout_marginLeft="15dp"
+            android:text="I am reliable and can always be counted on"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#808080"
+            />
+        <EditText
+            android:id="@+id/addBio"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:hint="Add Bio"
+            android:inputType="text"
+            android:textSize="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            />
+    </LinearLayout>
+
+
+</RelativeLayout>
