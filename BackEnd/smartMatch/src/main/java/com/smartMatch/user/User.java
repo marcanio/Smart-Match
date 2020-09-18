@@ -4,14 +4,12 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.core.style.ToStringCreator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
     @Column(name = "first_name")
     @NotFound(action = NotFoundAction.IGNORE)
     private String firstName;
@@ -24,6 +22,19 @@ public class User {
     @NotFound(action = NotFoundAction.IGNORE)
     private String phoneNumber;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+//    @Id
+//    @Column(name = "net_id")
+//    @NotFound(action = NotFoundAction.IGNORE)
+//    private String netID;
+
+    @Column(name = "email_address")
+    @NotFound(action = NotFoundAction.IGNORE)
+    private String emailaddress;
+
     @Column(name = "gender")
     @NotFound(action = NotFoundAction.IGNORE)
     private String gender;
@@ -32,51 +43,38 @@ public class User {
     @NotFound(action = NotFoundAction.IGNORE)
     private String userPassword;
 
+//    @Id
+//    @Column(name = "net_id")
+//    @NotFound(action = NotFoundAction.IGNORE)
+//    private String netID;
+
 //    @Column(name = "classification")
 //    @NotFound(action = NotFoundAction.IGNORE)
 //    private String classification;
 
-    @Id
-    @Column(name = "net_id")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private String netID;
 
     @Column(name = "age")
     @NotFound(action = NotFoundAction.IGNORE)
     private Integer age;
 
-    @Column(name = "score")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private Integer score;
+//    @Column(name = "score")
+//    @NotFound(action = NotFoundAction.IGNORE)
+//    private Integer score;
 
-
-    @Column(name = "code")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private Integer code;
-
-    @Column(name = "entered_code")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private Integer enteredCode;
-
-    @Column(name = "verified")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private boolean verified;
 
     // MAKE A DIDDLY DARN DEFAULT AND CONSTRUCTOR FOR THE MOCKITO TESTS
-    public User(String first_name, String last_name, String phone_number, String gender,
-                String user_password, String net_id,Integer code, Integer entered_code, Integer age, Integer score, boolean verified) {
+    public User(String first_name, String last_name, String phone_number, String email_address, String gender,
+                String user_password, Integer age) {
         super();
         this.firstName = first_name;
         this.lastName = last_name;
         this.phoneNumber = phone_number;
+        this.emailaddress = email_address;
         this.gender = gender;
-        this.score =score;
+//        this.score =score;
         this.userPassword = user_password;
-        this.code = code;
-        this.enteredCode = entered_code;
-        this.netID = net_id;
+//        this.netID = net_id;
         this.age = age;
-        this.verified = verified;
     }
 
     public User() {
@@ -85,12 +83,10 @@ public class User {
 
     @Override
     public String toString() {
-        return new ToStringCreator(this).append("net_id: ", this.getNetID()).append("first_name: ", this.getFirstName())
+        return new ToStringCreator(this).append("first_name: ", this.getFirstName())
                 .append("\nlast_name: ", this.getLastName()).append("phone_number: ", this.getPhoneNumber())
-                .append("gender: ", this.getGender()).append("user_password: ", this.getUserPassword())
-                .append("age: ", this.getAge()).append("\ncode: ", this.getCode())
-                .append("entered_code: ", this.getEnteredCode()).append("score: ", this.getScore())
-                .append("verified: ", this.isVerified()).toString();
+                .append("email_address: ", this.getEmailaddress()).append("gender: ", this.getGender()).append("user_password: ", this.getUserPassword())
+                .append("age: ", this.getAge()).toString();
     }
 
     public String getFirstName() {
@@ -117,6 +113,14 @@ public class User {
         this.phoneNumber = phone_number;
     }
 
+    public String getEmailaddress() {
+        return emailaddress;
+    }
+
+    public void setEmailaddress(String email_address) {
+        this.emailaddress = email_address;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -125,21 +129,6 @@ public class User {
         this.gender = gender;
     }
 
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public Integer getEnteredCode() {
-        return enteredCode;
-    }
-
-    public void setEnteredCode(Integer entered_code) {
-        this.enteredCode = entered_code;
-    }
 
     public String getUserPassword() {
         return userPassword;
@@ -157,13 +146,13 @@ public class User {
 //        this.classification = classification;
 //    }
 
-    public String getNetID() {
-        return netID;
-    }
-
-    public void setNetID(String net_id) {
-        this.netID = net_id;
-    }
+//    public String getNetID() {
+//        return netID;
+//    }
+//
+//    public void setNetID(String net_id) {
+//        this.netID = net_id;
+//    }
 
     public Integer getAge() {
         return age;
@@ -173,21 +162,13 @@ public class User {
         this.age = age;
     }
 
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
-    }
-
-    public boolean isVerified() {
-        return verified;
-    }
-
-    public void setVerified(boolean verified) {
-        this.verified = verified;
-    }
+//    public Integer getScore() {
+//        return score;
+//    }
+//
+//    public void setScore(Integer score) {
+//        this.score = score;
+//    }
 
 
 

@@ -1,6 +1,7 @@
 package com.smartMatch.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,17 +11,17 @@ import org.springframework.stereotype.Repository;
  * <p>
  * http://static.springsource.org/spring-data/jpa/docs/current/reference/html/jpa.repositories.html#jpa.query-methods.query-creation
  *
- * @author Steven Marshall Sheets
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
     /**
-     * Finds the user associated with the given NetID
+     * Finds the user associated with the given emailID
      *
-     * @param net_id - The netID associated with the user.
+     * @param email_address - The netID associated with the user.
      * @return - User associated with given NetID
      */
-    User findUserByNetID(String net_id);
+//    User findUserByEmail(String email_address);
+//    public User findByEmail(@Param("email") String email_address);
 
     /**
      * Deletes a user from the database.
