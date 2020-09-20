@@ -147,7 +147,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
         }else{
             //Display score- Last question
             Intent intent = new Intent(SecondActivity.this, QuizResults.class);
-            intent.putExtra("quizResults",quizResults);
+            intent.putExtra("quizScore",quizResults);
             startActivity(intent);
             SecondActivity.this.finish();
         }

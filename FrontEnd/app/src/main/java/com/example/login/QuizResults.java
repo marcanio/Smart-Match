@@ -13,6 +13,7 @@ public class QuizResults<button> extends AppCompatActivity {
 
     private TextView Q1A, Q2A, Q3A, Q4A, Q5A,Q6A,Q7A,Q8A,Q9A,Q10A,Q11A;
     private Button btnProfile;
+    public int quizScore =0;
 
 
     @Override
@@ -38,8 +39,9 @@ public class QuizResults<button> extends AppCompatActivity {
             @Override
 
             public void onClick(View view){
-                //Intent intent = new Intent(QuizResults.this, ProfileActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(QuizResults.this, Profile.class);
+                intent.putExtra("quizScore",quizScore);
+                startActivity(intent);
             }
         });
 
@@ -79,14 +81,19 @@ public class QuizResults<button> extends AppCompatActivity {
         for(int i = 0; i < realAnswers.length; i++){
             if(tokens[i].equals("1")){
                 realAnswers[i]= "Disagree strongly";
+                quizScore+=1;
             }else if(tokens[i].equals("2")){
                 realAnswers[i]= "Disagree a little";
+                quizScore+=2;
             }else if(tokens[i].equals("3")){
                 realAnswers[i]= "Neutral";
+                quizScore+=3;
             }else if(tokens[i].equals("4")){
                 realAnswers[i]= "Agree strongly";
+                quizScore+=4;
             }else{
                 realAnswers[i]= "Agree strongly";
+                quizScore+=5;
             }
 
         }

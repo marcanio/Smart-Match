@@ -26,7 +26,7 @@ import java.util.Map;
 public class Registration extends AppCompatActivity {
     private EditText firstName, lastName, email, password, birthday, gender, phoneNumber;
     private Button btn_regist;
-    private static String URL_REGIST ="https://postman-echo.com/post";
+    private static String URL_REGIST ="https://e88bf2da-6812-4702-8725-be192a447d6d.mock.pstmn.io";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +39,7 @@ public class Registration extends AppCompatActivity {
         birthday = findViewById(R.id.birthday);
         phoneNumber = findViewById(R.id.mobile);
         btn_regist = findViewById(R.id.submitButton);
+        gender = findViewById(R.id.gender);
         btn_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,26 +61,26 @@ public class Registration extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("Response",response);
+                        Log.e("Response", ""+response);
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        error.printStackTrace();
                     }
                 })
         {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("firstname",firstName);
-                params.put("lastname",lastName);
-                params.put("email",email);
-                params.put("password",password);
-                params.put("birthday",birthday);
+                params.put("firstName",firstName);
+                params.put("lastName",lastName);
+                params.put("emailaddress",email);
+                params.put("UserPassword",password);
+                params.put("age",birthday);
                 params.put("gender",gender);
-                params.put("phonenumber",phoneNumber);
+                params.put("phoneNumber",phoneNumber);
                 return params;
             }
         };
