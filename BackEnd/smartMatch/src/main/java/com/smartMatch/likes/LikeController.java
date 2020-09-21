@@ -1,27 +1,4 @@
-//package com.smartMatch.likes;
-//
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.*;
-//
-//import java.util.List;
-//
-//@RestController
-//public class LikeController {
-//    /*
-//     * Adding comment to test CICD
-//     * Another comment
-//     */
-//
-//    static {
-//        System.out.println("\nCyFire: Ready to save new like...");
-//    }
-//
-//    private final Logger logger = LoggerFactory.getLogger(LikeController.class);
-//    @Autowired
-//    LikeRepository likeRepo;
-//
+
 //    @RequestMapping(method = RequestMethod.POST, path = "/likes/new", produces = "appication/json")
 //    public String addNewLike(@RequestBody Likes like) {
 ////        likeRepo.save(like);
