@@ -2,6 +2,7 @@ package com.example.login;
 
 //import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,9 +15,5 @@ public class Profile extends AppCompatActivity {
     }
     
     public void onButtonClick(View view) {
-        switch (view.getId()) {
-            case R.id.button1:
-                
-                break;
     }
 }
