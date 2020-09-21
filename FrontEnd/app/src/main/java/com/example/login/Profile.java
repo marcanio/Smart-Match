@@ -12,4 +12,11 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
     }
+    
+    public void onButtonClick(View view) {
+        switch (view.getId()) {
+            case R.id.button1:
+                
+                break;
+    }
 }
