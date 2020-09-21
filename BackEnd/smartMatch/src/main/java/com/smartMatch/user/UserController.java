@@ -85,15 +85,12 @@ public class UserController {
         return user.getFirstName();
     }
 
-    //    /**
-//     * When the user enters the code on the app and hits submit, it will both enter
-//     * the entered_code into the database and check if the entered_code matches the
-//     * code. If so, then the user is "verified".
-//     *
-//     * @param email_address - The code (received through email) that is entered in by
-//     *                     the user.
-//     * @param userPassword   - The NetID of the user entering the code.
-//     */
+        /**
+     * When the user enters the code on the app and hits submit, it will both enter
+     * the entered_code into the database and check if the entered_code matches the
+     * code. If so, then the user is "verified".
+     *
+     */
     @RequestMapping(method = RequestMethod.POST, path = "users/verify")
     public String setUserEnteredCode(@RequestBody Verify verify) {
         List<User> allUsers = usersRepository.findAll();
@@ -104,9 +101,10 @@ public class UserController {
                 if (allUsers.get(i).getUserPassword().equals(verify.userPassword)) {
                     return "Verified";
                 }
+                return "Not Verified";
             }
-
+            return "Not Verified";
         }
-        return "Not Verified";
+        return "Not Verified ";
     }
 }
