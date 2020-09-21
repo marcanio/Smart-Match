@@ -56,7 +56,7 @@ public class UserController {
 //    @GetMapping("/users/{net_id}")
     public User findUserByemail(@PathVariable(value = "email_address") String email_address) {
         logger.info("Entered into Controller Layer");
-        List<User> allUsers = usersRepository.findAll();
+        List<User> allUsers = usersRepository.findAll(); //findByEmailaddress() Important to change
         User user = new User();
 
         for (int i = 0; i < allUsers.size(); i++) {

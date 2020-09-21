@@ -1,5 +1,5 @@
-//package com.smartMatch.likes;
+package com.smartMatch.likes;
+
+public class LikeService {
+}
 //
-//public class LikeService {
-//}
-////

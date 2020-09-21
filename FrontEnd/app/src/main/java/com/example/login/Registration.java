@@ -26,7 +26,7 @@ import java.util.Map;
 public class Registration extends AppCompatActivity {
     private EditText firstName, lastName, email, password, birthday, gender, phoneNumber;
     private Button btn_regist;
-    private static String URL_REGIST ="https://e88bf2da-6812-4702-8725-be192a447d6d.mock.pstmn.io";
+    private static String URL_REGIST ="http://coms-309-vb-10.cs.iastate.edu:8080/users/new";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

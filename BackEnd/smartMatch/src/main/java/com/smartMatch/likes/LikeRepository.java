@@ -1,4 +1,4 @@
-//package com.smartMatch.likes;
-//
-//public interface LikeRepository {
-//}
+package com.smartMatch.likes;
+
+public interface LikeRepository {
+}
