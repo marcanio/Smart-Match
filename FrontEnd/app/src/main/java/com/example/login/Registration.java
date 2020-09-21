@@ -14,6 +14,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -28,6 +29,8 @@ public class Registration extends AppCompatActivity {
     private Button btn_regist;
     private static String URL_REGIST ="http://coms-309-vb-10.cs.iastate.edu:8080/users/new";
 
+    //Postman - https://e88bf2da-6812-4702-8725-be192a447d6d.mock.pstmn.io
+    //Actual server coms-309-vb-10.cs.iastate.edu:8080/user/new
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
@@ -47,7 +50,7 @@ public class Registration extends AppCompatActivity {
             }
         });
     }
-    private void register(){
+    private void register() {
 
         final String firstName = this.firstName.getText().toString().trim();
         final String lastName = this.lastName.getText().toString().trim();
@@ -57,34 +60,38 @@ public class Registration extends AppCompatActivity {
         final String gender = this.gender.getText().toString().trim();
         final String phoneNumber = this.phoneNumber.getText().toString().trim();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
-                new Response.Listener<String>() {
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        JSONObject params = new JSONObject();
+
+        try{
+            params.put("firstName",firstName);
+            params.put("lastName",lastName);
+            params.put("emailaddress",email);
+            params.put("userPassword",password);
+            params.put("age",birthday);
+            params.put("gender",gender);
+            params.put("phoneNumber",phoneNumber);
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_REGIST, params,
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(String response) {
-                        Log.e("Response", ""+response);
+                    public void onResponse(JSONObject response) {
+                        Log.e("Response", "" + response);
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                    }
-                })
-        {
+                }, new Response.ErrorListener() {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("firstName",firstName);
-                params.put("lastName",lastName);
-                params.put("emailaddress",email);
-                params.put("UserPassword",password);
-                params.put("age",birthday);
-                params.put("gender",gender);
-                params.put("phoneNumber",phoneNumber);
-                return params;
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
             }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+        });
+        requestQueue.add(jsonObjectRequest);
+
+
+
+
     }
+
 }
