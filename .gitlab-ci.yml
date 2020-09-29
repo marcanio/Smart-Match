@@ -10,7 +10,7 @@ maven-build:
     tags:
       - backend_tag
     script:
-      - cd Backend/
+      - cd /
       - mvn package -B
 
 maven-test:
