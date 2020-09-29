@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,9 +15,12 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,8 +72,11 @@ public class  MainActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void validate(){
 
-        final String username = editName.getText().toString();
-        final String password = editPassword.getText().toString();
+        final String username = this.editName.getText().toString().trim();
+        final String password = this.editPassword.getText().toString().trim();
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        JSONObject params = new JSONObject();
 
         if(TextUtils.isEmpty(username)){
             editName.setError("Please Enter Username");
@@ -82,41 +89,27 @@ public class  MainActivity extends AppCompatActivity {
             return;
         }
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_VERIFY,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject obj = new JSONObject(response);
+        try{
+            params.put("emailaddress",username);
+            params.put("userPassword", password);
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
 
-                            if (!obj.getBoolean("error")) {
-                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-                                JSONObject userJson = obj.getJSONObject("user");
-                                finish();
-                                startActivity(new Intent(getApplication(), Profile.class));
-                            } else {
-                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_VERIFY, params,
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    public void onResponse(JSONObject response) {
+                        Log.e("Response", "" + response);
+                        Intent intent = new Intent(MainActivity.this, Profile.class);
+                        startActivity(intent);
                     }
-                }) {
+                }, new Response.ErrorListener() {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("emailaddress",username);
-                params.put("userPassword", password);
-                return params;
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
             }
-        };
-        
+        });
+        requestQueue.add(jsonObjectRequest);
     }
 }
