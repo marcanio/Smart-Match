@@ -5,18 +5,37 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
-    private EditText Name;
-    private EditText Password;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class  MainActivity extends AppCompatActivity {
+
+    private EditText editName;
+    private EditText editPassword;
     private TextView Info;
     private Button Login;
     private int counter = 5;
+    private static String URL_VERIFY ="http://coms-309-vb-10.cs.iastate.edu:8080/users/verifies";
 
 
 
@@ -26,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Name= (EditText) findViewById(R.id.LoginUsername);
-        Password = (EditText) findViewById(R.id.LoginPassword);
+        editName= (EditText) findViewById(R.id.LoginUsername);
+        editPassword = (EditText) findViewById(R.id.LoginPassword);
         Info = (TextView) findViewById(R.id.tvInfo);
         Login = (Button)findViewById(R.id.btnLogin);
         Button register = (Button) findViewById(R.id.btnReg);
@@ -38,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
 
             public void onClick(View view){
-                validate(Name.getText().toString(), Password.getText().toString());
+                validate();
             }
         });
         register.setOnClickListener(new View.OnClickListener(){
@@ -51,22 +70,61 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     @SuppressLint("SetTextI18n")
-    private void validate(String userName, String userPassword){
-        //ToDO- Attach this to a database to check if the user is in the system
+    private void validate(){
 
-        //Below is hardcoded as a test
-        if((userName.equals("Admin")) && (userPassword.equals("password"))){
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            startActivity(intent);
+        final String username = this.editName.getText().toString().trim();
+        final String password = this.editPassword.getText().toString().trim();
 
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        JSONObject params = new JSONObject();
 
-        }else{
-            counter--;
-            Info.setText("Number of attempts remaining: " + String.valueOf(counter));
-
-            if(counter == 0){
-                Login.setEnabled(false);
-            }
+        if(TextUtils.isEmpty(username)){
+            editName.setError("Please Enter Username");
+            editName.requestFocus();
+            return;
         }
+        if(TextUtils.isEmpty(password)){
+            editPassword.setError("Please Enter Password");
+            editPassword.requestFocus();
+            return;
+        }
+
+        try{
+            params.put("emailaddress",username);
+            params.put("userPassword", password);
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+
+        final JSONObject verified = new JSONObject();
+        JSONObject notVerified = new JSONObject();
+        try{
+            verified.put("message","Verified");
+            notVerified.put("message", "Not Verified");
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_VERIFY, params,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        if(response.has("message")){
+                            Log.e("Response", "" + response);
+                            Intent intent = new Intent(MainActivity.this, Profile.class);
+                            startActivity(intent);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                editPassword.setError("Wrong email or password");
+                error.printStackTrace();
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
     }
 }

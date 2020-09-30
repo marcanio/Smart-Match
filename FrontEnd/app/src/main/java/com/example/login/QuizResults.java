@@ -48,7 +48,7 @@ public class QuizResults<button> extends AppCompatActivity {
         //Get data from last page
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
-        String results = bundle.getString("quizResults");
+        String results = bundle.getString("quizScore");
 
 
         assert results != null;
