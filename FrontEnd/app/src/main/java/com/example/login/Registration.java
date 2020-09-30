@@ -75,6 +75,7 @@ public class Registration extends AppCompatActivity {
 
         JSONObject parameters = new JSONObject(params);
 
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_REGIST, parameters,
                 new Response.Listener<JSONObject>() {
                     @Override

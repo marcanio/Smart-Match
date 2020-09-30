@@ -35,7 +35,7 @@ public class  MainActivity extends AppCompatActivity {
     private TextView Info;
     private Button Login;
     private int counter = 5;
-    private static String URL_VERIFY ="http://coms-309-vb-10.cs.iastate.edu:8080/users/verify";
+    private static String URL_VERIFY ="http://coms-309-vb-10.cs.iastate.edu:8080/users/verifies";
 
 
 
@@ -96,17 +96,32 @@ public class  MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        final JSONObject verified = new JSONObject();
+        JSONObject notVerified = new JSONObject();
+        try{
+            verified.put("message","Verified");
+            notVerified.put("message", "Not Verified");
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+
+
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_VERIFY, params,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("Response", "" + response);
-                        Intent intent = new Intent(MainActivity.this, Profile.class);
-                        startActivity(intent);
+
+                        if(response.has("message")){
+                            Log.e("Response", "" + response);
+                            Intent intent = new Intent(MainActivity.this, Profile.class);
+                            startActivity(intent);
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                editPassword.setError("Wrong email or password");
                 error.printStackTrace();
             }
         });
