@@ -10,7 +10,7 @@ maven-build:
     tags:
       - backend_tag
     script:
-      - cd target
+      - cd BackEnd/smartMatch
       - mvn package -B
 
 maven-test:
