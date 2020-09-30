@@ -30,7 +30,7 @@ autoDeploy:
   tags: 
     - backend_tag
   script: 
-    - cd Backend/exercyze
+    - cd BackEnd/smartMatch
     - mvn test
     - mvn package -B
     - sudo mv target/*.jar /target/web-demo.jar
