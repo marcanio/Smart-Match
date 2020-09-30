@@ -1,8 +1,10 @@
 package com.smartMatch.user;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jackson.JsonObjectDeserializer;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -91,8 +93,9 @@ public class UserController {
      * code. If so, then the user is "verified".
      *
      */
-    @RequestMapping(method = RequestMethod.POST, path = "users/verify")
+    @RequestMapping(method = RequestMethod.POST, path = "users/verify", produces = "application/json", consumes = "application/json")
     public String setUserEnteredCode(@RequestBody Verify verify) {
+
         List<User> allUsers = usersRepository.findAll();
         User user = new User();
 
