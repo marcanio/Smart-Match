@@ -18,7 +18,7 @@ maven-test:
     tags:
       - backend_tag
     script:
-      - cd Backend/exercyze
+      - cd BackEnd/smartMatch
       - mvn test
       - mvn package -B
     artifacts:
