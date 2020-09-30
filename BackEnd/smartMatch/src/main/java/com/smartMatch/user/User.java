@@ -26,10 +26,6 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Id
-//    @Column(name = "net_id")
-//    @NotFound(action = NotFoundAction.IGNORE)
-//    private String netID;
 
     @Column(name = "email_address")
     @NotFound(action = NotFoundAction.IGNORE)
@@ -42,15 +38,6 @@ public class User implements Serializable {
     @Column(name = "user_password")
     @NotFound(action = NotFoundAction.IGNORE)
     private String userPassword;
-
-//    @Id
-//    @Column(name = "net_id")
-//    @NotFound(action = NotFoundAction.IGNORE)
-//    private String netID;
-
-//    @Column(name = "classification")
-//    @NotFound(action = NotFoundAction.IGNORE)
-//    private String classification;
 
 
     @Column(name = "age")
@@ -138,22 +125,6 @@ public class User implements Serializable {
         this.userPassword = user_password;
     }
 
-//    public String getClassification() {
-//        return classification;
-//    }
-//
-//    public void setClassification(String classification) {
-//        this.classification = classification;
-//    }
-
-//    public String getNetID() {
-//        return netID;
-//    }
-//
-//    public void setNetID(String net_id) {
-//        this.netID = net_id;
-//    }
-
     public Integer getAge() {
         return age;
     }
@@ -161,15 +132,6 @@ public class User implements Serializable {
     public void setAge(Integer age) {
         this.age = age;
     }
-
-//    public Integer getScore() {
-//        return score;
-//    }
-//
-//    public void setScore(Integer score) {
-//        this.score = score;
-//    }
-
 
 
 }

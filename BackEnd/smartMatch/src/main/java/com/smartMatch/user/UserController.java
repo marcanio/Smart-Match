@@ -1,8 +1,10 @@
 package com.smartMatch.user;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jackson.JsonObjectDeserializer;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +26,12 @@ public class UserController {
      * @return - The Net-ID of the user being added.
      */
     @RequestMapping(method = RequestMethod.POST, path = "/users/new", produces = "application/json")
-    public String saveUser(@RequestBody User user) { // usersRepository.save(user.getFirst_name());
+    public Message saveUser(@RequestBody User user) { // usersRepository.save(user.getFirst_name());
 //        user.setCode(new CodeGenerator().sevenDigit());
         usersRepository.save(user);
 
         System.out.println("\n" + user.getEmailaddress() + " has been successfully saved. \n");
-        return user.getEmailaddress();
+        return new Message("Done");
     }
 
     /**
@@ -91,8 +93,9 @@ public class UserController {
      * code. If so, then the user is "verified".
      *
      */
-    @RequestMapping(method = RequestMethod.POST, path = "users/verify")
+    @RequestMapping(method = RequestMethod.POST, path = "users/verify", produces = "application/json", consumes = "application/json")
     public String setUserEnteredCode(@RequestBody Verify verify) {
+
         List<User> allUsers = usersRepository.findAll();
         User user = new User();
 
@@ -107,4 +110,25 @@ public class UserController {
         }
         return "Not Verified ";
     }
+    @RequestMapping(method = RequestMethod.POST, path = "users/verifies")
+    public Message verify(@RequestBody Verify verify){
+        List<User> allUsers = usersRepository.findAll();
+        User user = new User();
+        for (int i = 0; i < allUsers.size(); i++) {
+            if (allUsers.get(i).getEmailaddress().equals(verify.emailaddress)) {
+                if (allUsers.get(i).getUserPassword().equals(verify.userPassword)) {
+                    return new Message("Verified");
+                }
+//                return new Message("Not Verified");
+                return null;
+
+            }
+//            return new Message("Not Verified");
+            return null;
+        }
+//        return "Not Verified ";
+//        return new Message("Not Verified");
+        return null;
+    }
+
 }
