@@ -57,9 +57,9 @@ unitTests:
     stage: androidtest
     before_script:
         - export GRADLE_USER_HOME='pwd'/.gradle
-        - chmod +x ./Frontend/ExercyzeFrontend/gradlew
+        - chmod +x ./FrontEnd/gradlew
     tags:
         - androidStudio_FrontEnd
     script:
-        - cd Frontend/ExercyzeFrontend/
+        - cd FrontEnd
         - ./gradlew assemble
