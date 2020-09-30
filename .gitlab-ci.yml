@@ -42,11 +42,11 @@ android-build:
     stage: androidbuild
     before_script:
         - export GRADLE_USER_HOME='pwd'/.gradle
-        - chmod +x ./Frontend/gradlew
+        - chmod +x ./FrontEnd/gradlew
     tags:
         - androidStudio_FrontEnd
     script:
-        - cd Frontend
+        - cd FrontEnd
         - ./gradlew assemble
     artifacts:
         paths:
