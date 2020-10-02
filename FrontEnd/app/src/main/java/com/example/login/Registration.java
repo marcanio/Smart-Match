@@ -70,6 +70,36 @@ public class Registration extends AppCompatActivity {
             this.firstName1.requestFocus();
             return;
         }
+        if(TextUtils.isEmpty(lastName)){
+            this.lastName1.setError("Please Enter Username");
+            this.lastName1.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(email)){
+            this.email1.setError("Please Enter Username");
+            this.email1.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(password)){
+            this.password1.setError("Please Enter Username");
+            this.password1.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(birthday)){
+            this.birthday1.setError("Please Enter Username");
+            this.birthday1.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(gender)){
+            this.gender1.setError("Please Enter Username");
+            this.gender1.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(phoneNumber)){
+            this.phoneNumber1.setError("Please Enter Username");
+            this.phoneNumber1.requestFocus();
+            return;
+        }
         params.put("firstName",firstName);
         params.put("lastName",lastName);
         params.put("phoneNumber",phoneNumber);
