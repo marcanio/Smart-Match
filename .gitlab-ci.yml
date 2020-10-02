@@ -42,24 +42,24 @@ android-build:
     stage: androidbuild
     before_script:
         - export GRADLE_USER_HOME='pwd'/.gradle
-        - chmod +x ./Frontend/ExercyzeFrontend/gradlew
+        - chmod +x ./FrontEnd/gradlew
     tags:
         - androidStudio_FrontEnd
     script:
-        - cd Frontend/ExercyzeFrontend/
+        - cd FrontEnd
         - ./gradlew assemble
     artifacts:
         paths:
-            - Frontend/ExercyzeFrontend/app/build/outputs/
+            - Frontend/app/build/outputs/
 
 unitTests:
     image: javiersantos/android-ci:latest
     stage: androidtest
     before_script:
         - export GRADLE_USER_HOME='pwd'/.gradle
-        - chmod +x ./Frontend/ExercyzeFrontend/gradlew
+        - chmod +x ./FrontEnd/gradlew
     tags:
         - androidStudio_FrontEnd
     script:
-        - cd Frontend/ExercyzeFrontend/
+        - cd FrontEnd
         - ./gradlew assemble
