@@ -3,6 +3,7 @@ package com.example.login;
 //import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Registration extends AppCompatActivity {
-    private EditText firstName, lastName, email, password, birthday, gender, phoneNumber;
+    private EditText firstName1, lastName1, email1, password1, birthday1, gender1, phoneNumber1;
     private Button btn_regist;
     private static String URL_REGIST ="http://coms-309-vb-10.cs.iastate.edu:8080/users/new";
 
@@ -36,14 +37,14 @@ public class Registration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        firstName = (EditText)findViewById(R.id.first_name);
-        lastName = (EditText)findViewById(R.id.last_name);
-        email = (EditText)findViewById(R.id.email);
-        password = (EditText)findViewById(R.id.password);
-        birthday = (EditText)findViewById(R.id.birthday);
-        phoneNumber =(EditText) findViewById(R.id.mobile);
+        firstName1 = (EditText)findViewById(R.id.first_name);
+        lastName1 = (EditText)findViewById(R.id.last_name);
+        email1 = (EditText)findViewById(R.id.email);
+        password1 = (EditText)findViewById(R.id.password);
+        birthday1 = (EditText)findViewById(R.id.birthday);
+        phoneNumber1 =(EditText) findViewById(R.id.mobile);
         btn_regist = findViewById(R.id.submitButton);
-        gender = (EditText) findViewById(R.id.gender);
+        gender1 = (EditText) findViewById(R.id.gender);
         btn_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,17 +54,22 @@ public class Registration extends AppCompatActivity {
     }
     private void register() {
 
-        final String firstName = this.firstName.getText().toString().trim();
-        final String lastName = this.lastName.getText().toString().trim();
-        final String email = this.email.getText().toString().trim();
-        final String password = this.password.getText().toString().trim();
-        final String birthday = this.birthday.getText().toString().trim();
-        final String gender = this.gender.getText().toString().trim();
-        final String phoneNumber = this.phoneNumber.getText().toString().trim();
+        final String firstName = this.firstName1.getText().toString().trim();
+        final String lastName = this.lastName1.getText().toString().trim();
+        final String email = this.email1.getText().toString().trim();
+        final String password = this.password1.getText().toString().trim();
+        final String birthday = this.birthday1.getText().toString().trim();
+        final String gender = this.gender1.getText().toString().trim();
+        final String phoneNumber = this.phoneNumber1.getText().toString().trim();
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         Map<String,String> params = new HashMap<>();
 
+        if(TextUtils.isEmpty(firstName)){
+            this.firstName1.setError("Please Enter Username");
+            this.firstName1.requestFocus();
+            return;
+        }
         params.put("firstName",firstName);
         params.put("lastName",lastName);
         params.put("phoneNumber",phoneNumber);
