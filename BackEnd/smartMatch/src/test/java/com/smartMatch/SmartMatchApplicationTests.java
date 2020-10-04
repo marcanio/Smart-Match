@@ -1,6 +1,7 @@
 package com.smartMatch;
 
 //import org.junit.jupiter.api.Test;
+import com.smartMatch.user.Verify;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
@@ -66,17 +67,70 @@ public class SmartMatchApplicationTests {
 		User suraj = new User("Suraj", "Shah", "515-191-2003", "sshah@iastate.edu", "Male","iamsuraj", 22);
 
 
-//		addToUserList(userList, rishabh, eric, jayant, suraj);
-//
-//		saveAllTheUsers(rishabh, eric, jayant, suraj);
+		addToUserList(userList, rishabh, eric, jayant, suraj);
+
+		saveAllTheUsers(rishabh, eric, jayant, suraj);
 
 		when(userRepository.findAll()).thenReturn(userList);
 
 		List<User> theUsers = userRepository.findAll();
 
 		assertEquals(4, theUsers.size());
+
 		verify(userRepository, times(1)).findAll();
+//		System.out.println(userRepository.findAll().contains(rishabh));
 	}
+
+	@Test
+	public void verifyEmailAndPasswordTest(){
+		List<User> userList = new ArrayList<User>();
+		User rishabh = new User("Rishabh", "Bansal", "703-8269214", "rbansal@iastate.edu", "Male","CS309isfun", 19);
+		Verify verify_test1 = new Verify("rbansal@iastate.edu","CS309isfun");
+		userList.add(rishabh);
+		when(userRepository.findAll()).thenReturn(userList);
+		userController.saveUser(rishabh);
+		List<User> theUsers = userRepository.findAll();
+//		assertEquals(true, theUsers.contains(rishabh));
+		assertEquals("CS309isfun", theUsers.get(0).getUserPassword());
+		assertEquals("Verified", userController.verify(verify_test1).getMessage());
+
+		Verify verify_test2 = new Verify("rbansal@iastate.edu","CS309fun");
+
+		assertEquals("Not Verified1", userController.verify(verify_test2).getMessage());
+
+		Verify verify_test3 = new Verify("rbansal@iastate.","CS309isfun");
+
+		assertEquals("Not Verified2", userController.verify(verify_test3).getMessage());
+
+	}
+
+
+	@Test
+	public void getFirstNameByEmailTest(){
+		List<User> userList = new ArrayList<User>();
+		User rishabh = new User("Rishabh", "Bansal", "703-8269214", "rbansal@iastate.edu", "Male","CS309isfun", 19);
+		userList.add(rishabh);
+		when(userRepository.findAll()).thenReturn(userList);
+		userController.saveUser(rishabh);
+		//List<User> theUsers = userRepository.findAll();
+		assertEquals("Rishabh", userController.getFirstNameByEmail("rbansal@iastate.edu"));
+
+	}
+
+	private void saveAllTheUsers(User rishabh, User eric, User jayant, User suraj) { // Do not need userController as a parameter because it is a global variable.
+		userController.saveUser(rishabh);
+		userController.saveUser(eric);
+		userController.saveUser(jayant);
+		userController.saveUser(suraj);
+	}
+
+	private void addToUserList(List<User> userList, User rishabh, User eric, User jayant, User suraj) {
+		userList.add(rishabh);
+		userList.add(eric);
+		userList.add(jayant);
+		userList.add(suraj);
+	}
+
 
 //	@Test
 //	void contextLoads() {

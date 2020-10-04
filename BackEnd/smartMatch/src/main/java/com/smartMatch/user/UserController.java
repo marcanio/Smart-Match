@@ -81,7 +81,7 @@ public class UserController {
      * @return userCode - The code of the user.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/users_email/{email_address}")
-    public String getCodeByNetID(@PathVariable("email_address") String email_address) {
+    public String getFirstNameByEmail(@PathVariable("email_address") String email_address) {
         logger.info("Entered into Controller Layer");
         User user = findUserByemail(email_address);
         return user.getFirstName();
@@ -93,21 +93,21 @@ public class UserController {
      * code. If so, then the user is "verified".
      *
      */
-    @RequestMapping(method = RequestMethod.POST, path = "users/verify", produces = "application/json", consumes = "application/json")
-    public String setUserEnteredCode(@RequestBody Verify verify) {
-
-        List<User> allUsers = usersRepository.findAll();
-        User user = new User();
-        for (int i = 0; i < allUsers.size(); i++) {
-            if (allUsers.get(i).getEmailaddress().equals(verify.emailaddress)) {
-                if (allUsers.get(i).getUserPassword().equals(verify.userPassword)) {
-                    return "Verified";
-                }
-                return "Not Verified";
-            }
-        }
-        return "Not Verified";
-    }
+//    @RequestMapping(method = RequestMethod.POST, path = "users/verify", produces = "application/json", consumes = "application/json")
+//    public String setUserEnteredCode(@RequestBody Verify verify) {
+//
+//        List<User> allUsers = usersRepository.findAll();
+//        User user = new User();
+//        for (int i = 0; i < allUsers.size(); i++) {
+//            if (allUsers.get(i).getEmailaddress().equals(verify.emailaddress)) {
+//                if (allUsers.get(i).getUserPassword().equals(verify.userPassword)) {
+//                    return "Verified";
+//                }
+//                return "Not Verified";
+//            }
+//        }
+//        return "Not Verified";
+//    }
     @RequestMapping(method = RequestMethod.POST, path = "users/verifies")
     public Message verify(@RequestBody Verify verify){
         List<User> allUsers = usersRepository.findAll();
@@ -118,11 +118,13 @@ public class UserController {
                     return new Message("Verified");
                 }
 //                return new Message("Not Verified");
-                return null;
+//                return null;
+                return new Message("Not Verified1");
             }
         }
 //        return new Message("Not Verified");
-        return null;
+//        return null;
+        return new Message("Not Verified2");
     }
 
 //    @RequestMapping(method = RequestMethod.DELETE, path = "/users/delete/{phone_number}")
