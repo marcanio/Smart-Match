@@ -98,7 +98,6 @@ public class UserController {
 
         List<User> allUsers = usersRepository.findAll();
         User user = new User();
-
         for (int i = 0; i < allUsers.size(); i++) {
             if (allUsers.get(i).getEmailaddress().equals(verify.emailaddress)) {
                 if (allUsers.get(i).getUserPassword().equals(verify.userPassword)) {
@@ -106,9 +105,8 @@ public class UserController {
                 }
                 return "Not Verified";
             }
-            return "Not Verified";
         }
-        return "Not Verified ";
+        return "Not Verified";
     }
     @RequestMapping(method = RequestMethod.POST, path = "users/verifies")
     public Message verify(@RequestBody Verify verify){
@@ -121,14 +119,18 @@ public class UserController {
                 }
 //                return new Message("Not Verified");
                 return null;
-
             }
-//            return new Message("Not Verified");
-            return null;
         }
-//        return "Not Verified ";
 //        return new Message("Not Verified");
         return null;
     }
+
+//    @RequestMapping(method = RequestMethod.DELETE, path = "/users/delete/{phone_number}")
+//    public void deleteUserbyPhone(@PathVariable("phone_number") int phone_number ) {
+//        logger.info("Entered into Controller Layer");
+//        User user = findUserByemail(phone_number);
+//        return user.getFirstName();
+//    }
+
 
 }
