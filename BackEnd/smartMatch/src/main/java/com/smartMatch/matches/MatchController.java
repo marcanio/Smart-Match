@@ -18,6 +18,19 @@ public class MatchController {
     @Autowired
     public MatchRepository matchRepo;
 
+    /**
+     * Saves a new user with given matches.
+     *
+     * @param match - The user being added.
+     * @return - The User with the saved matches
+     */
+    @RequestMapping(method = RequestMethod.POST, path = "/matches/new", produces = "application/json")
+    public String addNewMatch(@RequestBody Matches match) {
+        matchRepo.save(match);
+        System.out.println("\n" + match.toString() + "\n");
+        return "Match saved for " + match.getEmailAddress() + ": " + match.getMatches();
+    }
+
     
 
     /**
