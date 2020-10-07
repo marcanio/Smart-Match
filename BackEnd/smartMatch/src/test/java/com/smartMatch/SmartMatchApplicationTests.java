@@ -43,15 +43,15 @@ public class SmartMatchApplicationTests {
 		MockitoAnnotations.initMocks(this);
 	}
 
-	@Test
-	public void findUserByemailTest() {
-		User rishabh = new User("Rishabh", "Bansal", "641-895-0122", "smsheets","Male","CS309isfun",19);
-		userController.saveUser(rishabh);
-
-		when(userController.usersRepository.findUserByemail("smsheets")).thenReturn(rishabh);
-
-		assertEquals(rishabh, userController.usersRepository.findUserByemail("smsheets"));
-	}
+//	@Test
+//	public void findUserByemailTest() {
+//		User rishabh = new User("Rishabh", "Bansal", "641-895-0122", "smsheets","Male","CS309isfun",19);
+//		userController.saveUser(rishabh);
+//
+//		when(userController.usersRepository.findUserByemail("smsheets")).thenReturn(rishabh);
+//
+//		assertEquals(rishabh, userController.usersRepository.findUserByemail("smsheets"));
+//	}
 	@Test
 	public void getAllUsersTest() {
 		List<User> userList = new ArrayList<User>();
