@@ -31,34 +31,7 @@ public class MatchController {
         return "Match saved for " + match.getEmailAddress() + ": " + match.getMatches();
     }
 
-    /**
-     * This function will append the new matches for the user
-     *
-     * @param match - The user being added.
-     * @return - The user with the old and appended matches
-     */
-    @RequestMapping(method = RequestMethod.POST, path = "matches/{net_id}")
-    public String appendNewMatch(@RequestBody com.smartMatch.matches.Matches match) {
-        com.smartMatch.matches.Matches matchToUpdate = getByNetId(match.getEmailAddress());
-
-        matchToUpdate.addMatch(match.getMatches());
-        matchRepo.save(matchToUpdate);
-
-        return "New match for " + match.getEmailAddress() + ": " + match.getMatches();
-    }
-
-    /**
-     * Will be used to display all the user with there matches from the database
-     *
-     * @return - All the users with their matches in the database.
-     */
-    @RequestMapping(method = RequestMethod.GET, path = "/matches")
-    public List<com.smartMatch.matches.Matches> getAllMatches() {
-        logger.info("Entered into Controller Layer");
-        List<com.smartMatch.matches.Matches> results = matchRepo.findAll();
-        logger.info("Number of Records Fetched: " + results.size());
-        return results;
-    }
+    
 
     /**
      * This function will be used to display all the matches for the given user
