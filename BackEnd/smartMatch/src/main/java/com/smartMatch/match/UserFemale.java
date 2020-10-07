@@ -15,6 +15,7 @@ public class UserFemale implements Serializable {
     @NotFound(action = NotFoundAction.IGNORE)
     private String firstName;
 
+
     @Column(name = "user_bio")
     @NotFound(action = NotFoundAction.IGNORE)
     private String userbio;

@@ -1,6 +1,4 @@
 package com.example.login;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,17 +8,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class QuizResults<button> extends AppCompatActivity {
-
-    private TextView Q1A, Q2A, Q3A, Q4A, Q5A,Q6A,Q7A,Q8A,Q9A,Q10A,Q11A;
+    private TextView Q1A, Q2A, Q3A, Q4A, Q5A, Q6A, Q7A, Q8A, Q9A, Q10A, Q11A;
     private Button btnProfile;
-    public int quizScore =0;
-
+    public int quizScore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_results);
-
         Q1A = findViewById(R.id.Q1A);
         Q2A = findViewById(R.id.Q2A);
         Q3A = findViewById(R.id.Q3A);
@@ -32,30 +27,23 @@ public class QuizResults<button> extends AppCompatActivity {
         Q9A = findViewById(R.id.Q9A);
         Q10A = findViewById(R.id.Q10A);
         Q11A = findViewById(R.id.Q11A);
-
         //Button to change pages
-        btnProfile = (Button)findViewById(R.id.btnProfile);
-        btnProfile.setOnClickListener(new View.OnClickListener(){
+        btnProfile = (Button) findViewById(R.id.btnProfile);
+        btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
-
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(QuizResults.this, Profile.class);
-                intent.putExtra("quizScore",quizScore);
+                intent.putExtra("quizScore", quizScore);
                 startActivity(intent);
             }
         });
-
         //Get data from last page
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
         String results = bundle.getString("quizScore");
-
-
         assert results != null;
         String[] realAnswers = fillAnswers(results);
-
         displayAnswers(realAnswers);
-
     }
 
     private void displayAnswers(String[] realAnswers) {
@@ -70,11 +58,9 @@ public class QuizResults<button> extends AppCompatActivity {
         Q9A.setText(realAnswers[8]);
         Q10A.setText(realAnswers[9]);
         Q11A.setText(realAnswers[10]);
-
     }
 
     public String[] fillAnswers(String results) {
-
         String[] tokens = results.split("/");
         String[] realAnswers = new String[tokens.length];
 
@@ -95,10 +81,7 @@ public class QuizResults<button> extends AppCompatActivity {
                 realAnswers[i]= "Agree strongly";
                 quizScore+=5;
             }
-
         }
         return realAnswers;
-
-
     }
 }
