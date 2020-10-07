@@ -63,22 +63,23 @@ public class QuizResults<button> extends AppCompatActivity {
     public String[] fillAnswers(String results) {
         String[] tokens = results.split("/");
         String[] realAnswers = new String[tokens.length];
-        for (int i = 0; i < realAnswers.length; i++) {
-            if (tokens[i].equals("1")) {
-                realAnswers[i] = "Disagree strongly";
-                quizScore += 1;
-            } else if (tokens[i].equals("2")) {
-                realAnswers[i] = "Disagree a little";
-                quizScore += 2;
-            } else if (tokens[i].equals("3")) {
-                realAnswers[i] = "Neutral";
-                quizScore += 3;
-            } else if (tokens[i].equals("4")) {
-                realAnswers[i] = "Agree strongly";
-                quizScore += 4;
-            } else {
-                realAnswers[i] = "Agree strongly";
-                quizScore += 5;
+
+        for(int i = 0; i < realAnswers.length; i++){
+            if(tokens[i].equals("1")){
+                realAnswers[i]= "Disagree strongly";
+                quizScore+=1;
+            }else if(tokens[i].equals("2")){
+                realAnswers[i]= "Disagree a little";
+                quizScore+=2;
+            }else if(tokens[i].equals("3")){
+                realAnswers[i]= "Neutral";
+                quizScore+=3;
+            }else if(tokens[i].equals("4")){
+                realAnswers[i]= "Agree a little";
+                quizScore+=4;
+            }else{
+                realAnswers[i]= "Agree strongly";
+                quizScore+=5;
             }
         }
         return realAnswers;

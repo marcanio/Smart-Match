@@ -55,14 +55,59 @@ public class Registration extends AppCompatActivity {
         final String gender = this.gender.getText().toString().trim();
         final String phoneNumber = this.phoneNumber.getText().toString().trim();
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        Map<String, String> params = new HashMap<>();
-        params.put("firstName", firstName);
-        params.put("lastName", lastName);
-        params.put("phoneNumber", phoneNumber);
-        params.put("emailaddress", email);
-        params.put("gender", gender);
-        params.put("userPassword", password);
-        params.put("age", birthday);
+        Map<String,String> params = new HashMap<>();
+
+        if(TextUtils.isEmpty(firstName)){
+            this.firstName1.setError("Please Enter Username");
+            this.firstName1.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(lastName)){
+            this.lastName1.setError("Please Enter Username");
+            this.lastName1.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(email)){
+            this.email1.setError("Please Enter Username");
+            this.email1.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(password)){
+            this.password1.setError("Please Enter Username");
+            this.password1.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(birthday)){
+            this.birthday1.setError("Please Enter Username");
+            this.birthday1.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(gender)){
+            this.gender1.setError("Please Enter Username");
+            this.gender1.requestFocus();
+            return;
+        }
+        if(!TextUtils.equals(gender,"male")){
+            if(!TextUtils.equals(gender,"female")){
+                this.gender1.setError("Please enter male or female");
+                this.gender1.requestFocus();
+                return;
+            }
+        }
+        if(TextUtils.isEmpty(phoneNumber)){
+            this.phoneNumber1.setError("Please Enter Username");
+            this.phoneNumber1.requestFocus();
+            return;
+        }
+        params.put("firstName",firstName);
+        params.put("lastName",lastName);
+        params.put("phoneNumber",phoneNumber);
+        params.put("emailaddress",email);
+        params.put("gender",gender);
+        params.put("userPassword",password);
+        params.put("age",birthday);
+
+
         JSONObject parameters = new JSONObject(params);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_REGIST, parameters, new Response.Listener<JSONObject>() {
             @Override
