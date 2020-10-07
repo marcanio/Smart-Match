@@ -31,7 +31,7 @@ public class MatchController {
         return "Match saved for " + match.getEmailAddress() + ": " + match.getMatches();
     }
 
-    
+
 
     /**
      * This function will be used to display all the matches for the given user
