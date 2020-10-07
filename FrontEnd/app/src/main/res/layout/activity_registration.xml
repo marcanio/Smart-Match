@@ -57,8 +57,7 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-
+            android:inputType="text"
             android:hint="Email address"
             android:textSize="30dp"
             android:layout_marginTop="10dp"
