@@ -95,6 +95,13 @@ public class Registration extends AppCompatActivity {
             this.gender1.requestFocus();
             return;
         }
+        if(!TextUtils.equals(gender,"male")){
+            if(!TextUtils.equals(gender,"female")){
+                this.gender1.setError("Please enter male or female");
+                this.gender1.requestFocus();
+                return;
+            }
+        }
         if(TextUtils.isEmpty(phoneNumber)){
             this.phoneNumber1.setError("Please Enter Username");
             this.phoneNumber1.requestFocus();

@@ -89,7 +89,7 @@ public class QuizResults<button> extends AppCompatActivity {
                 realAnswers[i]= "Neutral";
                 quizScore+=3;
             }else if(tokens[i].equals("4")){
-                realAnswers[i]= "Agree strongly";
+                realAnswers[i]= "Agree a little";
                 quizScore+=4;
             }else{
                 realAnswers[i]= "Agree strongly";

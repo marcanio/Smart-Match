@@ -57,7 +57,7 @@ public class  MainActivity extends AppCompatActivity {
             @Override
 
             public void onClick(View view){
-                validate();
+                //validate();
             }
         });
         register.setOnClickListener(new View.OnClickListener(){
@@ -69,62 +69,6 @@ public class  MainActivity extends AppCompatActivity {
             }
         });
     }
-    @SuppressLint("SetTextI18n")
-    private void validate(){
+    //@SuppressLint("SetTextI18n")
 
-        final String username = this.editName.getText().toString().trim();
-        final String password = this.editPassword.getText().toString().trim();
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-        JSONObject params = new JSONObject();
-
-        if(TextUtils.isEmpty(username)){
-            editName.setError("Please Enter Username");
-            editName.requestFocus();
-            return;
-        }
-        if(TextUtils.isEmpty(password)){
-            editPassword.setError("Please Enter Password");
-            editPassword.requestFocus();
-            return;
-        }
-
-        try{
-            params.put("emailaddress",username);
-            params.put("userPassword", password);
-        }catch(JSONException e){
-            e.printStackTrace();
-        }
-
-        final JSONObject verified = new JSONObject();
-        JSONObject notVerified = new JSONObject();
-        try{
-            verified.put("message","Verified");
-            notVerified.put("message", "Not Verified");
-        }catch(JSONException e){
-            e.printStackTrace();
-        }
-
-
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_VERIFY, params,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        if(response.has("message")){
-                            Log.e("Response", "" + response);
-                            Intent intent = new Intent(MainActivity.this, Profile.class);
-                            startActivity(intent);
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                editPassword.setError("Wrong email or password");
-                error.printStackTrace();
-            }
-        });
-        requestQueue.add(jsonObjectRequest);
-    }
 }
