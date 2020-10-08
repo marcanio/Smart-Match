@@ -39,7 +39,7 @@ public class MatchController {
      */
     @RequestMapping(method = RequestMethod.POST, path = "matches/{net_id}")
     public String appendNewMatch(@RequestBody com.smartMatch.matches.Matches match) {
-        com.smartMatch.matches.Matches matchToUpdate = getByNetId(match.getEmailAddress());
+        com.smartMatch.matches.Matches matchToUpdate = getByEmailId(match.getEmailAddress());
 
         matchToUpdate.addMatch(match.getMatches());
         matchRepo.save(matchToUpdate);
@@ -63,25 +63,25 @@ public class MatchController {
     /**
      * This function will be used to display all the matches for the given users
      *
-     * @param net_id - The user being added.
+     * @param email_address - The user being added.
      * @return - The respective user with his matches
      */
 
-    @RequestMapping(method = RequestMethod.GET, path = "/matches/{net_id}")
-    public com.smartMatch.matches.Matches getMatchesByNetId(@PathVariable("net_id") String net_id) {
+    @RequestMapping(method = RequestMethod.GET, path = "/matches/{email_address}")
+    public com.smartMatch.matches.Matches getMatchesByEmailId(@PathVariable("email_address") String email_address) {
         logger.info("Entered into Controller Layer");
-        com.smartMatch.matches.Matches result = getByNetId(net_id);
+        com.smartMatch.matches.Matches result = getByEmailId(email_address);
 
         System.out.println("\n Matches for " + result.getEmailAddress() + ": [" + result.getMatches() + "]");
         return result;
     }
 
-    public com.smartMatch.matches.Matches getByNetId(String net_id) {
+    public com.smartMatch.matches.Matches getByEmailId(String email_address) {
         List<com.smartMatch.matches.Matches> allMatches = matchRepo.findAll();
         com.smartMatch.matches.Matches userToReturn = new com.smartMatch.matches.Matches();
 
         for (int i = 0; i < allMatches.size(); i++) {
-            if (allMatches.get(i).getEmailAddress().equals(net_id)) {
+            if (allMatches.get(i).getEmailAddress().equals(email_address)) {
                 userToReturn = allMatches.get(i);
                 break;
             }
