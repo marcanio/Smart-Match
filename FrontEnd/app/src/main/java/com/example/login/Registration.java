@@ -2,6 +2,7 @@ package com.example.login;
 //import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -58,45 +59,45 @@ public class Registration extends AppCompatActivity {
         Map<String,String> params = new HashMap<>();
 
         if(TextUtils.isEmpty(firstName)){
-            this.firstName1.setError("Please Enter Username");
-            this.firstName1.requestFocus();
+            this.firstName.setError("Please Enter Username");
+            this.firstName.requestFocus();
             return;
         }
         if(TextUtils.isEmpty(lastName)){
-            this.lastName1.setError("Please Enter Username");
-            this.lastName1.requestFocus();
+            this.lastName.setError("Please Enter Username");
+            this.lastName.requestFocus();
             return;
         }
         if(TextUtils.isEmpty(email)){
-            this.email1.setError("Please Enter Username");
-            this.email1.requestFocus();
+            this.email.setError("Please Enter Username");
+            this.email.requestFocus();
             return;
         }
         if(TextUtils.isEmpty(password)){
-            this.password1.setError("Please Enter Username");
-            this.password1.requestFocus();
+            this.password.setError("Please Enter Username");
+            this.password.requestFocus();
             return;
         }
         if(TextUtils.isEmpty(birthday)){
-            this.birthday1.setError("Please Enter Username");
-            this.birthday1.requestFocus();
+            this.birthday.setError("Please Enter Username");
+            this.birthday.requestFocus();
             return;
         }
         if(TextUtils.isEmpty(gender)){
-            this.gender1.setError("Please Enter Username");
-            this.gender1.requestFocus();
+            this.gender.setError("Please Enter Username");
+            this.gender.requestFocus();
             return;
         }
         if(!TextUtils.equals(gender,"male")){
             if(!TextUtils.equals(gender,"female")){
-                this.gender1.setError("Please enter male or female");
-                this.gender1.requestFocus();
+                this.gender.setError("Please enter male or female");
+                this.gender.requestFocus();
                 return;
             }
         }
         if(TextUtils.isEmpty(phoneNumber)){
-            this.phoneNumber1.setError("Please Enter Username");
-            this.phoneNumber1.requestFocus();
+            this.phoneNumber.setError("Please Enter Username");
+            this.phoneNumber.requestFocus();
             return;
         }
         params.put("firstName",firstName);
