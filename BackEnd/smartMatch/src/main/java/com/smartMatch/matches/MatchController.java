@@ -61,7 +61,7 @@ public class MatchController {
     }
 
     /**
-     * This function will be used to display all the matches for the given user
+     * This function will be used to display all the matches for the given users
      *
      * @param net_id - The user being added.
      * @return - The respective user with his matches
