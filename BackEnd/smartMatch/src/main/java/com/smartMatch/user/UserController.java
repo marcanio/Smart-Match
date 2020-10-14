@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jackson.JsonObjectDeserializer;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -126,6 +127,22 @@ public class UserController {
 //        return null;
         return new Message("Not Verified2");
     }
+    @RequestMapping(method = RequestMethod.PUT, path = "users/update/name/{email_address}/{new_first_name}")
+    public Message updateName(@PathVariable("email_address") String email_address, @PathVariable("new_first_name") String first_name){
+        User user = findUserByemail(email_address);
+        user.setFirstName(first_name);
+        usersRepository.save(user);
+        return new Message("Named changed to: " +user.getFirstName());
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, path = "users/delete/{email_address}")
+    public Message deleteUser(@PathVariable("email_address") String email_address){
+        User user = findUserByemail(email_address);
+
+        usersRepository.delete(user);
+        return new Message("User: " + user.getEmailaddress() + " successfully deleted");
+    }
+
 
 //    @RequestMapping(method = RequestMethod.DELETE, path = "/users/delete/{phone_number}")
 //    public void deleteUserbyPhone(@PathVariable("phone_number") int phone_number ) {

@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "male_user")
-public class userMale implements Serializable {
+public class UserMale implements Serializable {
     @Column(name = "first_name")
     @NotFound(action = NotFoundAction.IGNORE)
     private String firstName;
@@ -30,11 +30,11 @@ public class userMale implements Serializable {
     @NotFound(action = NotFoundAction.IGNORE)
     private String gender;
 
-    @Column(name = "uer_score")
+    @Column(name = "user_score")
     @NotFound(action = NotFoundAction.IGNORE)
     private int userscore;
 
-    public userMale(String firstName, String userbio, Long id, String emailaddress, String gender, Integer userscore) {
+    public UserMale(String firstName, String userbio, Long id, String emailaddress, String gender, Integer userscore) {
         this.firstName = firstName;
         this.userbio = userbio;
         this.id = id;
