@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "male_user")
 public class userMale implements Serializable {
+
     @Column(name = "first_name")
     @NotFound(action = NotFoundAction.IGNORE)
     private String firstName;
@@ -42,6 +43,11 @@ public class userMale implements Serializable {
         this.gender = gender;
         this.userscore = userscore;
     }
+
+    public userMale() {
+
+    }
+
     @Override
     public String toString() {
         return new ToStringCreator(this).append("first_name: ", this.getFirstName())

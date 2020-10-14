@@ -1,6 +1,5 @@
 package com.smartMatch.match;
 
-
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.core.style.ToStringCreator;
@@ -14,7 +13,6 @@ public class UserFemale implements Serializable {
     @Column(name = "first_name")
     @NotFound(action = NotFoundAction.IGNORE)
     private String firstName;
-
 
     @Column(name = "user_bio")
     @NotFound(action = NotFoundAction.IGNORE)
@@ -45,13 +43,13 @@ public class UserFemale implements Serializable {
         this.userscore = userscore;
     }
 
-    @Override
-    public String toString() {
-        return new ToStringCreator(this).append("first_name: ", this.getFirstName())
-                .append("\nuser_bio: ", this.getUserbio()).append("email_address: ", this.getEmailaddress())
-                .append("gender: ", this.getGender()).append("user_score: ", this.getUserscore()).toString();
+    public UserFemale() {
     }
 
+    @Override
+    public String toString() {
+        return new ToStringCreator(this).append("first_name: ", this.getFirstName()).append("\nuser_bio: ", this.getUserbio()).append("email_address: ", this.getEmailaddress()).append("gender: ", this.getGender()).append("user_score: ", this.getUserscore()).toString();
+    }
 
     public String getFirstName() {
         return firstName;
