@@ -1,7 +1,6 @@
-package com.smartMatch.user;
+package com.smartMatch.match;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, String> {
+public interface UserFemaleRepository extends JpaRepository<UserFemale, String> {
     /**
      * Finds the user associated with the given emailID
      *
@@ -26,5 +25,5 @@ public interface UserRepository extends JpaRepository<User, String> {
     /**
      * Deletes a user from the database.
      */
-    void delete(User user);
+    void delete(UserFemale user);
 }
