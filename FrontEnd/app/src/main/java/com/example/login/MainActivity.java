@@ -1,5 +1,6 @@
 package com.example.login;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -27,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView Info;
     private Button Login;
     private int counter = 5;
+    private static String URL_VERIFY ="http://coms-309-vb-10.cs.iastate.edu:8080/users/verifies";
     //for postman test
-    private static String URL_VERIFY = "https://postman-echo.com/post";
+    //private static String URL_VERIFY = "https://postman-echo.com/post";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -55,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     @SuppressLint("SetTextI18n")
     private void validate() {
@@ -93,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.has("message")) {
                     Log.e("Response", "" + response);
                     Intent intent = new Intent(MainActivity.this, Profile.class);
+                    intent.putExtra("quizScore", 0);
                     startActivity(intent);
                 }
             }
