@@ -32,7 +32,7 @@ public class UserFemale implements Serializable {
     @NotFound(action = NotFoundAction.IGNORE)
     private String gender;
 
-    @Column(name = "uer_score")
+    @Column(name = "user_score")
     @NotFound(action = NotFoundAction.IGNORE)
     private int userscore;
 

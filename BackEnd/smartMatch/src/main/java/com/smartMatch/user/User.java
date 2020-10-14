@@ -22,6 +22,10 @@ public class User implements Serializable {
     @NotFound(action = NotFoundAction.IGNORE)
     private String phoneNumber;
 
+    public Long getId() {
+        return id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

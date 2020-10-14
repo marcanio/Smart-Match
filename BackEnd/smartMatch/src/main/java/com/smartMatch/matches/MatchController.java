@@ -76,6 +76,15 @@ public class MatchController {
         return result;
     }
 
+//    @RequestMapping(method = RequestMethod.GET, path = "/matches/{email_address}")
+//    public String getMatchesByEmailIdS(@PathVariable("email_address") String email_address) {
+//        logger.info("Entered into Controller Layer");
+//        com.smartMatch.matches.Matches result = getByEmailId(email_address);
+//
+//        return(result.getMatches());
+////        return result;
+//    }
+
     public com.smartMatch.matches.Matches getByEmailId(String email_address) {
         List<com.smartMatch.matches.Matches> allMatches = matchRepo.findAll();
         com.smartMatch.matches.Matches userToReturn = new com.smartMatch.matches.Matches();
