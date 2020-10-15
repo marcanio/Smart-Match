@@ -14,7 +14,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
-import org.bouncycastle.crypto.tls.ContentType;
+
 import org.junit.Test;
 
 import java.io.IOException;

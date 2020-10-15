@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validate();
+                validate(editName.getText().toString().trim(),editPassword.getText().toString().trim());
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
@@ -61,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     @SuppressLint("SetTextI18n")
-    private void validate() {
-        final String username = this.editName.getText().toString().trim();
-        final String password = this.editPassword.getText().toString().trim();
+    public void validate(String username, String password) {
+        //final String username = this.editName.getText().toString().trim();
+        //final String password = this.editPassword.getText().toString().trim();
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject params = new JSONObject();
         if (TextUtils.isEmpty(username)) {
