@@ -61,20 +61,20 @@ public class MainActivity extends AppCompatActivity {
 
 
     @SuppressLint("SetTextI18n")
-    public void validate(String username, String password) {
-        //final String username = this.editName.getText().toString().trim();
-        //final String password = this.editPassword.getText().toString().trim();
+    public String validate(String username, String password) {
+
+        final String[] outcome = {""};
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject params = new JSONObject();
         if (TextUtils.isEmpty(username)) {
             editName.setError("Please Enter Username");
             editName.requestFocus();
-            return;
+            return "Name Error";
         }
         if (TextUtils.isEmpty(password)) {
             editPassword.setError("Please Enter Password");
             editPassword.requestFocus();
-            return;
+            return "Password Error";
         }
         try {
             params.put("emailaddress", username);
@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 System.out.println();
                 if (response.has("message")) {
+                    outcome[0] ="Success";
                     Log.e("Response", "" + response);
                     Intent intent = new Intent(MainActivity.this, Profile.class);
                     intent.putExtra("quizScore", 0);
@@ -104,10 +105,13 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                outcome[0] ="Error";
                 editPassword.setError("Wrong email or password");
                 error.printStackTrace();
+
             }
         });
         requestQueue.add(jsonObjectRequest);
+        return outcome[0];
     }
 }

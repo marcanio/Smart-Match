@@ -18,6 +18,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.junit.Test;
 import org.junit.Assert;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.io.InputStream;
@@ -82,7 +83,10 @@ public class LoginTest {
 
     @Test
     public void login(){
-        
+        MainActivity activity = Mockito.mock(MainActivity.class);
+        Mockito.when(activity.validate("Eric","Password")).thenReturn("Error");
+
+
     }
 
 }
