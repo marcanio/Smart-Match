@@ -15,6 +15,7 @@ public class QuizResults<button> extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new AppController();
         setContentView(R.layout.activity_quiz_results);
         Q1A = findViewById(R.id.Q1A);
         Q2A = findViewById(R.id.Q2A);
