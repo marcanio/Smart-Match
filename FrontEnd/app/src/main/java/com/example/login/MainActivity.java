@@ -1,5 +1,6 @@
 package com.example.login;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -27,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView Info;
     private Button Login;
     private int counter = 5;
+    private static String URL_VERIFY ="http://coms-309-vb-10.cs.iastate.edu:8080/users/verifies";
     //for postman test
-    private static String URL_VERIFY = "https://postman-echo.com/post";
+    //private static String URL_VERIFY = "https://postman-echo.com/post";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validate();
+                validate(editName.getText().toString().trim(),editPassword.getText().toString().trim());
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
@@ -56,21 +58,23 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
     @SuppressLint("SetTextI18n")
-    private void validate() {
-        final String username = this.editName.getText().toString().trim();
-        final String password = this.editPassword.getText().toString().trim();
+    public String validate(String username, String password) {
+
+        final String[] outcome = {""};
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject params = new JSONObject();
         if (TextUtils.isEmpty(username)) {
             editName.setError("Please Enter Username");
             editName.requestFocus();
-            return;
+            return "Name Error";
         }
         if (TextUtils.isEmpty(password)) {
             editPassword.setError("Please Enter Password");
             editPassword.requestFocus();
-            return;
+            return "Password Error";
         }
         try {
             params.put("emailaddress", username);
@@ -91,18 +95,23 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 System.out.println();
                 if (response.has("message")) {
+                    outcome[0] ="Success";
                     Log.e("Response", "" + response);
                     Intent intent = new Intent(MainActivity.this, Profile.class);
+                    intent.putExtra("quizScore", 0);
                     startActivity(intent);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                outcome[0] ="Error";
                 editPassword.setError("Wrong email or password");
                 error.printStackTrace();
+
             }
         });
         requestQueue.add(jsonObjectRequest);
+        return outcome[0];
     }
 }

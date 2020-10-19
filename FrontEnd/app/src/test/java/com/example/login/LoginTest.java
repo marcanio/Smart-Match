@@ -1,132 +1,94 @@
 package com.example.login;
-
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.text.Editable;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.android.volley.Request;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+
+import org.junit.Before;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.junit.Test;
 import org.junit.Assert;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
+import java.io.InputStream;
 import java.lang.reflect.Field;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+import com.android.volley.RetryPolicy;
+import com.android.volley.toolbox.BasicNetwork;
+import com.android.volley.toolbox.HttpResponse;
+import com.android.volley.toolbox.Volley;
+import com.android.volley.RequestQueue;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import static org.mockito.MockitoAnnotations.initMocks;
+
+import org.robolectric.Robolectric;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
+import org.robolectric.annotation.Config;
+
+
+
+
+@RunWith(RobolectricTestRunner.class)
+@Config(sdk = Build.VERSION_CODES.O_MR1)
 public class LoginTest {
 
-    @Mock
-    private EditText firstName1, lastName1, email1, password1, birthday1, gender1, phoneNumber1;
-    private Button btn_regist;
+    @Mock MainActivity main;
+
+    @Before
+    public void setUp(){
+        MockitoAnnotations.initMocks(this);
+    }
 
 
     @Test
-    public void testLogin(){
-        MainActivity myObjectUnderTest = new MainActivity();
+    public void LoginCredentials(){
+
+        MainActivity activity = Robolectric.buildActivity(MainActivity.class)
+                .create()
+                .resume()
+                .get();
+        //Enter text
+        EditText userName = activity.findViewById(R.id.LoginUsername);
+        EditText userPass = activity.findViewById(R.id.LoginPassword);
+        userName.setText("Eric");
+        userPass.setText("password");
+
+        //Click button
+        activity.findViewById(R.id.btnLogin).callOnClick();
+
+        assertThat("Eric", is(userName.getText().toString().trim()));
+        assertThat("password",is(userPass.getText().toString().trim()));
+
     }
 
-    /**
-     * Test quiz score tests the method on the quiz results page that displays the users answers to the questions
-     */
     @Test
-    public void testQuizScore(){
-        QuizResults myObjectUnderTest = new QuizResults();
-        String testScore = "1/2/1/2/3/2/3/4/2/4/2";
-        String testScore1 = "3/2/1/2/3/5/3/4/5/4/1";
-        String testScore2 = "1/2/1/2/3/2/3/4/2/4/2";
-
-        final String[] realAnswers = {"Disagree strongly", "Disagree a little", "Disagree strongly", "Disagree a little","Neutral", "Disagree a little", "Neutral", "Agree a little", "Disagree a little","Agree a little", "Disagree a little" };
-        final String[] realAnswers1 = {"Neutral", "Disagree a little", "Disagree strongly", "Disagree a little","Neutral", "Agree strongly", "Neutral", "Agree a little", "Agree strongly","Agree a little", "Disagree strongly" };
-        final String[] realAnswers2 = {"Disagree strongly", "Disagree a little", "Disagree strongly", "Disagree a little","Neutral", "Disagree a little", "Neutral", "Agree a little", "Disagree a little","Agree a little", "Disagree a little" };
-
-        String[] result = myObjectUnderTest.fillAnswers(testScore);
-        String[] result1 = myObjectUnderTest.fillAnswers(testScore1);
-        String[] result2 = myObjectUnderTest.fillAnswers(testScore2);
+    public void login(){
+        MainActivity activity = Mockito.mock(MainActivity.class);
+        Mockito.when(activity.validate("Eric","Password")).thenReturn("Error");
 
 
-        assertThat(result, is(realAnswers));
-        assertThat(result1, is(realAnswers1));
-        assertThat(result2, is(realAnswers2));
     }
 
-    /**
-     * Tests the getter methods for the question class
-     * @throws NoSuchFieldException
-     * @throws IllegalAccessException
-     */
-    @Test
-    public void questionGetter() throws NoSuchFieldException, IllegalAccessException {
-        String question = "Question";
-        String optionA = "optionA";
-        String optionB= "optionB";
-        String optionC= "optionC";
-        String optionD= "optionD";
-        String optionE= "optionE";
-        int correct= 2;
-
-        //Given
-        Question myObjectUnderTest = new Question(question,optionA,optionB,optionC,optionD,optionE,correct);
-        //Question
-        final Field field = myObjectUnderTest.getClass().getDeclaredField("question");
-        field.setAccessible(true);
-        field.set(myObjectUnderTest,"Question");
-        //Options
-        final Field fieldA = myObjectUnderTest.getClass().getDeclaredField("optionA");
-        fieldA.setAccessible(true);
-        fieldA.set(myObjectUnderTest,"optionA");
-
-        final Field fieldB = myObjectUnderTest.getClass().getDeclaredField("optionB");
-        fieldB.setAccessible(true);
-        fieldB.set(myObjectUnderTest,"optionB");
-
-        final Field fieldC = myObjectUnderTest.getClass().getDeclaredField("optionC");
-        fieldC.setAccessible(true);
-        fieldC.set(myObjectUnderTest,"optionC");
-
-        final Field fieldD = myObjectUnderTest.getClass().getDeclaredField("optionD");
-        fieldD.setAccessible(true);
-        fieldD.set(myObjectUnderTest,"optionD");
-
-        final Field fieldE = myObjectUnderTest.getClass().getDeclaredField("optionE");
-        fieldE.setAccessible(true);
-        fieldE.set(myObjectUnderTest,"optionE");
-
-
-        //When
-        final String result = myObjectUnderTest.getQuestion();
-        final String resultA = myObjectUnderTest.getOptionA();
-        final String resultB = myObjectUnderTest.getOptionB();
-        final String resultC = myObjectUnderTest.getOptionC();
-        final String resultD = myObjectUnderTest.getOptionD();
-        final String resultE = myObjectUnderTest.getOptionE();
-
-        //then
-        assertThat(result, is("Question"));
-        assertThat(resultA, is("optionA"));
-        assertThat(resultB, is("optionB"));
-        assertThat(resultC, is("optionC"));
-        assertThat(resultD, is("optionD"));
-        assertThat(resultE, is("optionE"));
-
-    }
 }
 
-/**
- *  if(tokens[i].equals("1")){
- *                 realAnswers[i]= "Disagree strongly";
- *                 quizScore+=1;
- *             }else if(tokens[i].equals("2")){
- *                 realAnswers[i]= "Disagree a little";
- *                 quizScore+=2;
- *             }else if(tokens[i].equals("3")){
- *                 realAnswers[i]= "Neutral";
- *                 quizScore+=3;
- *             }else if(tokens[i].equals("4")){
- *                 realAnswers[i]= "Agree strongly";
- *                 quizScore+=4;
- *             }else{
- *                 realAnswers[i]= "Agree strongly";
- *                 quizScore+=5;
- *             }
- */
+
