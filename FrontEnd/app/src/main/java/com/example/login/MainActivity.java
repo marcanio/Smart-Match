@@ -98,8 +98,13 @@ public class MainActivity extends AppCompatActivity {
                 if (response.has("message")) {
                     outcome[0] ="Success";
                     Log.e("Response", "" + response);
+
                     Intent intent = new Intent(MainActivity.this, Profile.class);
-                    intent.putExtra("quizScore", 0);
+                    try {
+                        intent.putExtra("quizScore",Integer.parseInt(response.getString("message")));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                     startActivity(intent);
                 }
             }
