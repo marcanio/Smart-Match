@@ -109,8 +109,27 @@ public class UserController {
 //        }
 //        return "Not Verified";
 //    }
-    @RequestMapping(method = RequestMethod.POST, path = "users/verifies")
-    public Message verify(@RequestBody Verify verify){
+        @RequestMapping(method = RequestMethod.POST, path = "users/verifies")
+        public Message verify(@RequestBody Verify verify){
+            List<User> allUsers = usersRepository.findAll();
+            User user = new User();
+            for (int i = 0; i < allUsers.size(); i++) {
+                if (allUsers.get(i).getEmailaddress().equals(verify.emailaddress)) {
+                    if (allUsers.get(i).getUserPassword().equals(verify.userPassword)) {
+                        return new Message(allUsers.get(i).getId().toString());
+
+                    }
+//                return new Message("Not Verified");
+//                return null;
+                    return null;
+                }
+            }
+//        return new Message("Not Verified");
+//        return null;
+            return null;
+        }
+    @RequestMapping(method = RequestMethod.POST, path = "users/verify")
+    public Message verify_U(@RequestBody Verify verify){
         List<User> allUsers = usersRepository.findAll();
         User user = new User();
         for (int i = 0; i < allUsers.size(); i++) {
@@ -127,6 +146,14 @@ public class UserController {
 //        return null;
         return new Message("Not Verified2");
     }
+    /**
+     * This function is used to update the database of the user table with the updated field.
+     * So like in this The first name of the user is being changed
+     *
+     * @param first_name - The emailID of the user who we're checking the code from.
+     * @return The new updated name.
+     */
+
     @RequestMapping(method = RequestMethod.PUT, path = "users/update/name/{email_address}/{new_first_name}")
     public Message updateName(@PathVariable("email_address") String email_address, @PathVariable("new_first_name") String first_name){
         User user = findUserByemail(email_address);
@@ -135,6 +162,29 @@ public class UserController {
         return new Message("Named changed to: " +user.getFirstName());
     }
 
+    /**
+     * This function is used to update the database of the user table with the updated field.
+     * So like in this The Phone_number of the user is being changed
+     *
+     * @param phone_number - The emailID of the user who we're checking the code from.
+     * @return The new updated phone_number.
+     */
+
+    @RequestMapping(method = RequestMethod.PUT, path = "users/update/phone_number/{email_address}/{new_phone_number}")
+    public Message updatePhoneNumber(@PathVariable("email_address") String email_address, @PathVariable("new_phone_number") String phone_number){
+        User user = findUserByemail(email_address);
+        user.setPhoneNumber(phone_number);
+        usersRepository.save(user);
+        return new Message("Named changed to: " +user.getPhoneNumber());
+    }
+
+    /**
+     * This function would be used to delete the user from the databse
+     * with the given email_address
+     *
+     * @param email_address - The emailID of the user who we're checking the code from.
+     * @return The Email id that has been deleted.
+     */
     @RequestMapping(method = RequestMethod.DELETE, path = "users/delete/{email_address}")
     public Message deleteUser(@PathVariable("email_address") String email_address){
         User user = findUserByemail(email_address);
@@ -142,14 +192,5 @@ public class UserController {
         usersRepository.delete(user);
         return new Message("User: " + user.getEmailaddress() + " successfully deleted");
     }
-
-
-//    @RequestMapping(method = RequestMethod.DELETE, path = "/users/delete/{phone_number}")
-//    public void deleteUserbyPhone(@PathVariable("phone_number") int phone_number ) {
-//        logger.info("Entered into Controller Layer");
-//        User user = findUserByemail(phone_number);
-//        return user.getFirstName();
-//    }
-
 
 }

@@ -92,15 +92,15 @@ public class SmartMatchApplicationTests {
 		List<User> theUsers = userRepository.findAll();
 //		assertEquals(true, theUsers.contains(rishabh));
 		assertEquals("CS309isfun", theUsers.get(0).getUserPassword());
-		assertEquals("Verified", userController.verify(verify_test1).getMessage());
+		assertEquals("Verified", userController.verify_U(verify_test1).getMessage());
 
 		Verify verify_test2 = new Verify("rbansal@iastate.edu","CS309fun");
 
-		assertEquals("Not Verified1", userController.verify(verify_test2).getMessage());
+		assertEquals("Not Verified1", userController.verify_U(verify_test2).getMessage());
 
 		Verify verify_test3 = new Verify("rbansal@iastate.","CS309isfun");
 
-		assertEquals("Not Verified2", userController.verify(verify_test3).getMessage());
+		assertEquals("Not Verified2", userController.verify_U(verify_test3).getMessage());
 
 	}
 
