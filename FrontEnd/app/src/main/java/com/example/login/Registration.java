@@ -1,5 +1,6 @@
 package com.example.login;
 //import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -77,6 +78,11 @@ public class Registration extends AppCompatActivity implements IView{
     @Override
     public void toastText(String s) {
 
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 /*
     private void register() {
