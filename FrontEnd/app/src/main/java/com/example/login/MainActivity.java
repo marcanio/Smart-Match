@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new AppController();
         setContentView(R.layout.activity_main);
         editName = (EditText) findViewById(R.id.LoginUsername);
         editPassword = (EditText) findViewById(R.id.LoginPassword);

@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:name="AppController"
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,6 +14,7 @@
         android:theme="@style/AppTheme" >
         <activity android:name=".Profile" >
         </activity>
+
         <activity android:name=".Registration" />
         <activity android:name=".QuizResults" />
         <activity android:name=".SecondActivity" />
@@ -24,5 +26,6 @@
             </intent-filter>
         </activity>
     </application>
+
 
 </manifest>
