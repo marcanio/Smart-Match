@@ -1,15 +1,20 @@
 package com.example.login;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -23,20 +28,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String PREFS_NAME = "LoginPrefs";
     private EditText editName;
     private EditText editPassword;
     private TextView Info;
     private Button Login;
     private int counter = 5;
-    private static String URL_VERIFY ="http://coms-309-vb-10.cs.iastate.edu:8080/users/verifies";
     //for postman test
-    //private static String URL_VERIFY = "https://postman-echo.com/post";
+    private static String URL_VERIFY = "https://postman-echo.com/post";
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new AppController();
         setContentView(R.layout.activity_main);
         editName = (EditText) findViewById(R.id.LoginUsername);
         editPassword = (EditText) findViewById(R.id.LoginPassword);
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validate(editName.getText().toString().trim(),editPassword.getText().toString().trim());
+                validate();
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
@@ -59,23 +63,55 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return true;
+    }
+    private void profile(){
+        Intent intent = new Intent(MainActivity.this, Registration.class);
+        startActivity(intent);
+    }
+    private void logOut(){
 
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.remove("logged");
+        editor.commit();
+        finish();
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.Logout:
+
+                return true;
+            case R.id.profile:
+                profile();
+                return true;
+            default:  return super.onOptionsItemSelected(item);
+        }
+
+
+
+    }
 
     @SuppressLint("SetTextI18n")
-    public String validate(String username, String password) {
-
-        final String[] outcome = {""};
+    private void validate() {
+        final String username = this.editName.getText().toString().trim();
+        final String password = this.editPassword.getText().toString().trim();
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject params = new JSONObject();
         if (TextUtils.isEmpty(username)) {
             editName.setError("Please Enter Username");
             editName.requestFocus();
-            return "Name Error";
+            return;
         }
         if (TextUtils.isEmpty(password)) {
             editPassword.setError("Please Enter Password");
             editPassword.requestFocus();
-            return "Password Error";
+            return;
         }
         try {
             params.put("emailaddress", username);
@@ -96,28 +132,18 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 System.out.println();
                 if (response.has("message")) {
-                    outcome[0] ="Success";
                     Log.e("Response", "" + response);
-
                     Intent intent = new Intent(MainActivity.this, Profile.class);
-                    try {
-                        intent.putExtra("quizScore",Integer.parseInt(response.getString("message")));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
                     startActivity(intent);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                outcome[0] ="Error";
                 editPassword.setError("Wrong email or password");
                 error.printStackTrace();
-
             }
         });
         requestQueue.add(jsonObjectRequest);
-        return outcome[0];
     }
 }

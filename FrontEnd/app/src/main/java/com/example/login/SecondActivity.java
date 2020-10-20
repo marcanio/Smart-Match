@@ -22,7 +22,6 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new AppController();
         setContentView(R.layout.activity_second);
         //Map varibles to there objects in the xml
         question = findViewById(R.id.question);
