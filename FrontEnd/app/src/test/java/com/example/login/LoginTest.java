@@ -80,15 +80,6 @@ public class LoginTest {
         assertThat("password",is(userPass.getText().toString().trim()));
 
     }
-
-    @Test
-    public void login(){
-        MainActivity activity = Mockito.mock(MainActivity.class);
-        Mockito.when(activity.validate("Eric","Password")).thenReturn("Error");
-
-
-    }
-
 }
 
 

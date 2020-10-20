@@ -1,5 +1,6 @@
 package com.example.login;
 //import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,38 +17,74 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.login.Logic.RegistrationLogic;
+import com.example.login.Network.ServerRequest;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Registration extends AppCompatActivity {
-    private EditText firstName, lastName, email, password, birthday, gender, phoneNumber;
+public class Registration extends AppCompatActivity implements IView{
+    private EditText firstNameView, lastNameView, emailView, passwordView, birthdayView, genderView, phoneNumberView;
     private Button btn_regist;
     private static String URL_REGIST ="http://coms-309-vb-10.cs.iastate.edu:8080/users/new";
     //private static String URL_REGIST = "https://e88bf2da-6812-4702-8725-be192a447d6d.mock.pstmn.io";
+
     //Postman - https://e88bf2da-6812-4702-8725-be192a447d6d.mock.pstmn.io
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new AppController();
         setContentView(R.layout.activity_registration);
-        firstName = (EditText) findViewById(R.id.first_name);
-        lastName = (EditText) findViewById(R.id.last_name);
-        email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
-        birthday = (EditText) findViewById(R.id.birthday);
-        phoneNumber = (EditText) findViewById(R.id.mobile);
+        firstNameView = findViewById(R.id.first_name);
+        lastNameView = findViewById(R.id.last_name);
+        emailView = findViewById(R.id.email);
+        passwordView = findViewById(R.id.password);
+        birthdayView = findViewById(R.id.birthday);
+        phoneNumberView = findViewById(R.id.mobile);
+        genderView = findViewById(R.id.gender);
         btn_regist = findViewById(R.id.submitButton);
-        gender = (EditText) findViewById(R.id.gender);
+
+        ServerRequest serverRequest = new ServerRequest();
+        final RegistrationLogic logic = new RegistrationLogic(this,serverRequest);
+
+
         btn_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                register();
+                try{
+                    String firstName = firstNameView.getText().toString();
+                    String lastName = lastNameView.getText().toString();
+                    String email = emailView.getText().toString();
+                    String password = passwordView.getText().toString();
+                    String birthday = birthdayView.getText().toString();
+                    String gender = genderView.getText().toString();
+                    String phoneNumber = phoneNumberView.getText().toString();
+                    logic.registerUser(firstName,lastName,email,password,birthday,phoneNumber,gender);
+                } catch(JSONException e){
+                    e.printStackTrace();
+                }
             }
         });
     }
 
+    @Override
+    public void showText(String s) {
+        
+    }
+
+    @Override
+    public void toastText(String s) {
+
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+/*
     private void register() {
         final String firstName = this.firstName.getText().toString().trim();
         final String lastName = this.lastName.getText().toString().trim();
@@ -126,4 +163,6 @@ public class Registration extends AppCompatActivity {
         });
         requestQueue.add(jsonObjectRequest);
     }
+    */
+
 }
