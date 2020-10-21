@@ -20,8 +20,8 @@ public interface UserRepository extends JpaRepository<User, String> {
      * @param email_address - The netID associated with the user.
      * @return - User associated with given NetID
      */
-//    User findUserByemail(String email_address);
-//    public User findUserByemail(@Param("email") String email_address);
+//    User findUserByEmail(String email_address);
+//    public User findByEmail(@Param("email") String email_address);
 
     /**
      * Deletes a user from the database.
