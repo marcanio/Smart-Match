@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
     <TextView
-        android:id="@+id/results"
+        android:id="@+id/settings"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -29,11 +29,14 @@
     </LinearLayout>
 
 
+
+
+
+
     <LinearLayout
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_dark"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,15 +44,60 @@
 
     </LinearLayout>
 
+
+    <Button
+        android:id="@+id/btnchangeUername"
+        android:layout_width="412dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="612dp"
+        android:text="Edit Name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnrelatopnship_preference"
+        android:layout_width="437dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="444dp"
+        android:text="relationship Preference"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnchangePassword"
+        android:layout_width="413dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="504dp"
+        android:text="Update Password"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnchangeAgepreference"
+        android:layout_width="413dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="560dp"
+        android:text="Age Preference"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:text="Sign out"
+        android:layout_marginBottom="332dp"
+        android:text="Log out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent" />
 
 
