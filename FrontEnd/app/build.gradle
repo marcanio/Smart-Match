@@ -25,6 +25,7 @@ android {
     testOptions {
         unitTests {
             includeAndroidResources = true
+            android.defaultConfig.vectorDrawables.useSupportLibrary = true
         }
     }
     packagingOptions {
