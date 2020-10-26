@@ -6,15 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Registration"
     android:orientation="vertical">
-    <RelativeLayout
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@android:color/holo_red_dark"
-        >
 
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

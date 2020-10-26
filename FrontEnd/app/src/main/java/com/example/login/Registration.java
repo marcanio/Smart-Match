@@ -51,6 +51,7 @@ public class Registration extends AppCompatActivity implements IView{
         final RegistrationLogic logic = new RegistrationLogic(this,serverRequest);
 
 
+
         btn_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +63,7 @@ public class Registration extends AppCompatActivity implements IView{
                     String birthday = birthdayView.getText().toString();
                     String gender = genderView.getText().toString();
                     String phoneNumber = phoneNumberView.getText().toString();
+                    
                     logic.registerUser(firstName,lastName,email,password,birthday,phoneNumber,gender);
                 } catch(JSONException e){
                     e.printStackTrace();
