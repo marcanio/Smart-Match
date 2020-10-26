@@ -2,6 +2,7 @@ package com.example.login;
 //import android.support.v7.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -66,7 +67,12 @@ public class Registration extends AppCompatActivity implements IView{
                     String birthday = birthdayView.getText().toString();
                     String gender = genderView.getText().toString();
                     String phoneNumber = phoneNumberView.getText().toString();
-                    
+
+                    SharedPreferences sharedPref = getSharedPreferences("myKey", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
+                    editor.putString("email", email);
+                    editor.apply();
+
                     logic.registerUser(firstName,lastName,email,password,birthday,phoneNumber,gender);
                 } catch(JSONException e){
                     e.printStackTrace();

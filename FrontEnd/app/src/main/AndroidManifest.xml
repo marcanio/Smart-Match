@@ -13,10 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-<<<<<<< HEAD
-=======
         <activity android:name=".Settings"></activity>
->>>>>>> 5383294fde97a1218942cc96d57b21d142e9f347
         <activity android:name=".Profile"></activity>
         <activity android:name=".Registration" />
         <activity android:name=".QuizResults" />

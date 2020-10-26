@@ -1,13 +1,26 @@
 package com.example.login;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class QuizResults<button> extends AppCompatActivity {
+    private static String URL_VERIFY ="http://coms-309-vb-10.cs.iastate.edu:8080/users/verifies";
     private TextView Q1A, Q2A, Q3A, Q4A, Q5A, Q6A, Q7A, Q8A, Q9A, Q10A, Q11A;
     private Button btnProfile;
     public int quizScore = 0;
@@ -45,6 +58,7 @@ public class QuizResults<button> extends AppCompatActivity {
         assert results != null;
         String[] realAnswers = fillAnswers(results);
         displayAnswers(realAnswers);
+        postResults();
     }
 
     private void displayAnswers(String[] realAnswers) {
@@ -84,6 +98,36 @@ public class QuizResults<button> extends AppCompatActivity {
             }
         }
         return realAnswers;
+    }
+
+    public void postResults(){
+        SharedPreferences sharedPreferences = getSharedPreferences("myKey", MODE_PRIVATE);
+        String email = sharedPreferences.getString("email", "");
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        JSONObject params = new JSONObject();
+
+        try{
+            params.put("net_id", email);
+            params.put("matches", "");
+            params.put("quiz_score", quizScore);
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_VERIFY, params, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                System.out.println();
+                Log.e("Response", "" + response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
     }
 
 
