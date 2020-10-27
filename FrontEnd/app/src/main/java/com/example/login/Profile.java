@@ -1,14 +1,26 @@
 package com.example.login;
 //import android.support.v7.app.AppCompatActivity;
-
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,10 +36,15 @@ import java.util.Map;
 
 public class Profile extends AppCompatActivity {
     private static String URL_REGIST = "https://e88bf2da-6812-4702-8725-be192a447d6d.mock.pstmn.io";
+    private static int RESULT_LOAD_IMG = 1;
+    private static final int PICK_FROM_GALLERY = 10;
+    ImageView photo;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        getSupportActionBar().hide();
+        photo = findViewById(R.id.imageView);
         final TextView bio = findViewById(R.id.User_bio);
         final EditText edittext = findViewById(R.id.addBio);
         edittext.setOnKeyListener(new View.OnKeyListener() {
@@ -59,9 +76,62 @@ public class Profile extends AppCompatActivity {
         });
         final TextView score = findViewById(R.id.quizScore);
         int scoreI = getIntent().getExtras().getInt("quizScore", 0);
-        score.setText("Quiz score: " + scoreI);
+        score.setText("ID: 452643");
     }
 
     public void onButtonClick(View view) {
+    }
+
+    public void goToSettings(View view) {
+        Intent intent = new Intent(Profile.this, Settings.class);
+        startActivity(intent);
+    }
+
+    public void loadImage(View view) {
+        try {
+            if (ActivityCompat.checkSelfPermission(Profile.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(Profile.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
+            } else {
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK && null != data) {
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+                cursor.moveToFirst();
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String imgDecodableString = cursor.getString(columnIndex);
+                cursor.close();
+                Drawable d = new BitmapDrawable(getResources(), BitmapFactory.decodeFile(imgDecodableString));
+                photo.setImageDrawable(d);
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PICK_FROM_GALLERY:
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(galleryIntent, PICK_FROM_GALLERY);
+                } else {
+                    Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show();
+                }
+                break;
+        }
     }
 }
