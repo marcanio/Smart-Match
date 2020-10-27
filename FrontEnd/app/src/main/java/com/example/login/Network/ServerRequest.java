@@ -17,15 +17,15 @@ import com.example.login.SecondActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ServerRequest implements IServerRequest{
+public class ServerRequest implements IServerRequest {
     private String tag_json_obj = "json_obj_req";
     private IVolleyListener I;
 
     @Override
-    public void sendToServer(String url, JSONObject newUserObj, String methodType){
-        
+    public void sendToServer(String url, JSONObject newUserObj, String methodType) {
+
         int method = Request.Method.GET;
-        if(methodType.equals("POST")){
+        if (methodType.equals("POST")) {
             method = Request.Method.POST;
         }
 
@@ -34,9 +34,9 @@ public class ServerRequest implements IServerRequest{
                     @Override
                     public void onResponse(JSONObject response) {
                         System.out.print(response.toString());
-                        if(response != null){
+                        if (response != null) {
                             I.onSuccess(response.toString());
-                        }else{
+                        } else {
                             I.onError("Null response");
                         }
                     }
@@ -51,7 +51,7 @@ public class ServerRequest implements IServerRequest{
         AppController.getInstance().addToRequestQueue(registerUserRequest, tag_json_obj);
     }
 
-    public void addVolleyListener(IVolleyListener logic){
+    public void addVolleyListener(IVolleyListener logic) {
         I = logic;
     }
 }

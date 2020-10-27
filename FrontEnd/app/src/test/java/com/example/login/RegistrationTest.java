@@ -38,7 +38,7 @@ public class RegistrationTest {
 
 
     @Before
-    public void setUp(){
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
 
@@ -50,13 +50,13 @@ public class RegistrationTest {
         String email = "email";
         String password = "Password";
         String birthday = "birth";
-        String phoneNumber= "number";
+        String phoneNumber = "number";
         String gender = "male";
 
         String url = "http://coms-309-vb-10.cs.iastate.edu:8080/users/new";
         String post = "POST";
 
-        Map<String,String> params = new HashMap<>();
+        Map<String, String> params = new HashMap<>();
 
         params.put("firstName", firstName);
         params.put("lastName", lastName);
@@ -64,15 +64,15 @@ public class RegistrationTest {
         params.put("emailaddress", email);
         params.put("gender", gender);
         params.put("userPassword", password);
-        params.put("age",birthday);
+        params.put("age", birthday);
 
         JSONObject newUserObj = new JSONObject(params);
 
 
         RegistrationLogic presenter = new RegistrationLogic(view, server);
-        presenter.registerUser("First","LastName","email","Password","birth","number","male");
+        presenter.registerUser("First", "LastName", "email", "Password", "birth", "number", "male");
 
-        verify(server,times(1)).sendToServer(refEq(url), refEq(newUserObj), refEq(post));
+        verify(server, times(1)).sendToServer(refEq(url), refEq(newUserObj), refEq(post));
 
     }
 

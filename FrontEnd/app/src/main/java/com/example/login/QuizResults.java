@@ -1,4 +1,5 @@
 package com.example.login;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,7 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QuizResults<button> extends AppCompatActivity {
-    private static String URL_VERIFY ="http://coms-309-vb-10.cs.iastate.edu:8080/users/verifies";
+    private static String URL_VERIFY = "http://coms-309-vb-10.cs.iastate.edu:8080/matches/new";
     private TextView Q1A, Q2A, Q3A, Q4A, Q5A, Q6A, Q7A, Q8A, Q9A, Q10A, Q11A;
     private Button btnProfile;
     public int quizScore = 0;
@@ -79,38 +80,38 @@ public class QuizResults<button> extends AppCompatActivity {
         String[] tokens = results.split("/");
         String[] realAnswers = new String[tokens.length];
 
-        for(int i = 0; i < realAnswers.length; i++){
-            if(tokens[i].equals("1")){
-                realAnswers[i]= "Disagree strongly";
-                quizScore+=1;
-            }else if(tokens[i].equals("2")){
-                realAnswers[i]= "Disagree a little";
-                quizScore+=2;
-            }else if(tokens[i].equals("3")){
-                realAnswers[i]= "Neutral";
-                quizScore+=3;
-            }else if(tokens[i].equals("4")){
-                realAnswers[i]= "Agree a little";
-                quizScore+=4;
-            }else{
-                realAnswers[i]= "Agree strongly";
-                quizScore+=5;
+        for (int i = 0; i < realAnswers.length; i++) {
+            if (tokens[i].equals("1")) {
+                realAnswers[i] = "Disagree strongly";
+                quizScore += 1;
+            } else if (tokens[i].equals("2")) {
+                realAnswers[i] = "Disagree a little";
+                quizScore += 2;
+            } else if (tokens[i].equals("3")) {
+                realAnswers[i] = "Neutral";
+                quizScore += 3;
+            } else if (tokens[i].equals("4")) {
+                realAnswers[i] = "Agree a little";
+                quizScore += 4;
+            } else {
+                realAnswers[i] = "Agree strongly";
+                quizScore += 5;
             }
         }
         return realAnswers;
     }
 
-    public void postResults(){
+    public void postResults() {
         SharedPreferences sharedPreferences = getSharedPreferences("myKey", MODE_PRIVATE);
         String email = sharedPreferences.getString("email", "");
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject params = new JSONObject();
 
-        try{
-            params.put("net_id", email);
+        try {
+            params.put("emailAddress", email);
             params.put("matches", "");
-            params.put("quiz_score", quizScore);
-        }catch(JSONException e){
+            params.put("quizScore", quizScore);
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 

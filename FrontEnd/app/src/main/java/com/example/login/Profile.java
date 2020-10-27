@@ -1,5 +1,6 @@
 package com.example.login;
 //import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -57,7 +58,7 @@ public class Profile extends AppCompatActivity {
             }
         });
         final TextView score = findViewById(R.id.quizScore);
-        int scoreI = getIntent().getExtras().getInt("quizScore",0);
+        int scoreI = getIntent().getExtras().getInt("quizScore", 0);
         score.setText("Quiz score: " + scoreI);
     }
 

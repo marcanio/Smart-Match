@@ -1,4 +1,5 @@
 package com.example.login;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView Info;
     private Button Login;
     private int counter = 5;
-    private static String URL_VERIFY ="http://coms-309-vb-10.cs.iastate.edu:8080/users/verifies";
+    private static String URL_VERIFY = "http://coms-309-vb-10.cs.iastate.edu:8080/users/verifies";
     //for postman test
     //private static String URL_VERIFY = "https://postman-echo.com/post";
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validate(editName.getText().toString().trim(),editPassword.getText().toString().trim());
+                validate(editName.getText().toString().trim(), editPassword.getText().toString().trim());
             }
         });
         register.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
     @SuppressLint("SetTextI18n")
@@ -97,12 +97,12 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 System.out.println();
                 if (response.has("message")) {
-                    outcome[0] ="Success";
+                    outcome[0] = "Success";
                     Log.e("Response", "" + response);
 
                     Intent intent = new Intent(MainActivity.this, Profile.class);
                     try {
-                        intent.putExtra("quizScore",Integer.parseInt(response.getString("message")));
+                        intent.putExtra("quizScore", Integer.parseInt(response.getString("message")));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                outcome[0] ="Error";
+                outcome[0] = "Error";
                 editPassword.setError("Wrong email or password");
                 error.printStackTrace();
 

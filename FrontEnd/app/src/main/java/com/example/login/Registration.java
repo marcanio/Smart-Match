@@ -1,5 +1,6 @@
 package com.example.login;
 //import android.support.v7.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,15 +28,14 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Registration extends AppCompatActivity implements IView{
+public class Registration extends AppCompatActivity implements IView {
     private EditText firstNameView, lastNameView, emailView, passwordView, birthdayView, genderView, phoneNumberView;
     private Button btn_regist;
 
-    private static String URL_REGIST ="http://coms-309-vb-10.cs.iastate.edu:8080/users/new";
+    private static String URL_REGIST = "http://coms-309-vb-10.cs.iastate.edu:8080/users/new";
     //private static String URL_REGIST = "https://e88bf2da-6812-4702-8725-be192a447d6d.mock.pstmn.io";
 
     //Postman - https://e88bf2da-6812-4702-8725-be192a447d6d.mock.pstmn.io
-
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +52,13 @@ public class Registration extends AppCompatActivity implements IView{
         btn_regist = findViewById(R.id.submitButton);
 
         ServerRequest serverRequest = new ServerRequest();
-        final RegistrationLogic logic = new RegistrationLogic(this,serverRequest);
-
+        final RegistrationLogic logic = new RegistrationLogic(this, serverRequest);
 
 
         btn_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
+                try {
                     String firstName = firstNameView.getText().toString();
                     String lastName = lastNameView.getText().toString();
                     String email = emailView.getText().toString();
@@ -71,10 +70,10 @@ public class Registration extends AppCompatActivity implements IView{
                     SharedPreferences sharedPref = getSharedPreferences("myKey", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPref.edit();
                     editor.putString("email", email);
-                    editor.apply();
+                    editor.commit();
 
-                    logic.registerUser(firstName,lastName,email,password,birthday,phoneNumber,gender);
-                } catch(JSONException e){
+                    logic.registerUser(firstName, lastName, email, password, birthday, phoneNumber, gender);
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
@@ -83,7 +82,7 @@ public class Registration extends AppCompatActivity implements IView{
 
     @Override
     public void showText(String s) {
-        
+
     }
 
     @Override

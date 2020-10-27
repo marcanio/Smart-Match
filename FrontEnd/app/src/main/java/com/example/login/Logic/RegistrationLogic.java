@@ -31,9 +31,8 @@ public class RegistrationLogic implements IVolleyListener {
     IServerRequest serverRequest;
 
 
-
-    public RegistrationLogic(IView r, IServerRequest serverRequest){
-        this.r =r;
+    public RegistrationLogic(IView r, IServerRequest serverRequest) {
+        this.r = r;
         this.serverRequest = serverRequest;
         serverRequest.addVolleyListener(this);
     }
@@ -42,7 +41,7 @@ public class RegistrationLogic implements IVolleyListener {
     public void registerUser(String firstName, String lastName, String email, String password, String birthday, String phoneNumber, String gender) throws JSONException {
 
         final String url = "http://coms-309-vb-10.cs.iastate.edu:8080/users/new";
-        Map<String,String> params = new HashMap<>();
+        Map<String, String> params = new HashMap<>();
 
         params.put("firstName", firstName);
         params.put("lastName", lastName);
@@ -50,24 +49,22 @@ public class RegistrationLogic implements IVolleyListener {
         params.put("emailaddress", email);
         params.put("gender", gender);
         params.put("userPassword", password);
-        params.put("age",birthday);
+        params.put("age", birthday);
 
         JSONObject newUserObj = new JSONObject(params);
 
-        serverRequest.sendToServer(url,newUserObj,"POST");
+        serverRequest.sendToServer(url, newUserObj, "POST");
     }
 
     @Override
-    public void onSuccess(String email){
-        if(email.length() > 0){
+    public void onSuccess(String email) {
+        if (email.length() > 0) {
 
-            try
-            {
+            try {
                 Context temp = r.getContext();
-                Intent mIntent = new Intent(temp,SecondActivity.class);
+                Intent mIntent = new Intent(temp, SecondActivity.class);
                 temp.startActivity(mIntent);
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

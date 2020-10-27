@@ -1,4 +1,5 @@
 package com.example.login;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -55,8 +56,8 @@ public class MockServiceTest {
     public void testApiData() throws IOException {
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost("https://e88bf2da-6812-4702-8725-be192a447d6d.mock.pstmn.io");
-             HttpResponse response = httpclient.execute(httppost);
-            System.out.println(response);
+        HttpResponse response = httpclient.execute(httppost);
+        System.out.println(response);
 
     }
 }

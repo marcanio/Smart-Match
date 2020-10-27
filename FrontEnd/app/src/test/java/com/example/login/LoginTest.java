@@ -1,4 +1,5 @@
 package com.example.login;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.volley.Request;
+
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
@@ -38,6 +40,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+
 import static org.mockito.MockitoAnnotations.initMocks;
 
 import org.robolectric.Robolectric;
@@ -46,22 +49,21 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 
-
-
 @RunWith(RobolectricTestRunner.class)
 @Config(sdk = Build.VERSION_CODES.O_MR1)
 public class LoginTest {
 
-    @Mock MainActivity main;
+    @Mock
+    MainActivity main;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
 
 
     @Test
-    public void LoginCredentials(){
+    public void LoginCredentials() {
 
         MainActivity activity = Robolectric.buildActivity(MainActivity.class)
                 .create()
@@ -77,7 +79,7 @@ public class LoginTest {
         activity.findViewById(R.id.btnLogin).callOnClick();
 
         assertThat("Eric", is(userName.getText().toString().trim()));
-        assertThat("password",is(userPass.getText().toString().trim()));
+        assertThat("password", is(userPass.getText().toString().trim()));
 
     }
 }

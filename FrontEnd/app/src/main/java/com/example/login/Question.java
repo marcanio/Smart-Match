@@ -10,7 +10,7 @@ public class Question {
     int correct;
 
     //Constructor
-    public Question(String question, String optionA,String optionB,String optionC,String optionD,String optionE,int correct){
+    public Question(String question, String optionA, String optionB, String optionC, String optionD, String optionE, int correct) {
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;
