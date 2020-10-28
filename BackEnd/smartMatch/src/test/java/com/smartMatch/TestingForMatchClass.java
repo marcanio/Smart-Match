@@ -38,13 +38,13 @@ public class TestingForMatchClass {
     public void getAllMatchesTest() {
         List<Matches> userList = new ArrayList<Matches>();
 
-        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant, Suraj");
+        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant, Suraj", 1);
 
-        Matches Eric = new Matches("emarchino@iastate.edu", "Rishabh, Jayant, Suraj");
+        Matches Eric = new Matches("emarchino@iastate.edu", "Rishabh, Jayant, Suraj",2);
 
-        Matches Jayant = new Matches("jayant@iastate.edu", "Eric, Rishabh, Suraj");
+        Matches Jayant = new Matches("jayant@iastate.edu", "Eric, Rishabh, Suraj",3);
 
-        Matches Suraj = new Matches("suraj@iastate.edu", "Eric, Jayant, Rishabh");
+        Matches Suraj = new Matches("suraj@iastate.edu", "Eric, Jayant, Rishabh",4);
 
 
         addToUserList(userList, rishabh, Eric, Jayant, Suraj);
@@ -62,17 +62,17 @@ public class TestingForMatchClass {
     }
 
 
-//    @Test
-//    public void getFirstNameByEmailTest(){
-//        List<Matches> userList = new ArrayList<Matches>();
-//        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant");
-//        userList.add(rishabh);
-//        when(userRepository.findAll()).thenReturn(userList);
-//        userController.addNewMatch(rishabh);
-//        //List<User> theUsers = userRepository.findAll();
-//        assertEquals("Eric, Jayant", userController.getMatchesByEmailIdS("rbansal@iastate.edu"));
-//
-//    }
+    @Test
+    public void getFirstNameByEmailTest(){
+        List<Matches> userList = new ArrayList<Matches>();
+        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant", 2);
+        userList.add(rishabh);
+        when(userRepository.findAll()).thenReturn(userList);
+        userController.addNewMatch(rishabh);
+        //List<User> theUsers = userRepository.findAll();
+        assertEquals("Eric, Jayant", userController.getMatchesByEmailIdS("rbansal@iastate.edu"));
+
+    }
 
     private void saveAllTheUsers(Matches rishabh, Matches Eric, Matches Jayant, Matches Suraj) { // Do not need userController as a parameter because it is a global variable.
         userController.addNewMatch(rishabh);

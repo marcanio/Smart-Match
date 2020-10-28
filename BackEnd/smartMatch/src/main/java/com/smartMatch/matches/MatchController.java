@@ -1,5 +1,8 @@
 package com.smartMatch.matches;
 
+import com.smartMatch.user.Message;
+import com.smartMatch.user.User;
+import com.smartMatch.user.Verify;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +28,21 @@ public class MatchController {
      * @return - The User with the saved matches
      */
     @RequestMapping(method = RequestMethod.POST, path = "/matches/new", produces = "application/json")
-    public String addNewMatch(@RequestBody Matches match) {
+    public Message addNewMatch(@RequestBody Matches match) {
         matchRepo.save(match);
         System.out.println("\n" + match.toString() + "\n");
-        return "Match saved for " + match.getEmailAddress() + ": " + match.getMatches();
+//        return ("s");
+        return new Message("Match saved for " + match.getEmailAddress() + ": " + match.getMatches()+ ": " + match.getQuizScore());
+//        return "Match saved for " + match.getEmailAddress() + ": " + match.getMatches();
     }
 
-    /**
-     * This function will append the new matches for the user
-     *
-     * @param match - The user being added.
-     * @return - The user with the old and appended matches
-     */
-    @RequestMapping(method = RequestMethod.POST, path = "matches/{net_id}")
+//    /**
+//     * This function will append the new matches for the user
+//     *
+//     * @param match - The user being added.
+//     * @return - The user with the old and appended matches
+//     */
+    @RequestMapping(method = RequestMethod.POST, path = "matches/append")
     public String appendNewMatch(@RequestBody com.smartMatch.matches.Matches match) {
         com.smartMatch.matches.Matches matchToUpdate = getByEmailId(match.getEmailAddress());
 
@@ -66,7 +71,6 @@ public class MatchController {
      * @param email_address - The user being added.
      * @return - The respective user with his matches
      */
-
     @RequestMapping(method = RequestMethod.GET, path = "/matches/{email_address}")
     public com.smartMatch.matches.Matches getMatchesByEmailId(@PathVariable("email_address") String email_address) {
         logger.info("Entered into Controller Layer");
@@ -76,14 +80,14 @@ public class MatchController {
         return result;
     }
 
-//    @RequestMapping(method = RequestMethod.GET, path = "/matches/{email_address}")
-//    public String getMatchesByEmailIdS(@PathVariable("email_address") String email_address) {
-//        logger.info("Entered into Controller Layer");
-//        com.smartMatch.matches.Matches result = getByEmailId(email_address);
-//
-//        return(result.getMatches());
-////        return result;
-//    }
+    @RequestMapping(method = RequestMethod.GET, path = "/matches/{email_address}")
+    public String getMatchesByEmailIdS(@PathVariable("email_address") String email_address) {
+        logger.info("Entered into Controller Layer");
+        com.smartMatch.matches.Matches result = getByEmailId(email_address);
+
+        return(result.getMatches());
+//        return result;
+    }
 
     public com.smartMatch.matches.Matches getByEmailId(String email_address) {
         List<com.smartMatch.matches.Matches> allMatches = matchRepo.findAll();

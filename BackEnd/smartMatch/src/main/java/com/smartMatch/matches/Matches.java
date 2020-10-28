@@ -21,23 +21,29 @@ public class Matches {
     @NotFound(action = NotFoundAction.IGNORE)
     private String emailAddress;
 
+    @Column(name = "quiz_score")
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Integer quizScore;
+
     @Column(name = "matches")
     @NotFound(action = NotFoundAction.IGNORE)
     private String matches;
 
-    public Matches(String emailAddress, String matches) {
+    public Matches(String emailAddress, String matches, Integer quizScore) {
         this.emailAddress = emailAddress;
         this.matches = matches;
+        this.quizScore =quizScore;
     }
 
     public Matches() {
         this.emailAddress = "";
         this.matches = "";
+        this.quizScore= 0;
     }
 
     @Override
     public String toString() {
-        return new ToStringCreator(this).append("email_address: ", this.getEmailAddress()).append("matches: ", this.getMatches())
+        return new ToStringCreator(this).append("email_address: ", this.getEmailAddress()).append("quiz_score: ", this.getQuizScore()).append("matches: ", this.getMatches())
                 .toString();
     }
 
@@ -51,6 +57,14 @@ public class Matches {
 
     public String getMatches() {
         return matches;
+    }
+
+    public Integer getQuizScore() {
+        return quizScore;
+    }
+
+    public void setQuizScore(Integer quizScore) {
+        this.quizScore = quizScore;
     }
 
     public void setMatches(String matches) {
