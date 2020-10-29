@@ -80,7 +80,7 @@ public class SmartMatchApplicationTests {
 		verify(userRepository, times(1)).findAll();
 //		System.out.println(userRepository.findAll().contains(rishabh));
 	}
-
+//s
 	@Test
 	public void verifyEmailAndPasswordTest(){
 		List<User> userList = new ArrayList<User>();
