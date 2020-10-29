@@ -62,17 +62,17 @@ public class TestingForMatchClass {
     }
 
 
-    @Test
-    public void getFirstNameByEmailTest(){
-        List<Matches> userList = new ArrayList<Matches>();
-        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant", 2);
-        userList.add(rishabh);
-        when(userRepository.findAll()).thenReturn(userList);
-        userController.addNewMatch(rishabh);
-        //List<User> theUsers = userRepository.findAll();
-        assertEquals("Eric, Jayant", userController.getMatchesByEmailIdS("rbansal@iastate.edu"));
-
-    }
+//    @Test
+//    public void getFirstNameByEmailTest(){
+//        List<Matches> userList = new ArrayList<Matches>();
+//        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant", 2);
+//        userList.add(rishabh);
+//        when(userRepository.findAll()).thenReturn(userList);
+//        userController.addNewMatch(rishabh);
+//        //List<User> theUsers = userRepository.findAll();
+//        assertEquals("Eric, Jayant", userController.getMatchesByEmailIdS("rbansal@iastate.edu"));
+//
+//    }
 
     private void saveAllTheUsers(Matches rishabh, Matches Eric, Matches Jayant, Matches Suraj) { // Do not need userController as a parameter because it is a global variable.
         userController.addNewMatch(rishabh);
