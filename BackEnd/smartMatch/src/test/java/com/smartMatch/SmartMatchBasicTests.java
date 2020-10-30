@@ -34,10 +34,8 @@ public class SmartMatchBasicTests {
 
     @Test
     public void contextLoads() {
-        assertThat(controller).isNotNull();
-        assertThat(controller.usersFemaleRepository).isNotNull();
-        assertThat(controller.usersMaleRepository).isNotNull();
-        assertThat(controller.usersRepository).isNotNull();
+        assertThat(userController).isNotNull();
+        assertThat(userController.usersRepository).isNotNull();
     }
 
 
