@@ -1,19 +1,25 @@
 package com.smartMatch;
 
-import com.smartMatch.user.User;
-import com.smartMatch.user.UserController;
-import com.smartMatch.user.UserRepository;
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+//import org.junit.jupiter.api.Test;
+import com.smartMatch.user.Verify;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.smartMatch.matches.Matches;
+import com.smartMatch.matches.MatchController;
+import com.smartMatch.matches.MatchRepository;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class SmartMatchBasicTests {
