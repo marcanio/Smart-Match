@@ -21,15 +21,19 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
-class SmartMatchBasicTests {
-    @Autowired
-    private UserController controller;
 
+@SpringBootTest
+public class SmartMatchBasicTests {
+    @InjectMocks
+    MatchController userController;
+
+    @Autowired
+    @Mock
+    MatchRepository userRepository;
 
 
     @Test
-    void contextLoads() {
+    public void contextLoads() {
         assertThat(controller).isNotNull();
         assertThat(controller.usersFemaleRepository).isNotNull();
         assertThat(controller.usersMaleRepository).isNotNull();
