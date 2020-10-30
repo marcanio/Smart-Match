@@ -38,7 +38,7 @@ public class MessageActivity extends AppCompatActivity {
                 msgs.add(new Message("333", "444", "Theresa Greenfield", "Kim Reynolds", new Date(), "I would like to take you out. Lol!"));
                 break;
             case "555":
-                msgs.add(new Message("555", "444", "Wendy Wintersteen", "Kim Reynolds", new Date(), "Hey! beautiful"));
+                msgs.add(new Message("555", "444", "Wendy Wintersteen", "Kim Reynolds", new Date(), "Hey! handsome <3"));
                 msgs.add(new Message("444", "555", "Kim Reynolds", "Wendy Wintersteen", new Date(), "I am in love with you:)"));
                 msgs.add(new Message("555", "444", "Wendy Wintersteen", "Kim Reynolds", new Date(), "Seriously falling in love with you"));
                 break;
