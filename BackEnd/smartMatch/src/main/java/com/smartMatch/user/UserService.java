@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 /**
- * @author Steven Marshall Sheets
+ * @author Rishabh Bansal
  */
 public class UserService {
     @Autowired

@@ -32,7 +32,7 @@ public class MatchController {
         matchRepo.save(match);
         System.out.println("\n" + match.toString() + "\n");
 //        return ("s");
-        return new Message("Match saved for " + match.getEmailAddress() + ": " + match.getMatches()+ ": " + match.getQuizScore());
+        return new Message("Match saved for " + match.getEmailAddress() + ": " + match.getMatches()+ " with a quiz score of " + match.getQuizScore());
 //        return "Match saved for " + match.getEmailAddress() + ": " + match.getMatches();
     }
 

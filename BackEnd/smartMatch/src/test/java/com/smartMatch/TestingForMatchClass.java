@@ -63,7 +63,7 @@ public class TestingForMatchClass {
 
 
 //    @Test
-//    public void getFirstNameByEmailTest(){
+//    public void getMatchesByEmailTest(){
 //        List<Matches> userList = new ArrayList<Matches>();
 //        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant", 2);
 //        userList.add(rishabh);
