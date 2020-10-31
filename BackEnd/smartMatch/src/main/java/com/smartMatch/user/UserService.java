@@ -6,9 +6,11 @@ import java.util.List;
 
 /**
  * @author Rishabh Bansal
+ *
  */
 public class UserService {
     @Autowired
+
     private UserRepository userRepository;
 
     public List<User> getUserList() {
