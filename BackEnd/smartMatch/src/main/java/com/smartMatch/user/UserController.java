@@ -1,3 +1,5 @@
+
+
 package com.smartMatch.user;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
@@ -87,28 +89,33 @@ public class UserController {
         return user.getFirstName();
     }
 
-        /**
+    /**
      * When the user enters the code on the app and hits submit, it will both enter
      * the entered_code into the database and check if the entered_code matches the
      * code. If so, then the user is "verified".
      *
      */
 
-        @RequestMapping(method = RequestMethod.POST, path = "users/verifies")
-        public Message verify(@RequestBody Verify verify){
-            List<User> allUsers = usersRepository.findAll();
-            User user = new User();
-            for (int i = 0; i < allUsers.size(); i++) {
-                if (allUsers.get(i).getEmailaddress().equals(verify.emailaddress)) {
-                    if (allUsers.get(i).getUserPassword().equals(verify.userPassword)) {
-                        return new Message(allUsers.get(i).getId().toString());
+    @RequestMapping(method = RequestMethod.POST, path = "users/verifies")
+    public Message verify(@RequestBody Verify verify){
+        List<User> allUsers = usersRepository.findAll();
+        User user = new User();
+        for (int i = 0; i < allUsers.size(); i++) {
+            if (allUsers.get(i).getEmailaddress().equals(verify.emailaddress)) {
+                if (allUsers.get(i).getUserPassword().equals(verify.userPassword)) {
+                    return new Message(allUsers.get(i).getId().toString());
 
-                    }
-                    return null;
                 }
+                return null;
             }
-            return null;
         }
+        return null;
+    }
+
+
+
+
+
     @RequestMapping(method = RequestMethod.POST, path = "users/verify")
     public Message verify_U(@RequestBody Verify verify){
         List<User> allUsers = usersRepository.findAll();
@@ -156,25 +163,39 @@ public class UserController {
         User user = findUserByemail(email_address);
         user.setPhoneNumber(phone_number);
         usersRepository.save(user);
-        return new Message("Named changed to: " +user.getPhoneNumber());
+        return new Message("Phone Number changed to: " +user.getPhoneNumber());
     }
     /**
      * This function is used to update the database of the user table with the updated field.
-     * So like in this The Phone_number of the user is being changed
+     * So like in this The Gender of the user is being changed
      *
      * @param gender - The emailID of the user who we're checking the code from.
      * @return The new updated phone_number.
      */
 
     @RequestMapping(method = RequestMethod.PUT, path = "users/update/gender/{email_address}/{new_gender}")
-    public Message updateGaender(@PathVariable("email_address") String email_address, @PathVariable("new_gender") String gender){
+    public Message updateGender(@PathVariable("email_address") String email_address, @PathVariable("new_gender") String gender){
         User user = findUserByemail(email_address);
         user.setGender(gender);
         usersRepository.save(user);
-        return new Message("Named changed to: " +user.getGender());
+        return new Message("Gender changed to: " +user.getGender());
     }
 
+    /**
+     * This function is used to update the database of the user table with the updated field.
+     * So like in this The password of the user is being changed
+     *
+     * @param password - The emailID of the user who we're checking the code from.
+     * @return The new updated phone_number.
+     */
 
+    @RequestMapping(method = RequestMethod.PUT, path = "users/update/password/{email_address}/{new_password}")
+    public Message updatePass(@PathVariable("email_address") String email_address, @PathVariable("new_password") String password){
+        User user = findUserByemail(email_address);
+        user.setUserPassword(password);
+        usersRepository.save(user);
+        return new Message("Password changed to: " +user.getUserPassword());
+    }
     /**
      * This function would be used to delete the user from the databse
      * with the given email_address
@@ -206,14 +227,18 @@ public class UserController {
     /**
      * This function would be used to ge the ID associated with the user.
      *
-     * @param ID - The NetID of the user who we're checking the code from.
+     * @param email - The NetID of the user who we're checking the code from.
      * @return ID - The code of the user.
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/users_Email/{Id}")
-    public String getEmailByID(@PathVariable("Id") String ID) {
+    @RequestMapping(method = RequestMethod.GET, path = "/users_Email/{email_address}")
+    public String getEmailByID(@PathVariable("email_address") String email) {
         logger.info("Entered into Controller Layer");
-        User user = findUserByID(ID);
-        return user.getEmailaddress();
+        User user = findUserByemail(email);
+//        User user = findUserByID(ID);
+        if(user.getId()==null)
+            return "Not a valid Email, Please enter a Valid User Email_ID";
+        else
+            return user.getId().toString();
     }
     /**
      * This is a very important method.
@@ -223,7 +248,6 @@ public class UserController {
      * @return - The user corresponding to the NetID, assuming that it exists.
      */
     @RequestMapping(method = RequestMethod.GET, path = "/user/findBy_ID/{id}")
-//    @GetMapping("/users/{net_id}")
     public User findUserByID(@PathVariable(value = "id") String id) {
         logger.info("Entered into Controller Layer");
         List<User> allUsers = usersRepository.findAll();

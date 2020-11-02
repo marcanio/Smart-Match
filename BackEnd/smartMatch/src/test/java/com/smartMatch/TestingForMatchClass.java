@@ -38,13 +38,13 @@ public class TestingForMatchClass {
     public void getAllMatchesTest() {
         List<Matches> userList = new ArrayList<Matches>();
 
-        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant, Suraj");
+        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant, Suraj", 1);
 
-        Matches Eric = new Matches("emarchino@iastate.edu", "Rishabh, Jayant, Suraj");
+        Matches Eric = new Matches("emarchino@iastate.edu", "Rishabh, Jayant, Suraj",2);
 
-        Matches Jayant = new Matches("jayant@iastate.edu", "Eric, Rishabh, Suraj");
+        Matches Jayant = new Matches("jayant@iastate.edu", "Eric, Rishabh, Suraj",3);
 
-        Matches Suraj = new Matches("suraj@iastate.edu", "Eric, Jayant, Rishabh");
+        Matches Suraj = new Matches("suraj@iastate.edu", "Eric, Jayant, Rishabh",4);
 
 
         addToUserList(userList, rishabh, Eric, Jayant, Suraj);
@@ -63,9 +63,9 @@ public class TestingForMatchClass {
 
 
 //    @Test
-//    public void getFirstNameByEmailTest(){
+//    public void getMatchesByEmailTest(){
 //        List<Matches> userList = new ArrayList<Matches>();
-//        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant");
+//        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant", 2);
 //        userList.add(rishabh);
 //        when(userRepository.findAll()).thenReturn(userList);
 //        userController.addNewMatch(rishabh);

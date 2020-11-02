@@ -3,7 +3,7 @@ package com.smartMatch.user;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
+//
 /**
  * Repository class for <code>User</code> domain objects All method names are
  * compliant with Spring Data naming conventions so this interface can easily be
@@ -17,7 +17,7 @@ public interface UserRepository extends JpaRepository<User, String> {
     /**
      * Finds the user associated with the given emailID
      *
-     * @param email_address - The netID associated with the user.
+     * @param email_address - The email ID associated with the user.
      * @return - User associated with given NetID
      */
 //    User findUserByemail(String email_address);
