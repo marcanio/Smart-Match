@@ -26,15 +26,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.codehaus.jackson</groupId>-->
-<!--			<artifactId>jackson-mapper-asl</artifactId>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>org.codehaus.jackson</groupId>-->
-<!--			<artifactId>jackson-core-asl</artifactId>-->
-<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.hsqldb</groupId>
@@ -81,7 +72,11 @@
 			<version>3.5.0-Final</version>
 		</dependency>
 
-
+		<!-- Websockets dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -106,55 +101,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-
-<!--	<build>-->
-<!--		<plugins>-->
-<!--			<plugin>-->
-<!--				<groupId>org.springframework.boot</groupId>-->
-<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						&lt;!&ndash; Spring Boot Actuator displays build-related information if a META-INF/build-info.properties-->
-<!--                            file is present &ndash;&gt;-->
-<!--						<goals>-->
-<!--							<goal>build-info</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<additionalProperties>-->
-<!--								<encoding.source>${project.build.sourceEncoding}</encoding.source>-->
-<!--								<encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>-->
-<!--								<java.source>${maven.compiler.source}</java.source>-->
-<!--								<java.target>${maven.compiler.target}</java.target>-->
-<!--							</additionalProperties>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--				</executions>-->
-<!--			</plugin>-->
-<!--		</plugins>-->
-<!--	</build>-->
-<!--	<build>-->
-<!--		<plugins>-->
-<!--			<plugin>-->
-<!--				<artifactId>maven-assembly-plugin</artifactId>-->
-<!--				<version>2.2.1</version>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						<id>make-assembly</id>-->
-<!--						<phase>package</phase>-->
-<!--						<goals>-->
-<!--							<goal>single</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<descriptors>-->
-<!--								<descriptor>src/main/assembly/src.xml</descriptor>-->
-<!--							</descriptors>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--				</executions>-->
-<!--			</plugin>-->
-<!--		</plugins>-->
-<!--	</build>-->
 	<build>
 		<plugins>
 			<plugin>
