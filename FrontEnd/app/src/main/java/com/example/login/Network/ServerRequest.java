@@ -21,6 +21,12 @@ public class ServerRequest implements IServerRequest {
     private String tag_json_obj = "json_obj_req";
     private IVolleyListener I;
 
+    /**
+     * This completes the volley requests for the register page. It can complete get and post request.
+     * @param url - The URL for the request
+     * @param newUserObj - The JSON object being sent to the server
+     * @param methodType - Identifies a get or post request
+     */
     @Override
     public void sendToServer(String url, JSONObject newUserObj, String methodType) {
 
@@ -51,6 +57,10 @@ public class ServerRequest implements IServerRequest {
         AppController.getInstance().addToRequestQueue(registerUserRequest, tag_json_obj);
     }
 
+    /**
+     * Used to reference the RegisterLogic() class to call the onSuccess() function when the request returns
+     * @param logic - The Interface to the RegisterLogic() class
+     */
     public void addVolleyListener(IVolleyListener logic) {
         I = logic;
     }

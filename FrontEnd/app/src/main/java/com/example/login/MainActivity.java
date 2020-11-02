@@ -33,7 +33,11 @@ public class MainActivity extends AppCompatActivity {
     //for postman test
     //private static String URL_VERIFY = "https://postman-echo.com/post";
 
-
+    /**
+     * Saves the value in the input boxes and sets them to global variables.
+     * Uses setOnClickListeners() to call methods or new classes when the login or register button is clicked
+     * @param savedInstanceState - Saves the current instance of the app
+     */
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +65,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Validates a users login attempt. Check to make sure username and password at least contain something
+     * After that is preforms a volley POST request to identify if the user is in the system.
+     * It grabs the users information and stores it so the app is aware what user is currently logged in
+     * @param username - The current username inputted
+     * @param password - The current password inputted
+     * @return - Returns if the validation was successful or failed
+     */
     @SuppressLint("SetTextI18n")
     public String validate(String username, String password) {
 

@@ -37,7 +37,11 @@ public class Registration extends AppCompatActivity implements IView {
 
     //Postman - https://e88bf2da-6812-4702-8725-be192a447d6d.mock.pstmn.io
 
-
+    /**
+     * Initializes the input boxes
+     * Sets up a onClickListener for the register button that sends all of the filled out information to the RegistrationLogic() class
+     * @param savedInstanceState - Saves the current activity
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         new AppController();
@@ -80,16 +84,28 @@ public class Registration extends AppCompatActivity implements IView {
         });
     }
 
+    /**
+     * Shows the text of hidden text boxes
+     * @param s - Given text that needs to be displayed to the user
+     */
     @Override
     public void showText(String s) {
 
     }
 
+    /**
+     * Enables the use of pop up text to the user
+     * @param s - String showed to the user
+     */
     @Override
     public void toastText(String s) {
 
     }
 
+    /**
+     * Gets the current activity so that a different class is able to switch the activity
+     * @return
+     */
     @Override
     public Context getContext() {
         return this;
