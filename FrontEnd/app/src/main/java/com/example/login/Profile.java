@@ -40,6 +40,11 @@ public class Profile extends AppCompatActivity {
     private static final int PICK_FROM_GALLERY = 10;
     ImageView photo;
 
+    /**
+     * On create function for the profile page.
+     * @param savedInstanceState
+     * parameter- saved for the instance state.
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
@@ -82,11 +87,21 @@ public class Profile extends AppCompatActivity {
     public void onButtonClick(View view) {
     }
 
+    /**
+     * It goes to the settings page.
+     * @param view
+     * parameter - view.
+     */
     public void goToSettings(View view) {
         Intent intent = new Intent(Profile.this, Settings.class);
         startActivity(intent);
     }
 
+    /**
+     * Loads the image to the profile page.
+     * @param view
+     * parameter - view.
+     */
     public void loadImage(View view) {
         try {
             if (ActivityCompat.checkSelfPermission(Profile.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -100,6 +115,16 @@ public class Profile extends AppCompatActivity {
         }
     }
 
+    /**
+     * Loads the image in the drawable section.
+     *
+     * @param requestCode
+     * parameter - requestCode.
+     * @param resultCode
+     * parameter - resultCode.
+     * @param data
+     * parameter - data.
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -120,6 +145,15 @@ public class Profile extends AppCompatActivity {
         }
     }
 
+    /**
+     * Void methods for granting request to upload the images.
+     * @param requestCode
+     * parameter - requestcode.
+     * @param permissions
+     * parameter - permissions.
+     * @param grantResults
+     * parameter - grantResults.
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
         switch (requestCode) {

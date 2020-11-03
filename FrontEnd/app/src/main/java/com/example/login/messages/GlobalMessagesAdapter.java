@@ -17,21 +17,46 @@ public class GlobalMessagesAdapter extends RecyclerView.Adapter<GlobalMessagesAd
     private ItemClickListener mClickListener;
     private String owner;
 
-    // data is passed into the constructor
+
+
+    /**
+     * Message adapter constructor where data is passed into the constructor.
+     * @param context
+     * parameter for context.
+     * @param data
+     * parameter for data.
+     * @param owner
+     * parameter for owner.
+     */
     GlobalMessagesAdapter(Context context, List<Message> data, String owner) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.owner = owner;
     }
 
-    // inflates the row layout from xml when needed
+
+    /**
+     * Inflates the row layout from xml when needed.
+     * @param parent
+     * parameter for the parent.
+     * @param viewType
+     * parameter for the view type.
+     * @return
+     *  inflates the row layoyt from xml when needed.
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.up_messages, parent, false);
         return new ViewHolder(view);
     }
 
-    // binds the data to the TextView in each row
+    /**
+     * Blinds the data to the Text view in each row.
+     * @param holder
+     * parameter for the holder.
+     * @param position
+     * parameter for the position.
+     */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Message current = mData.get(position);
@@ -47,7 +72,13 @@ public class GlobalMessagesAdapter extends RecyclerView.Adapter<GlobalMessagesAd
         holder.messagePart.setText(ms);
     }
 
-    // total number of rows
+
+
+    /**
+     * It returns the total number of rows.
+     * @return
+     * total number of rows.
+     */
     @Override
     public int getItemCount() {
         return mData.size();

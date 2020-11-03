@@ -18,24 +18,49 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Settings extends AppCompatActivity {
     private String m_Text = "";
 
+    /**
+     * Oncreate method for the settings page.
+     * @param savedInstanceState
+     * parameter- savedInstanceState.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
     }
 
+    /**
+     * Adds the fliter for the education preferences.
+     * @param view
+     * parameter - view.
+     */
     public void filterEducation(View view) {
         Toast.makeText(this, "Filter on education settings enabled", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Adds filter for the others.
+     * @param view
+     * parameter - view.
+     */
     public void filterAnother(View view) {
         Toast.makeText(this, "Filter on another settings enabled", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Adds filter to the smoking preferences.
+     * @param view
+     * parameter - view.
+     */
     public void filterSmoking(View view) {
         Toast.makeText(this, "Filter on smoking settings enabled", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * This methods helps change the password.
+     * @param view
+     * parameter -view.
+     */
     public void changePassword(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(Settings.this);
         builder.setTitle("Username");
@@ -62,6 +87,11 @@ public class Settings extends AppCompatActivity {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
     }
 
+    /**
+     * This methods helps change the User name.
+     * @param view
+     * parameter - view.
+     */
     public void changeUsername(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("New password");
@@ -88,6 +118,11 @@ public class Settings extends AppCompatActivity {
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
     }
 
+    /**
+     * It exits the user and directs to the login page.
+     * @param view
+     * parameter - view.
+     */
     public void goToStart(View view) {
         Intent intent = new Intent(Settings.this, MainActivity.class);
         startActivity(intent);

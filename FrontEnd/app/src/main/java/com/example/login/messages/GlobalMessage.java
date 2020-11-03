@@ -14,10 +14,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Abstract method for messages that extends to appCompat activity.
+ */
 public class GlobalMessage extends AppCompatActivity {
     GlobalMessagesAdapter adapter;
     String idThis = "444";
 
+    /**
+     * On create method for message and chat conversation.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

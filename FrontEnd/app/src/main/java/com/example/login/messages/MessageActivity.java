@@ -16,6 +16,10 @@ import java.util.List;
 public class MessageActivity extends AppCompatActivity {
     GlobalMessagesAdapter adapter;
 
+    /**
+     * On Create function for Message Activity.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

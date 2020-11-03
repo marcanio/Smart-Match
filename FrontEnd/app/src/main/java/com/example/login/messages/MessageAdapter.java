@@ -17,21 +17,44 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     private LayoutInflater mInflater;
     private String owner;
 
-    // data is passed into the constructor
+
+    /**
+     * The data is passed into the constructor.
+     *
+     * @param context
+     * @param data
+     * @param owner
+     */
     MessageAdapter(Context context, List<Message> data, String owner) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.owner = owner;
     }
 
-    // inflates the row layout from xml when needed
+
+
+    /**
+     * It inflates the row layout from xml when needed.
+     * @param parent
+     * @param viewType
+     * @return
+     *  inflates the row layout from xml when needed.
+     */
+
     @Override
     public MessageAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.up_localmessages, parent, false);
         return new MessageAdapter.ViewHolder(view);
     }
 
-    // binds the data to the TextView in each row
+
+
+    /**
+     * It binds the data to the TextView in each row
+
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(MessageAdapter.ViewHolder holder, int position) {
         Message current = mData.get(position);
@@ -48,13 +71,25 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
     }
 
-    // total number of rows
+
+
+    /**
+     * Counts the total number of rows.
+     * @return
+     * the total number of rows.
+     */
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
-    // stores and recycles views as they are scrolled off screen
+
+
+
+    /**
+     * It stores and recycles views as they are scrolled off screen.
+     *
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView user;
         TextView messagePart;
