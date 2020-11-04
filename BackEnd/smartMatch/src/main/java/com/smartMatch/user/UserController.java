@@ -93,6 +93,8 @@ public class UserController {
      * When the user enters the code on the app and hits submit, it will both enter
      * the entered_code into the database and check if the entered_code matches the
      * code. If so, then the user is "verified".
+     * @param verify - The class for input of pass and email
+     * @return Verified or not
      *
      */
 
@@ -138,7 +140,8 @@ public class UserController {
      * This function is used to update the database of the user table with the updated field.
      * So like in this The first name of the user is being changed
      *
-     * @param first_name - The emailID of the user who we're checking the code from.
+     * @param first_name - The first_name of the user who we're checking the code from.
+     * @param email_address - The emailID of the user who we're checking the code from.
      * @return The new updated name.
      */
 
@@ -155,6 +158,7 @@ public class UserController {
      * So like in this The Phone_number of the user is being changed
      *
      * @param phone_number - The emailID of the user who we're checking the code from.
+     * @param email_address - The emailID of the user who we're checking the code from.
      * @return The new updated phone_number.
      */
 
@@ -170,6 +174,7 @@ public class UserController {
      * So like in this The Gender of the user is being changed
      *
      * @param gender - The emailID of the user who we're checking the code from.
+     * @param email_address - The emailID of the user who we're checking the code from.
      * @return The new updated phone_number.
      */
 
@@ -186,6 +191,7 @@ public class UserController {
      * So like in this The password of the user is being changed
      *
      * @param password - The emailID of the user who we're checking the code from.
+     * @param email_address - The emailID of the user who we're checking the code from.
      * @return The new updated phone_number.
      */
 
