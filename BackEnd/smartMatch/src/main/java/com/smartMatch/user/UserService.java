@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 /**
- * @author Rishabh Bansal
  *Service class for the user.
+ * @author Rishabh Bansal
  */
 public class UserService {
     @Autowired

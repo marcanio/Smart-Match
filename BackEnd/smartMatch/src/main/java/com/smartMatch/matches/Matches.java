@@ -10,11 +10,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "matches")
 /**
  * This is used for creating the database for the match class.
  */
+@Entity
+@Table(name = "matches")
 public class Matches {
 
 

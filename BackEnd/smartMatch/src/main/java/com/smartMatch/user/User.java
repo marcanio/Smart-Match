@@ -7,11 +7,11 @@ import org.springframework.core.style.ToStringCreator;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
-@Table(name = "users")
 /**
  * This is for creating the database for the user.
  */
+@Entity
+@Table(name = "users")
 public class User implements Serializable {
     @Column(name = "first_name")
     @NotFound(action = NotFoundAction.IGNORE)

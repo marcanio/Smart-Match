@@ -14,11 +14,11 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.builders.ApiInfoBuilder;
 
 
+/**
+ * Configuration for the Swagger
+ */
 @Configuration
 @EnableSwagger2
-/**
- * Configuration for the websockets
- */
 public class SpringFoxConfig {
 
     @Bean

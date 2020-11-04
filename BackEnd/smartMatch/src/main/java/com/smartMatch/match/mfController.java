@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
 /**
  * This is the controller for the male and female class .
  */
+@RestController
 public class mfController {
 
     @Autowired
