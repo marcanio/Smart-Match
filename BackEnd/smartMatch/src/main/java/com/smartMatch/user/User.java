@@ -9,6 +9,9 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
+/**
+ * This is for creating the database for the user.
+ */
 public class User implements Serializable {
     @Column(name = "first_name")
     @NotFound(action = NotFoundAction.IGNORE)

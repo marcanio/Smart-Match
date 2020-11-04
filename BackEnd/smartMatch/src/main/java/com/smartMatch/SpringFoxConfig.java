@@ -16,6 +16,9 @@ import springfox.documentation.builders.ApiInfoBuilder;
 
 @Configuration
 @EnableSwagger2
+/**
+ * Configuration for the websockets
+ */
 public class SpringFoxConfig {
 
     @Bean

@@ -10,6 +10,9 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "female_user")
+/**
+ * Ths is used to create the database for the female match databse.
+ */
 public class UserFemale implements Serializable {
     @Column(name = "first_name")
     @NotFound(action = NotFoundAction.IGNORE)

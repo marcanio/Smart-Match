@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+/**
+ * Controller for the Match Class, It is used for having functionality for the match Class.
+ */
 @RestController
 public class MatchController {
 

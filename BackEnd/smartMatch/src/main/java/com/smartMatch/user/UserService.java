@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * @author Rishabh Bansal
- *
+ *Service class for the user.
  */
 public class UserService {
     @Autowired

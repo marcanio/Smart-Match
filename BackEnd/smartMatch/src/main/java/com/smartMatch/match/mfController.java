@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+/**
+ * This is the controller for the male and female class .
+ */
 public class mfController {
 
     @Autowired
@@ -18,6 +21,9 @@ public class mfController {
     UserFemaleRepository userFemaleRepository;
 
     @RequestMapping(method = RequestMethod.POST, path = "/users/SaveGender", produces = "application/json")
+    /**
+     * Saving the user weather for male or female.
+     */
     public Message saveUser(@RequestBody User user) { // usersRepository.save(user.getFirst_name());
 //        user.setCode(new CodeGenerator().sevenDigit());
 //        usersRepository.save(user);

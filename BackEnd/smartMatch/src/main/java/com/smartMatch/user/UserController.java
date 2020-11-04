@@ -13,6 +13,9 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
+/**
+ * This the the controller for the user class. All the functionality is defined over here.
+ */
 public class UserController {
     static {
         System.out.println("\nReady to save new user...\n");

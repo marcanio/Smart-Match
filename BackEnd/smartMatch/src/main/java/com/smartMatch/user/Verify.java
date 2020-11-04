@@ -1,5 +1,8 @@
 package com.smartMatch.user;
 
+/**
+ * This is used to create the put for just email address and the password.
+ */
 public class Verify {
     String emailaddress;
     String userPassword;

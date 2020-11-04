@@ -4,12 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Repository class for <code>User</code> domain objects All method names are
- * compliant with Spring Data naming conventions so this interface can easily be
- * extended for Spring Data See here:
- * <p>
- * http://static.springsource.org/spring-data/jpa/docs/current/reference/html/jpa.repositories.html#jpa.query-methods.query-creation
- *
+ * This is the repository for the match class.
  */
 @Repository
 public interface UserFemaleRepository extends JpaRepository<UserFemale, String> {
