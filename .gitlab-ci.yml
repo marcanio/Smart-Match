@@ -12,6 +12,9 @@ maven-build:
     script:
       - cd BackEnd/smartMatch
       - mvn package -B
+    only:
+      refs:
+         - master
 
 maven-test:
     stage: maventest
@@ -24,6 +27,9 @@ maven-test:
     artifacts:
       paths:
         - Backend/exercyze/target/*.jar
+    only:
+      refs:
+         - master
 
 autoDeploy:
   stage: autodeploy
@@ -36,6 +42,9 @@ autoDeploy:
     - sudo mv target/*.jar /target/web-demo.jar
     - sudo systemctl stop system-web-demo
     - sudo systemctl start system-web-demo
+  only:
+    refs:
+        - master
 
 android-build:
     image: javiersantos/android-ci:latest
@@ -51,6 +60,9 @@ android-build:
     artifacts:
         paths:
             - Frontend/app/build/outputs/
+    only:
+      refs:
+         - master
 
 unitTests:
     image: javiersantos/android-ci:latest
@@ -63,3 +75,6 @@ unitTests:
     script:
         - cd FrontEnd
         - ./gradlew assemble
+    only:
+      refs:
+         - master
