@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 public class UserController {
     static {
-        System.out.println("\nReady to save new user...\n");
+        System.out.println("\nReady to save a new user...\n");
     }
 
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
