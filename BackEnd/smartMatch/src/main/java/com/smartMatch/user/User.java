@@ -7,9 +7,6 @@ import org.springframework.core.style.ToStringCreator;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * This is for creating the database for the user.
- */
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
@@ -24,8 +21,6 @@ public class User implements Serializable {
     @Column(name = "phone_number")
     @NotFound(action = NotFoundAction.IGNORE)
     private String phoneNumber;
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -136,13 +131,6 @@ public class User implements Serializable {
 
     public void setAge(Integer age) {
         this.age = age;
-    }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
 
