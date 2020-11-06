@@ -6,9 +6,7 @@ import org.springframework.core.style.ToStringCreator;
 
 import javax.persistence.*;
 import java.io.Serializable;
-/**
- * This is used for creating the databse for the male user.
- */
+
 @Entity
 @Table(name = "male_user")
 public class UserMale implements Serializable {
@@ -32,7 +30,7 @@ public class UserMale implements Serializable {
     @NotFound(action = NotFoundAction.IGNORE)
     private String gender;
 
-    @Column(name = "user_score")
+    @Column(name = "uer_score")
     @NotFound(action = NotFoundAction.IGNORE)
     private int userscore;
 
@@ -44,6 +42,11 @@ public class UserMale implements Serializable {
         this.gender = gender;
         this.userscore = userscore;
     }
+
+    public UserMale() {
+
+    }
+
     @Override
     public String toString() {
         return new ToStringCreator(this).append("first_name: ", this.getFirstName())
