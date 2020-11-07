@@ -1,6 +1,7 @@
 package com.smartMatch.matches;
 /**
  * Created for taking the entries for email_address and matches
+ * @author Rishabh bansal
  */
 public class match_append {
 

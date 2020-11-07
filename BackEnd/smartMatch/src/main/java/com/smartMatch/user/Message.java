@@ -1,6 +1,7 @@
 package com.smartMatch.user;
 /**
  * This is created for returning the json file to the frontend.
+ * @author Rishabh bansal
  */
 public class Message {
     private String message;

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * This is the repository for the match class.
+ * @author Rishabh bansal
  */
 @Repository
 public interface UserFemaleRepository extends JpaRepository<UserFemale, String> {

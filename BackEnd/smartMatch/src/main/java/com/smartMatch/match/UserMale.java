@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 /**
  * This is used for creating the databse for the male user.
+ * @author Rishabh bansal
  */
 @Entity
 @Table(name = "male_user")

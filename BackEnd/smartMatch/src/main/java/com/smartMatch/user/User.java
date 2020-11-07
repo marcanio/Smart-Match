@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 /**
  * This is for creating the database for the user.
+ * @author Rishabh bansal
  */
 @Entity
 @Table(name = "users")
