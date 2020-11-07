@@ -21,15 +21,12 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-//@SpringBootTest
-//class SmartMatchApplicationTests {
-//
-//	@Test
-//	void contextLoads() {
-//	}
 
-//}
-//@SpringBootTest
+/**
+ * Application Test for the User class
+ *
+ * @author Rishabh bansal
+ */
 public class SmartMatchApplicationTests {
 	@InjectMocks
 	UserController userController;

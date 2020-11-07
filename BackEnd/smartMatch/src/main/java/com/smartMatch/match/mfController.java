@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * This is the controller for the male and female class .
+ * @author Rishabh bansal
  */
+
 @RestController
 public class mfController {
 

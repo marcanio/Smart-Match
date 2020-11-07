@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * This the the controller for the user class. All the functionality is defined over here.
+ * @author Rishabh bansal
  */
 @RestController
 public class UserController {

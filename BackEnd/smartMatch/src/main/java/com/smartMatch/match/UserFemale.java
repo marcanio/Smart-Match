@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 /**
  * Ths is used to create the database for the female match databse.
+ * @author Rishabh bansal
  */
 @Entity
 @Table(name = "female_user")

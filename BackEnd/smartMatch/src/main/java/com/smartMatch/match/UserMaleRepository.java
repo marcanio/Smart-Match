@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * This is the repository for the male user.
+ * @author Rishabh bansal
  */
 @Repository
 public interface UserMaleRepository extends JpaRepository<UserMale, String> {

@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 /**
  * This is used for creating the database for the match class.
+ * @author Rishabh bansal
  */
 @Entity
 @Table(name = "matches")

@@ -15,7 +15,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
-
+/**
+ *Database config for the Messages of the chat
+ *
+ * @author Rishabh bansal
+ */
 @Entity
 @Table(name = "messages")
 @Data
