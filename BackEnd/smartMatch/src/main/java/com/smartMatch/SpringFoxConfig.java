@@ -35,8 +35,7 @@ public class SpringFoxConfig {
         return new ApiInfoBuilder()
                 .title("AR_server")
                 .description("Hi, welcome to the backend of the Coms309 project, here is the API document!")
-                .termsOfServiceUrl("https://coms-402-sd-8.cs.iastate.edu:8080/terms")
-                .contact(new Contact("Rishabh Bansal","https://github.com/519045752/ComS402C_SD3","rbansal@iastate.edu"))
+                .contact(new Contact("Rishabh Bansal","https://github.com/rbansal05","rbansal@iastate.edu"))
                 .version("0.0.2")
                 .build();
     }

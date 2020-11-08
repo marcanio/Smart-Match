@@ -24,7 +24,7 @@ import static org.mockito.Mockito.*;
 
 /**
  * Application Test for the Match class
- * 
+ *
  *
  * @author Rishabh bansal
  */
