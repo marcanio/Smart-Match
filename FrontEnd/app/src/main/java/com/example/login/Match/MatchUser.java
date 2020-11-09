@@ -1,4 +1,4 @@
-package com.example.login;
+package com.example.login.Match;
 
 public class MatchUser {
     public String firstName;

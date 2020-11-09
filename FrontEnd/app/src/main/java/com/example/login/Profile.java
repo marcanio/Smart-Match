@@ -97,7 +97,15 @@ public class Profile extends AppCompatActivity {
         Intent intent = new Intent(Profile.this, Settings.class);
         startActivity(intent);
     }
-
+    /**
+     * It goes to the settings page.
+     *
+     * @param view parameter - view.
+     */
+    public void goToMatchPage(View view) {
+        Intent intent = new Intent(Profile.this, MatchPage.class);
+        startActivity(intent);
+    }
     /**
      * Loads the image to the profile page.
      *
