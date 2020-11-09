@@ -1,5 +1,6 @@
 package com.example.login.messages;
 //import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 
@@ -18,6 +19,7 @@ public class MessageActivity extends AppCompatActivity {
 
     /**
      * On Create function for Message Activity.
+     *
      * @param savedInstanceState
      */
     @Override

@@ -1,4 +1,5 @@
 package com.example.login.messages;
+
 import java.util.Date;
 
 public class Message {
@@ -11,18 +12,13 @@ public class Message {
 
     /**
      * Constructor for Message.
-     * @param idReceiver
-     *  returns the idReceiver.
-     * @param idSender
-     *  returns the idSener.
-     * @param uNameReceiver
-     * returns the NameReceiver.
-     * @param uNameSender
-     * returns NameSender.
-     * @param date
-     * returns the date.
-     * @param text
-     * returns text
+     *
+     * @param idReceiver    returns the idReceiver.
+     * @param idSender      returns the idSener.
+     * @param uNameReceiver returns the NameReceiver.
+     * @param uNameSender   returns NameSender.
+     * @param date          returns the date.
+     * @param text          returns text
      */
     public Message(String idReceiver, String idSender, String uNameReceiver, String uNameSender, Date date, String text) {
         this.idReceiver = idReceiver;
@@ -35,8 +31,8 @@ public class Message {
 
     /**
      * It gets the idReceiver.
-     * @return
-     * gets the idReceiver.
+     *
+     * @return gets the idReceiver.
      */
     public String getIdReceiver() {
         return idReceiver;
@@ -44,8 +40,8 @@ public class Message {
 
     /**
      * Sets the idReceiver.
-     * @param idReceiver
      *
+     * @param idReceiver
      */
     public void setIdReceiver(String idReceiver) {
         this.idReceiver = idReceiver;
@@ -53,8 +49,8 @@ public class Message {
 
     /**
      * It gets the Idsender.
-     * @return
-     * gets the IdSender.
+     *
+     * @return gets the IdSender.
      */
     public String getIdSender() {
         return idSender;
@@ -62,6 +58,7 @@ public class Message {
 
     /**
      * Sets the Idsender
+     *
      * @param idSender
      */
     public void setIdSender(String idSender) {
@@ -70,8 +67,8 @@ public class Message {
 
     /**
      * It gets the Date.
-     * @return
-     * the Date.
+     *
+     * @return the Date.
      */
     public Date getDate() {
         return date;
@@ -79,6 +76,7 @@ public class Message {
 
     /**
      * sets the date/
+     *
      * @param date
      */
     public void setDate(Date date) {
@@ -87,8 +85,8 @@ public class Message {
 
     /**
      * It gets the Text.
-     * @return
-     * the text.
+     *
+     * @return the text.
      */
     public String getText() {
         return text;
@@ -96,6 +94,7 @@ public class Message {
 
     /**
      * Sets the text.
+     *
      * @param text
      */
     public void setText(String text) {
@@ -104,8 +103,8 @@ public class Message {
 
     /**
      * It gets the NameReceiver.
-     * @return
-     * the name of the Receiver.
+     *
+     * @return the name of the Receiver.
      */
     public String getuNameReceiver() {
         return uNameReceiver;
@@ -113,6 +112,7 @@ public class Message {
 
     /**
      * Sets the name of the receiver.
+     *
      * @param uNameReceiver
      */
     public void setuNameReceiver(String uNameReceiver) {
@@ -121,8 +121,8 @@ public class Message {
 
     /**
      * It gets the name of the sender.
-     * @return
-     * the name of the sender.
+     *
+     * @return the name of the sender.
      */
     public String getuNameSender() {
         return uNameSender;
@@ -130,6 +130,7 @@ public class Message {
 
     /**
      * Sets the name of the sender.
+     *
      * @param uNameSender
      */
     public void setuNameSender(String uNameSender) {
@@ -138,8 +139,8 @@ public class Message {
 
     /**
      * String method to display the message.
-     * @return
-     * displays the message.
+     *
+     * @return displays the message.
      */
     @Override
     public String toString() {

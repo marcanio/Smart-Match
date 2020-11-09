@@ -22,6 +22,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
     /**
      * Sets the global variables to the display boxes that will show the quiz
+     *
      * @param savedInstanceState - Saves the current activity
      */
     @Override
@@ -81,6 +82,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
     /**
      * Saves the data from each question in the form of an integer array.
+     *
      * @param view -The current view of the activity
      */
     @Override
@@ -109,6 +111,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
     /**
      * Saves the users data in a well formatted array
+     *
      * @param selectedOption - The answer to the question
      */
     private void scoreAnswer(int selectedOption) {

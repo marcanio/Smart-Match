@@ -1,4 +1,5 @@
 package com.example.login.messages;
+
 import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -32,13 +33,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     }
 
 
-
     /**
      * It inflates the row layout from xml when needed.
+     *
      * @param parent
      * @param viewType
-     * @return
-     *  inflates the row layout from xml when needed.
+     * @return inflates the row layout from xml when needed.
      */
 
     @Override
@@ -48,10 +48,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     }
 
 
-
     /**
      * It binds the data to the TextView in each row
-
+     *
      * @param holder
      * @param position
      */
@@ -72,11 +71,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     }
 
 
-
     /**
      * Counts the total number of rows.
-     * @return
-     * the total number of rows.
+     *
+     * @return the total number of rows.
      */
     @Override
     public int getItemCount() {
@@ -84,11 +82,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     }
 
 
-
-
     /**
      * It stores and recycles views as they are scrolled off screen.
-     *
      */
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView user;

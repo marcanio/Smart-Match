@@ -1,5 +1,6 @@
 package com.example.login.messages;
 //import android.support.v7.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,7 @@ public class GlobalMessage extends AppCompatActivity {
 
     /**
      * On create method for message and chat conversation.
+     *
      * @param savedInstanceState
      */
     @Override

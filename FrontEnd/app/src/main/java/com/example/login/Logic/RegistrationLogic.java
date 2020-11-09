@@ -34,7 +34,8 @@ public class RegistrationLogic implements IVolleyListener {
 
     /**
      * Handles the logic to the register page. This Fills the JSONobject with relevant information and also changes the activity when need be.
-     * @param r - This is the current page (Register page) used for changing the activity
+     *
+     * @param r             - This is the current page (Register page) used for changing the activity
      * @param serverRequest - Needed to submit a server request with Volley
      */
     public RegistrationLogic(IView r, IServerRequest serverRequest) {
@@ -45,13 +46,14 @@ public class RegistrationLogic implements IVolleyListener {
 
     /**
      * Sends the volley request to "ServerRequest()" with all of the relevant information
-     * @param firstName - Users First Name
-     * @param lastName - Users Last Name
-     * @param email - Users Email Address
-     * @param password - Users Password
-     * @param birthday - Users Birthday
+     *
+     * @param firstName   - Users First Name
+     * @param lastName    - Users Last Name
+     * @param email       - Users Email Address
+     * @param password    - Users Password
+     * @param birthday    - Users Birthday
      * @param phoneNumber - Users Phone Number
-     * @param gender - Users Gender
+     * @param gender      - Users Gender
      * @throws JSONException = Detects a problem with the JSON before it is sent to the server
      */
     public void registerUser(String firstName, String lastName, String email, String password, String birthday, String phoneNumber, String gender) throws JSONException {
@@ -74,6 +76,7 @@ public class RegistrationLogic implements IVolleyListener {
 
     /**
      * When the Register page is complete it will call this method to change the activity
+     *
      * @param email - Users Email address used to send to the terminal to show the registration was successful
      */
     @Override
@@ -92,6 +95,7 @@ public class RegistrationLogic implements IVolleyListener {
 
     /**
      * When there is an error on the register page this method is called to notify the user there is a problem with there inputs
+     *
      * @param error - The error message that is being sent to the user
      */
     @Override

@@ -1,5 +1,6 @@
 package com.example.login;
 //import android.support.v7.app.AppCompatActivity;
+
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -42,8 +43,8 @@ public class Profile extends AppCompatActivity {
 
     /**
      * On create function for the profile page.
-     * @param savedInstanceState
-     * parameter- saved for the instance state.
+     *
+     * @param savedInstanceState parameter- saved for the instance state.
      */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,8 +90,8 @@ public class Profile extends AppCompatActivity {
 
     /**
      * It goes to the settings page.
-     * @param view
-     * parameter - view.
+     *
+     * @param view parameter - view.
      */
     public void goToSettings(View view) {
         Intent intent = new Intent(Profile.this, Settings.class);
@@ -99,8 +100,8 @@ public class Profile extends AppCompatActivity {
 
     /**
      * Loads the image to the profile page.
-     * @param view
-     * parameter - view.
+     *
+     * @param view parameter - view.
      */
     public void loadImage(View view) {
         try {
@@ -118,12 +119,9 @@ public class Profile extends AppCompatActivity {
     /**
      * Loads the image in the drawable section.
      *
-     * @param requestCode
-     * parameter - requestCode.
-     * @param resultCode
-     * parameter - resultCode.
-     * @param data
-     * parameter - data.
+     * @param requestCode parameter - requestCode.
+     * @param resultCode  parameter - resultCode.
+     * @param data        parameter - data.
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -147,12 +145,10 @@ public class Profile extends AppCompatActivity {
 
     /**
      * Void methods for granting request to upload the images.
-     * @param requestCode
-     * parameter - requestcode.
-     * @param permissions
-     * parameter - permissions.
-     * @param grantResults
-     * parameter - grantResults.
+     *
+     * @param requestCode  parameter - requestcode.
+     * @param permissions  parameter - permissions.
+     * @param grantResults parameter - grantResults.
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {

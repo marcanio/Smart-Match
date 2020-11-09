@@ -13,8 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Settings"></activity>
-        <activity android:name=".Profile"></activity>
+        <activity android:name=".MatchPage"></activity>
+        <activity android:name=".MainActivity2" />
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Settings" />
+        <activity android:name=".Profile" />
         <activity android:name=".Registration" />
         <activity android:name=".QuizResults" />
         <activity android:name=".SecondActivity" />

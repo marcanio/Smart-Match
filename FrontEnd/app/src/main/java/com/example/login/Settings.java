@@ -20,8 +20,8 @@ public class Settings extends AppCompatActivity {
 
     /**
      * Oncreate method for the settings page.
-     * @param savedInstanceState
-     * parameter- savedInstanceState.
+     *
+     * @param savedInstanceState parameter- savedInstanceState.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +31,8 @@ public class Settings extends AppCompatActivity {
 
     /**
      * Adds the fliter for the education preferences.
-     * @param view
-     * parameter - view.
+     *
+     * @param view parameter - view.
      */
     public void filterEducation(View view) {
         Toast.makeText(this, "Filter on education settings enabled", Toast.LENGTH_SHORT).show();
@@ -40,8 +40,8 @@ public class Settings extends AppCompatActivity {
 
     /**
      * Adds filter for the others.
-     * @param view
-     * parameter - view.
+     *
+     * @param view parameter - view.
      */
     public void filterAnother(View view) {
         Toast.makeText(this, "Filter on another settings enabled", Toast.LENGTH_SHORT).show();
@@ -49,8 +49,8 @@ public class Settings extends AppCompatActivity {
 
     /**
      * Adds filter to the smoking preferences.
-     * @param view
-     * parameter - view.
+     *
+     * @param view parameter - view.
      */
     public void filterSmoking(View view) {
         Toast.makeText(this, "Filter on smoking settings enabled", Toast.LENGTH_SHORT).show();
@@ -58,8 +58,8 @@ public class Settings extends AppCompatActivity {
 
     /**
      * This methods helps change the password.
-     * @param view
-     * parameter -view.
+     *
+     * @param view parameter -view.
      */
     public void changePassword(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(Settings.this);
@@ -89,8 +89,8 @@ public class Settings extends AppCompatActivity {
 
     /**
      * This methods helps change the User name.
-     * @param view
-     * parameter - view.
+     *
+     * @param view parameter - view.
      */
     public void changeUsername(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -120,8 +120,8 @@ public class Settings extends AppCompatActivity {
 
     /**
      * It exits the user and directs to the login page.
-     * @param view
-     * parameter - view.
+     *
+     * @param view parameter - view.
      */
     public void goToStart(View view) {
         Intent intent = new Intent(Settings.this, MainActivity.class);

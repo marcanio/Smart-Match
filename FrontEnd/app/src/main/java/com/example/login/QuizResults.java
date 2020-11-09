@@ -29,6 +29,7 @@ public class QuizResults<button> extends AppCompatActivity {
     /**
      * Initializes all of the users answers to there respected fields on the page.
      * Changes the activity when the profile button is clicked
+     *
      * @param savedInstanceState - Saves the current activity
      */
     @Override
@@ -69,6 +70,7 @@ public class QuizResults<button> extends AppCompatActivity {
 
     /**
      * Displays the pulled answers from the quiz to text boxes
+     *
      * @param realAnswers - An array of the users answers
      */
     private void displayAnswers(String[] realAnswers) {
@@ -87,6 +89,7 @@ public class QuizResults<button> extends AppCompatActivity {
 
     /**
      * Fills real answers with the values of the users answers
+     *
      * @param results - An array of numbers that needs to be converted to the corresponding quiz answer
      * @return - The string array of real answers
      */

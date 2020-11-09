@@ -23,7 +23,8 @@ public class ServerRequest implements IServerRequest {
 
     /**
      * This completes the volley requests for the register page. It can complete get and post request.
-     * @param url - The URL for the request
+     *
+     * @param url        - The URL for the request
      * @param newUserObj - The JSON object being sent to the server
      * @param methodType - Identifies a get or post request
      */
@@ -59,6 +60,7 @@ public class ServerRequest implements IServerRequest {
 
     /**
      * Used to reference the RegisterLogic() class to call the onSuccess() function when the request returns
+     *
      * @param logic - The Interface to the RegisterLogic() class
      */
     public void addVolleyListener(IVolleyListener logic) {

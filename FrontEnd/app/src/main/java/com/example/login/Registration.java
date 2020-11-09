@@ -40,6 +40,7 @@ public class Registration extends AppCompatActivity implements IView {
     /**
      * Initializes the input boxes
      * Sets up a onClickListener for the register button that sends all of the filled out information to the RegistrationLogic() class
+     *
      * @param savedInstanceState - Saves the current activity
      */
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +87,7 @@ public class Registration extends AppCompatActivity implements IView {
 
     /**
      * Shows the text of hidden text boxes
+     *
      * @param s - Given text that needs to be displayed to the user
      */
     @Override
@@ -95,6 +97,7 @@ public class Registration extends AppCompatActivity implements IView {
 
     /**
      * Enables the use of pop up text to the user
+     *
      * @param s - String showed to the user
      */
     @Override
@@ -104,6 +107,7 @@ public class Registration extends AppCompatActivity implements IView {
 
     /**
      * Gets the current activity so that a different class is able to switch the activity
+     *
      * @return
      */
     @Override
