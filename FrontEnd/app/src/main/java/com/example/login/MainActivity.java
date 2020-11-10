@@ -3,6 +3,7 @@ package com.example.login;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Button Login;
     private int counter = 5;
     private static String URL_VERIFY = "http://coms-309-vb-10.cs.iastate.edu:8080/users/verifies";
+    private String emailSave;
     //for postman test
     //private static String URL_VERIFY = "https://postman-echo.com/post";
 
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public String validate(String username, String password) {
 
+        emailSave = username;
         final String[] outcome = {""};
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JSONObject params = new JSONObject();
@@ -115,6 +118,11 @@ public class MainActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(MainActivity.this, Profile.class);
                     try {
+                        SharedPreferences sharedPref = getSharedPreferences("myKey", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPref.edit();
+                        editor.putString("email", String.valueOf(emailSave));
+                        editor.commit();
+
                         intent.putExtra("quizScore", Integer.parseInt(response.getString("message")));
                     } catch (JSONException e) {
                         e.printStackTrace();
