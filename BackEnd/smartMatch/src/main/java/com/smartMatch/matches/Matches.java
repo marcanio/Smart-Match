@@ -18,7 +18,6 @@ import javax.persistence.Table;
 @Table(name = "matches")
 public class Matches {
 
-
     @Id
     @Column(name = "email_address")
     @NotFound(action = NotFoundAction.IGNORE)

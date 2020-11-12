@@ -3,13 +3,20 @@
 package com.smartMatch.user;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.smartMatch.match.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jackson.JsonObjectDeserializer;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.Serializable;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -25,6 +32,12 @@ public class UserController {
     private final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     public UserRepository usersRepository;
+    @Autowired
+    public UserMaleRepository usersMaleRepository;
+    @Autowired
+    public UserFemaleRepository usersFemaleRepository;
+    @Autowired
+    private FileStorageService storageService;
 
     /**
      * Saves a new user into the database.
@@ -274,4 +287,84 @@ public class UserController {
 
         return user;
     }
+    /**
+     * Gets a list of matches of current user i
+     *
+     * @return - A list of matches from the database.
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/user/match/{email_address}")
+    public List<Serializable> getMatches(@PathVariable("email_address") String email_address) {
+        logger.info("Entered into Controller Layer");
+        int GAP = 5;//get matches select +/- gap from user score
+        List<UserMale> allUsersMale = usersMaleRepository.findAll();
+        List<UserFemale> allUsersFemale = usersFemaleRepository.findAll();
+        List<Serializable> matches = new LinkedList<>();
+        int check = 0;
+        Serializable user = null;
+        for (UserMale u : allUsersMale) {
+            if (u.getEmailaddress().toLowerCase().equals(email_address.toLowerCase())) {
+                check = 1;
+                user = u;
+                break;
+            }
+        }
+        for (UserFemale u : allUsersFemale) {
+            if (u.getEmailaddress().toLowerCase().equals(email_address.toLowerCase())) {
+                check = -1;
+                user = u;
+                break;
+            }
+        }
+        if (check == 0) {
+            logger.info("Number of Records Fetched: 0");
+            return matches;
+        }
+        if (check == 1) {
+            UserMale uu = (UserMale) user;
+            int hScore = uu.getUserscore() + GAP;
+            int lScore = uu.getUserscore() - GAP;
+            for (UserFemale u2 : allUsersFemale) {
+                if ((u2.getUserscore() >= lScore) && (u2.getUserscore() <= hScore)) {
+                    matches.add(u2);
+                }
+            }
+        } else {
+            UserFemale uu = (UserFemale) user;
+            int hScore = uu.getUserscore() + GAP;
+            int lScore = uu.getUserscore() - GAP;
+            for (UserMale u2 : allUsersMale) {
+                if ((u2.getUserscore() >= lScore) && (u2.getUserscore() <= hScore)) {
+                    matches.add(u2);
+                }
+            }
+        }
+        logger.info("Number of Records Fetched:" + matches.size());
+        return matches;
+    }
+
+    @GetMapping("user/{id}/image")
+    public ResponseEntity<byte[]> getFile(@PathVariable String id) {
+        FileDB fileDB = storageService.getFile(id);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDB.getId() + "\"").body(fileDB.getData());
+    }
+
+    @PostMapping(value = {"user/{id}/image"}, consumes = {"multipart/form-data"})
+    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file, @PathVariable String id) {
+        String message = "";
+        try {
+            //   if (file.getContentType().split("/")[0].equals("image")) {
+            storageService.store(file, id);
+            message = "Uploaded the file successfully: " + file.getOriginalFilename();
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
+           /* } else {
+                message = "File is not an image";
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
+            }*/
+        } catch (Exception e) {
+            message = "Could not upload the file: " + file.getOriginalFilename() + "!";
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
+        }
+    }
+
+
 }
