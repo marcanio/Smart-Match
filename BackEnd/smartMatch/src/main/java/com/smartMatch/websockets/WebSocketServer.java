@@ -26,6 +26,7 @@ import org.springframework.stereotype.Controller;
  *
  * @author Rishabh Bansal
  */
+
 @Controller
 @ServerEndpoint("/websockets/{net_id}")
 public class WebSocketServer {

@@ -21,5 +21,5 @@ public interface UserFemaleRepository extends JpaRepository<UserFemale, String> 
     /**
      * Deletes a user from the database.
      */
-    void delete(UserFemale user);
+//    void delete(UserFemale user);
 }

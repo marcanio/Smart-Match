@@ -107,6 +107,20 @@ public class UserController {
     }
 
     /**
+     * Primarily for testing purposes. Gets the 'Phone Number ' column from the respective
+     * user.
+     *
+     * @param email_address - The NetID of the user who we're checking the code from.
+     * @return userPhoneNumber - The Phone number of the User.
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/users_phone/{email_address}")
+    public String getNumberByEmail(@PathVariable("email_address") String email_address) {
+        logger.info("Entered into Controller Layer");
+        User user = findUserByemail(email_address);
+        return user.getPhoneNumber();
+    }
+
+    /**
      * When the user enters the code on the app and hits submit, it will both enter
      * the entered_code into the database and check if the entered_code matches the
      * code. If so, then the user is "verified".
@@ -364,6 +378,31 @@ public class UserController {
             message = "Could not upload the file: " + file.getOriginalFilename() + "!";
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
         }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/users/fill")
+    public void fill() {
+        usersMaleRepository.save(new UserMale("Jayant Shah", "Bio1", 211l, "smit@mail.com", "male", 35));
+        usersMaleRepository.save(new UserMale("Rishabh Ban", "Bio2", 212l, "bond@mail.com", "male", 40));
+        usersMaleRepository.save(new UserMale("Eric Marc", "Bio3", 213l, "dou@mail.com", "male", 45));
+        usersMaleRepository.save(new UserMale("Vivek Bengre", "Bio4", 214l, "ng@mail.com", "male", 30));
+        usersMaleRepository.save(new UserMale("Suraj Pariyar", "Bio5", 215l, "gee@mail.com", "male", 25));
+        usersFemaleRepository.save(new UserFemale("Priyanka Chopra", "Bio1", 211l, "smit1@mail.com", "Female", 35));
+        usersFemaleRepository.save(new UserFemale("Katrina Kaif", "Bio2", 212l, "bond1@mail.com", "Female", 40));
+        usersFemaleRepository.save(new UserFemale("Aditi Rao", "Bio3", 213l, "dou1@mail.com", "Female", 45));
+        usersFemaleRepository.save(new UserFemale("Sonam Kapoor", "Bio4", 214l, "ng1@mail.com", "Female", 30));
+        usersFemaleRepository.save(new UserFemale("Alia Bhatt", "Bio5", 215l, "gee1@mail.com", "Female", 25));
+       /*
+
+           public UserFemale(String firstName, String userbio, Long id, String emailaddress, String gender, int userscore) {
+        this.firstName = firstName;
+        this.userbio = userbio;
+        this.id = id;
+        this.emailaddress = emailaddress;
+        this.gender = gender;
+        this.userscore = userscore;
+    }
+        */
     }
 
 

@@ -1,6 +1,7 @@
 package com.smartMatch;
 
 //import org.junit.jupiter.api.Test;
+import com.smartMatch.user.User;
 import com.smartMatch.user.Verify;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -69,18 +70,47 @@ public class TestingForMatchClass {
     }
 
 
-//    @Test
-//    public void getMatchesByEmailTest(){
-//        List<Matches> userList = new ArrayList<Matches>();
-//        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant", 2);
-//        userList.add(rishabh);
-//        when(userRepository.findAll()).thenReturn(userList);
-//        userController.addNewMatch(rishabh);
-//        //List<User> theUsers = userRepository.findAll();
-//        assertEquals("Eric, Jayant", userController.getMatchesByEmailIdS("rbansal@iastate.edu"));
-//
-//    }
+    @Test
+    public void getMatchesByEmailTest(){
+        List<Matches> userList = new ArrayList<Matches>();
+        Matches rishabh = new Matches("rbansal@iastate.edu", "Eric, Jayant", 2);
+        userList.add(rishabh);
+        when(userRepository.findAll()).thenReturn(userList);
+        userController.addNewMatch(rishabh);
+        //List<User> theUsers = userRepository.findAll();
+        assertEquals("Eric, Jayant", userController.getMatchesByEmailIdS("rbansal@iastate.edu"));
 
+    }
+
+    /**
+     * New For demo 3
+     */
+    @Test
+    public void appendNewMatchTest(){
+        List<Matches> userList = new ArrayList<Matches>();
+        Matches rishabh = new Matches("rbansal@iastate.edu","Riya, geeta" ,30);
+        Matches rohan = new Matches("rbansal@iastate.edu","Lisha" ,30);
+        userList.add(rishabh);
+        when(userRepository.findAll()).thenReturn(userList);
+        userController.addNewMatch(rishabh);
+        userController.appendNewMatch(rohan);
+        //List<User> theUsers = userRepository.findAll();
+        assertEquals("Riya, geeta,Lisha", userController.getMatchesByEmailIdS("rbansal@iastate.edu"));
+    }
+
+    /**
+     * New For demo 3
+     */
+    @Test
+    public void returnTheMatchesTest(){
+        List<Matches> userList = new ArrayList<Matches>();
+        Matches rishabh = new Matches("rbansal@iastate.edu","Riya, geeta" ,30);
+        userList.add(rishabh);
+        when(userRepository.findAll()).thenReturn(userList);
+        userController.addNewMatch(rishabh);
+        //List<User> theUsers = userRepository.findAll();
+        assertEquals("Riya, geeta", userController.getMatchesByEmailIdS("rbansal@iastate.edu"));
+    }
     private void saveAllTheUsers(Matches rishabh, Matches Eric, Matches Jayant, Matches Suraj) { // Do not need userController as a parameter because it is a global variable.
         userController.addNewMatch(rishabh);
         userController.addNewMatch(Eric);
@@ -94,10 +124,5 @@ public class TestingForMatchClass {
         userList.add(Jayant);
         userList.add(Suraj);
     }
-
-
-//	@Test
-//	void contextLoads() {
-//	}
 
 }

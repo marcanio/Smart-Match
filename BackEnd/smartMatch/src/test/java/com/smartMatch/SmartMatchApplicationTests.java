@@ -49,6 +49,8 @@ public class SmartMatchApplicationTests {
 //
 //		assertEquals(rishabh, userController.usersRepository.findUserByemail("smsheets"));
 //	}
+
+
 	@Test
 	public void getAllUsersTest() {
 		List<User> userList = new ArrayList<User>();
@@ -111,6 +113,21 @@ public class SmartMatchApplicationTests {
 		userController.saveUser(rishabh);
 		//List<User> theUsers = userRepository.findAll();
 		assertEquals("Rishabh", userController.getFirstNameByEmail("rbansal@iastate.edu"));
+
+	}
+
+	/**
+	 * New For demo 3
+	 */
+	@Test
+	public void getPhoneNumberByEmailTest(){
+		List<User> userList = new ArrayList<User>();
+		User rishabh = new User("Rishabh", "Bansal", "7038269214", "rbansal@iastate.edu", "Male","CS309isfun", 19);
+		userList.add(rishabh);
+		when(userRepository.findAll()).thenReturn(userList);
+		userController.saveUser(rishabh);
+		//List<User> theUsers = userRepository.findAll();
+		assertEquals("7038269214", userController.getNumberByEmail("rbansal@iastate.edu"));
 
 	}
 
