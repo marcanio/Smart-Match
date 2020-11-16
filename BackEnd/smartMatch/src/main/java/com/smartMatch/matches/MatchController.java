@@ -83,6 +83,21 @@ public class MatchController {
         return result;
     }
 
+    /**
+     * This function will be used to display all the matches for the given users
+     *
+     * @param email_address - The user being added.
+     * @return - The respective user with his matches
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/m/{email_address}")
+    public String getMatchesByEmailIdS(@PathVariable("email_address") String email_address) {
+        logger.info("Entered into Controller Layer");
+        com.smartMatch.matches.Matches result = getByEmailId(email_address);
+
+        System.out.println("\n Matches for " + result.getEmailAddress() + ": [" + result.getMatches() + "]");
+        return result.getMatches();
+    }
+
 //    @RequestMapping(method = RequestMethod.GET, path = "/matches/{email_address}")
 //    public String getMatchesByEmailIdS(@PathVariable("email_address") String email_address) {
 //        logger.info("Entered into Controller Layer");
