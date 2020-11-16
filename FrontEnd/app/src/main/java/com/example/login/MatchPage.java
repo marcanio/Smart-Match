@@ -54,6 +54,8 @@ public class MatchPage extends AppCompatActivity {
         mList.setLayoutManager(linearLayoutManager);
         mList.setAdapter(adapter);
 
+
+        //Add email at the end of the URL
         SharedPreferences sharedPreferences = getSharedPreferences("myKey", MODE_PRIVATE);
         String email = sharedPreferences.getString("email", "");
         url += email;
