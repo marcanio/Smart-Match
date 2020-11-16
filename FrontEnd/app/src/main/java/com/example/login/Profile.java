@@ -109,7 +109,7 @@ public class Profile extends AppCompatActivity {
 
 
     public void goToMesseage(View view) {
-        Intent intent = new Intent(Profile.this, MatchPage.class);
+        Intent intent = new Intent(Profile.this, newMessage.class);
         startActivity(intent);
     }
     /**

@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft;
 import org.java_websocket.drafts.Draft_6455;
@@ -40,6 +41,20 @@ public class newMessage extends AppCompatActivity {
         b2=(Button)findViewById(R.id.bt2);
         String w = "http://coms-309-vb-10.cs.iastate.edu:8080/websockets/" + email;
         Draft[] drafts = {new Draft_6455()};
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    cc.send(e2.getText().toString());
+                }
+                catch (Exception e)
+                {
+                    Log.d("ExceptionSendMessage:", e.getMessage().toString());
+                }
+            }
+        });
+
 
         //Websockets
         try {
