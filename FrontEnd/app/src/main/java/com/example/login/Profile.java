@@ -106,6 +106,12 @@ public class Profile extends AppCompatActivity {
         Intent intent = new Intent(Profile.this, MatchPage.class);
         startActivity(intent);
     }
+
+
+    public void goToMesseage(View view) {
+        Intent intent = new Intent(Profile.this, MatchPage.class);
+        startActivity(intent);
+    }
     /**
      * Loads the image to the profile page.
      *
