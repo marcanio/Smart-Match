@@ -2,10 +2,12 @@ package com.example.login;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -17,7 +19,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.login.Match.MatchUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +36,7 @@ public class MatchPage extends AppCompatActivity {
     private DividerItemDecoration dividerItemDecoration;
     private List<MatchUser> userList;
     private RecyclerView.Adapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,7 @@ public class MatchPage extends AppCompatActivity {
         url += email;
         getData();
 
+
     }
     private void getData(){
         final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -69,6 +72,7 @@ public class MatchPage extends AppCompatActivity {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                Log.e("Worked: ", response.toString());
                 for(int i =0; i < response.length(); i++){
                     try{
                         JSONObject jsonObject = response.getJSONObject(i);
@@ -78,7 +82,7 @@ public class MatchPage extends AppCompatActivity {
                         user.setGender(jsonObject.getString("gender"));
                         user.setId(jsonObject.getInt("id"));
                         user.setUserscore(jsonObject.getInt("userscore"));
-
+                        userList.add(user);
                     }catch (JSONException e) {
                         e.printStackTrace();
                         progressDialog.dismiss();

@@ -1,15 +1,15 @@
 package com.example.login;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.login.Match.MatchUser;
 
 import java.util.List;
 
@@ -37,7 +37,15 @@ public class MatchAdapter extends  RecyclerView.Adapter<MatchAdapter.ViewHolder>
         holder.textName.setText(user.getFirstName());
         holder.textEmail.setText(user.getEmailaddress());
         holder.textGender.setText(user.getGender());
-
+        holder.name.setText(user.getEmailaddress());
+        holder.name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // Intent intent = new Intent(MatchPage.this, newMessage.class);
+               // intent.putExtra("email", mButton.getText().toString());
+               // startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -47,12 +55,15 @@ public class MatchAdapter extends  RecyclerView.Adapter<MatchAdapter.ViewHolder>
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView textName, textEmail, textGender;
+        public Button name;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textName = itemView.findViewById(R.id.first_name);
             textEmail = itemView.findViewById(R.id.emailaddress);
             textGender = itemView.findViewById(R.id.gender);
+            name = itemView.findViewById(R.id.button11);
+
 
         }
     }

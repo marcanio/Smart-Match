@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="firstName"
         android:textSize="18sp"/>
+
     <TextView
         android:id="@+id/emailaddress"
         android:layout_width="match_parent"
@@ -22,6 +23,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="gender"/>
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Message" />
 
 
 </LinearLayout>
