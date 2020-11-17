@@ -26,6 +26,7 @@ public class Feedback extends AppCompatActivity {
     EditText feedback;
     EditText severity;
     String URL_VERIFY = "http://coms-309-vb-10.cs.iastate.edu:8080/feedback";
+    String URL_VERIFY2 = "http://coms-309-vb-10.cs.iastate.edu:8080/feedback/new";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class Feedback extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 postResults();
+                postResultstoDataBase();
             }
         });
 
@@ -56,12 +58,42 @@ public class Feedback extends AppCompatActivity {
             params.put("email_address", email);
             params.put("severity", severity.getText().toString().trim());
             params.put("feedback", feedback.getText().toString().trim());
-            params.put("first_name", name.getText().toString().trim());
+            params.put("name", name.getText().toString().trim());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_VERIFY, params, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                System.out.println();
+                Log.e("Response", "" + response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+    public void postResultstoDataBase() {
+        SharedPreferences sharedPreferences = getSharedPreferences("myKey", MODE_PRIVATE);
+        String email = sharedPreferences.getString("email", "");
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        JSONObject params = new JSONObject();
+
+        try {
+            params.put("email_address", email);
+            params.put("severity", severity.getText().toString().trim());
+            params.put("feedback", feedback.getText().toString().trim());
+            params.put("name", name.getText().toString().trim());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL_VERIFY2, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 System.out.println();
