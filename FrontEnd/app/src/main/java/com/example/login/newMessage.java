@@ -39,7 +39,7 @@ public class newMessage extends AppCompatActivity {
         t1=(TextView)findViewById(R.id.tx1);
         e2=(EditText)findViewById(R.id.et2);
         b2=(Button)findViewById(R.id.bt2);
-       
+
 
         String w = "http://coms-309-vb-10.cs.iastate.edu:8080/websockets/" + email;
         Draft[] drafts = {new Draft_6455()};
