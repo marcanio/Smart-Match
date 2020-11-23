@@ -11,6 +11,9 @@ import com.example.login.R;
 
 import java.util.List;
 
+/**
+ * Abstract class
+ */
 public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> {
     private List<Match> mData;
     private LayoutInflater mInflater;

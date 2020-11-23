@@ -3,6 +3,11 @@ public class Match {
     private String name;
     private int age;
 
+    /**
+     * constructor
+     * @param name
+     * @param age
+     */
     public Match(String name, int age) {
         this.name = name;
         this.age = age;
